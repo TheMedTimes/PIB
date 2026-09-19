@@ -1,0 +1,20 @@
+[
+  { "id": "moa-1", "left": "Atenolol", "right": "Selective beta-1 adrenergic receptor blockade" },
+  { "id": "moa-2", "left": "Omeprazole", "right": "Irreversible inhibition of gastric H+/K+ ATPase" },
+  { "id": "moa-3", "left": "Metformin", "right": "Activates AMPK, reduces hepatic gluconeogenesis" },
+  { "id": "moa-4", "left": "Warfarin", "right": "Inhibits vitamin K epoxide reductase" },
+  { "id": "moa-5", "left": "Sildenafil", "right": "Inhibits phosphodiesterase type 5" },
+  { "id": "moa-6", "left": "Furosemide", "right": "Inhibits Na-K-2Cl cotransporter in loop of Henle" },
+  { "id": "moa-7", "left": "Amlodipine", "right": "Blocks L-type voltage-gated calcium channels" },
+  { "id": "moa-8", "left": "Salbutamol", "right": "Selective beta-2 adrenergic receptor agonism" },
+  { "id": "moa-9", "left": "Digoxin", "right": "Inhibits Na+/K+ ATPase, increases intracellular calcium" },
+  { "id": "moa-10", "left": "Ciprofloxacin", "right": "Inhibits bacterial DNA gyrase and topoisomerase IV" },
+  { "id": "moa-11", "left": "Ranitidine", "right": "Competitive H2 receptor antagonism" },
+  { "id": "moa-12", "left": "Clopidogrel", "right": "Irreversibly blocks platelet P2Y12 ADP receptors" },
+  { "id": "moa-13", "left": "Losartan", "right": "Blocks angiotensin II AT1 receptors" },
+  { "id": "moa-14", "left": "Insulin", "right": "Activates insulin receptor tyrosine kinase" },
+  { "id": "moa-15", "left": "Diazepam", "right": "Enhances GABA-A receptor chloride conductance" },
+  { "id": "moa-16", "left": "Aspirin", "right": "Irreversibly inhibits cyclooxygenase-1 and -2" },
+  { "id": "moa-17", "left": "Enalapril", "right": "Inhibits angiotensin-converting enzyme" },
+  { "id": "moa-18", "left": "Morphine", "right": "Agonist at mu-opioid receptors" }
+]

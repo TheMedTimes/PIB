@@ -1,0 +1,20 @@
+[
+  { "id": "adr-1", "left": "Amiodarone", "right": "Pulmonary fibrosis and blue-grey skin discoloration" },
+  { "id": "adr-2", "left": "Isoniazid", "right": "Peripheral neuropathy from vitamin B6 depletion" },
+  { "id": "adr-3", "left": "Aminoglycosides", "right": "Ototoxicity and nephrotoxicity" },
+  { "id": "adr-4", "left": "Corticosteroids", "right": "Cushingoid features and osteoporosis" },
+  { "id": "adr-5", "left": "Methotrexate", "right": "Bone marrow suppression and hepatotoxicity" },
+  { "id": "adr-6", "left": "Tetracyclines", "right": "Tooth discoloration in children" },
+  { "id": "adr-7", "left": "ACE inhibitors", "right": "Dry cough and angioedema" },
+  { "id": "adr-8", "left": "Statins", "right": "Myopathy and rhabdomyolysis" },
+  { "id": "adr-9", "left": "Clozapine", "right": "Agranulocytosis" },
+  { "id": "adr-10", "left": "Valproate", "right": "Neural tube defects in pregnancy" },
+  { "id": "adr-11", "left": "Heparin", "right": "Heparin-induced thrombocytopenia" },
+  { "id": "adr-12", "left": "NSAIDs", "right": "Peptic ulceration and gastric bleeding" },
+  { "id": "adr-13", "left": "Lithium", "right": "Nephrogenic diabetes insipidus" },
+  { "id": "adr-14", "left": "Chloramphenicol", "right": "Grey baby syndrome" },
+  { "id": "adr-15", "left": "Metoclopramide", "right": "Extrapyramidal symptoms and tardive dyskinesia" },
+  { "id": "adr-16", "left": "Doxorubicin", "right": "Dose-dependent cardiotoxicity" },
+  { "id": "adr-17", "left": "Cyclophosphamide", "right": "Hemorrhagic cystitis" },
+  { "id": "adr-18", "left": "Fluoroquinolones", "right": "Tendinopathy and tendon rupture" }
+]

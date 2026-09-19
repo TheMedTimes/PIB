@@ -1,0 +1,20 @@
+[
+  { "id": "tx-1", "left": "Status epilepticus", "right": "IV Lorazepam" },
+  { "id": "tx-2", "left": "Anaphylaxis", "right": "IM Adrenaline (Epinephrine)" },
+  { "id": "tx-3", "left": "Acute asthma exacerbation", "right": "Nebulized Salbutamol" },
+  { "id": "tx-4", "left": "Opioid overdose", "right": "Naloxone" },
+  { "id": "tx-5", "left": "Benzodiazepine overdose", "right": "Flumazenil" },
+  { "id": "tx-6", "left": "Organophosphate poisoning", "right": "Atropine + Pralidoxime" },
+  { "id": "tx-7", "left": "Paracetamol overdose", "right": "N-acetylcysteine" },
+  { "id": "tx-8", "left": "Torsades de pointes", "right": "IV Magnesium sulfate" },
+  { "id": "tx-9", "left": "Acute gout flare", "right": "Colchicine or NSAIDs" },
+  { "id": "tx-10", "left": "H. pylori eradication", "right": "Triple therapy (PPI + Amoxicillin + Clarithromycin)" },
+  { "id": "tx-11", "left": "First-line hypertension (uncomplicated)", "right": "Thiazide diuretic or ACE inhibitor" },
+  { "id": "tx-12", "left": "Type 2 diabetes, first-line", "right": "Metformin" },
+  { "id": "tx-13", "left": "Warfarin reversal (urgent bleeding)", "right": "Vitamin K + Prothrombin complex concentrate" },
+  { "id": "tx-14", "left": "Digoxin toxicity", "right": "Digoxin immune Fab" },
+  { "id": "tx-15", "left": "Malignant hyperthermia", "right": "Dantrolene" },
+  { "id": "tx-16", "left": "Acute mania (bipolar disorder)", "right": "Lithium or Valproate" },
+  { "id": "tx-17", "left": "Tuberculosis, first-line regimen", "right": "Isoniazid, Rifampicin, Pyrazinamide, Ethambutol" },
+  { "id": "tx-18", "left": "Preeclampsia with seizure risk", "right": "Magnesium sulfate" }
+]
