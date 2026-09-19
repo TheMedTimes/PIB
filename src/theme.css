@@ -50,6 +50,19 @@ body {
   -webkit-font-smoothing: none;
   image-rendering: pixelated;
   overflow-x: hidden;
+  overscroll-behavior-y: contain; /* stop iOS pull-to-refresh / bounce, feels more app-like */
+}
+
+button, a, .match-card, .home-card {
+  touch-action: manipulation; /* removes the 300ms tap delay and double-tap-to-zoom on mobile */
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 h1, h2, h3, .pixel-text {
