@@ -1,0 +1,87 @@
+.home-wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 20px 24px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.home-bottle {
+  width: 96px;
+  height: 96px;
+  image-rendering: pixelated;
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.4));
+}
+
+.home-title {
+  font-size: 1.8rem;
+  margin: 12px 0 4px;
+  color: var(--gold);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+}
+
+.home-sub {
+  font-size: 0.85rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.home-credit {
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+  margin: 6px 0 0;
+}
+
+.home-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.home-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  background: var(--navy-800);
+  border: 3px solid var(--navy-700);
+  border-left: 6px solid var(--teal);
+  border-radius: var(--radius-sm);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-pixel);
+  transition: transform 0.1s steps(2);
+}
+.home-card:active { transform: translate(2px, 2px); box-shadow: var(--shadow-pixel-sm); }
+
+.home-card.accent-coral { border-left-color: var(--coral); }
+.home-card.accent-gold { border-left-color: var(--gold); }
+
+.home-card-icon { font-size: 1.6rem; }
+
+.home-card-label {
+  font-size: 0.95rem;
+  color: var(--ink);
+  min-width: 90px;
+}
+
+.home-card-sub {
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+}
+
+.home-footnote {
+  margin-top: 28px;
+  font-size: 0.68rem;
+  color: var(--ink-dim);
+  text-align: center;
+}
