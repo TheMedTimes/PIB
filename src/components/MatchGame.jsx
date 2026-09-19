@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
+import { playTap, playCorrect, playWrong, playComplete } from '../utils/sound';
+import { hapticTap, hapticCorrect, hapticWrong, hapticComplete } from '../utils/haptics';
 import './MatchGame.css';
 
 function shuffleOnce(arr) {
@@ -24,17 +26,25 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
   const done = matched.size === total;
 
   useEffect(() => {
-    if (done) onComplete && onComplete({ mistakes, total });
+    if (done) {
+      playComplete();
+      hapticComplete();
+      onComplete && onComplete({ mistakes, total });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [done]);
 
   useEffect(() => {
     if (selectedLeft && selectedRight) {
       if (selectedLeft === selectedRight) {
+        playCorrect();
+        hapticCorrect();
         setMatched((prev) => new Set(prev).add(selectedLeft));
         setSelectedLeft(null);
         setSelectedRight(null);
       } else {
+        playWrong();
+        hapticWrong();
         setWrongFlash({ left: selectedLeft, right: selectedRight });
         setMistakes((m) => m + 1);
         const t = setTimeout(() => {
@@ -49,6 +59,8 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
 
   function pick(side, id) {
     if (matched.has(id) || wrongFlash) return;
+    playTap();
+    hapticTap();
     if (side === 'left') setSelectedLeft((prev) => (prev === id ? null : id));
     else setSelectedRight((prev) => (prev === id ? null : id));
   }

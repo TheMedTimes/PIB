@@ -3,34 +3,13 @@
   z-index: 1;
   max-width: 480px;
   margin: 0 auto;
-  padding: 20px 16px 40px;
+  padding: 14px 16px 40px;
 }
-
-.section-top {
-  margin-bottom: 18px;
-}
-
-.section-back {
-  display: inline-block;
-  font-size: 0.62rem;
-  color: var(--teal);
-  text-decoration: none;
-  margin-bottom: 14px;
-}
-
-.section-title {
-  font-size: 1.3rem;
-  margin: 0;
-  color: var(--teal);
-  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
-}
-.section-title.accent-coral { color: var(--coral); }
-.section-title.accent-gold { color: var(--gold); }
 
 .section-sub {
   font-size: 0.75rem;
   color: var(--ink-dim);
-  margin: 4px 0 0;
+  margin: 0 0 14px;
 }
 
 .section-dev-note {

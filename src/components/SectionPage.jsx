@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useMemo } from 'react';
+import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import moaData from '../data/moa.json';
@@ -22,28 +23,28 @@ export default function SectionPage() {
 
   if (!config) {
     return (
-      <div className="section-wrap">
-        <p>Unknown section.</p>
-        <Link to="/" className="pixel-text">Back home</Link>
-      </div>
+      <>
+        <TopBar back title="Not found" />
+        <div className="section-wrap">
+          <p>Unknown section.</p>
+          <Link to="/" className="pixel-text">Back home</Link>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="section-wrap">
-      <div className="section-top">
-        <Link to="/" className="section-back pixel-text">&lt; Back</Link>
-        <div className="section-heading">
-          <h1 className={`pixel-text section-title accent-${config.accent}`}>{config.title}</h1>
-          <p className="section-sub">{config.sub}</p>
+    <>
+      <TopBar back title={config.title} accent={config.accent} />
+      <div className="section-wrap">
+        <p className="section-sub">{config.sub}</p>
+
+        {warning && <p className="section-dev-note">{warning}</p>}
+
+        <div className="arcade-frame section-frame">
+          <MatchGame items={items} accentClass={config.accent} />
         </div>
       </div>
-
-      {warning && <p className="section-dev-note">{warning}</p>}
-
-      <div className="arcade-frame section-frame">
-        <MatchGame items={items} accentClass={config.accent} />
-      </div>
-    </div>
+    </>
   );
 }

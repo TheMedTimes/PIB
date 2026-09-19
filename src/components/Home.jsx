@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import TopBar from './TopBar';
 import './Home.css';
 
 const sections = [
@@ -9,14 +10,9 @@ const sections = [
 
 export default function Home() {
   return (
-    <div className="home-wrap">
-      <header className="home-header">
-        <img src={`${import.meta.env.BASE_URL}icons/icon-192.png`} alt="" className="home-bottle" />
-        <h1 className="pixel-text home-title">P.I.B.</h1>
-        <p className="home-sub">Pharmac In a Bottle</p>
-        <p className="home-credit">by TheMedTimes</p>
-      </header>
-
+    <>
+      <TopBar />
+      <div className="home-wrap">
       <div className="home-sections">
         {sections.map((s) => (
           <Link key={s.key} to={`/${s.key}`} className={`home-card accent-${s.accent}`}>
@@ -27,7 +23,8 @@ export default function Home() {
         ))}
       </div>
 
-      <p className="home-footnote">New set every day · 6 pairs per section</p>
-    </div>
+      <p className="home-footnote">New set every day. 6 pairs per section.</p>
+      </div>
+    </>
   );
 }
