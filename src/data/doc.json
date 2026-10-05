@@ -1,0 +1,2292 @@
+[
+  {
+    "id": "doc-1",
+    "left": "Ulcerative colitis, maintenance and induction",
+    "right": "Mesalamine"
+  },
+  {
+    "id": "doc-2",
+    "left": "Ulcerative colitis, mesalamine nonresponders in induction",
+    "right": "Steroids"
+  },
+  {
+    "id": "doc-3",
+    "left": "Ulcerative colitis, steroid dependence in induction",
+    "right": "Azathioprine"
+  },
+  {
+    "id": "doc-4",
+    "left": "Ulcerative colitis, steroid resistance in induction",
+    "right": "Cyclosporine"
+  },
+  {
+    "id": "doc-5",
+    "left": "Crohn's disease, maintenance and induction",
+    "right": "Anti-TNF drugs (Infliximab)"
+  },
+  {
+    "id": "doc-6",
+    "left": "Sclerosing cholangitis",
+    "right": "Glucocorticoids"
+  },
+  {
+    "id": "doc-7",
+    "left": "Whipple disease, induction therapy",
+    "right": "Ceftriaxone or Carbapenem"
+  },
+  {
+    "id": "doc-8",
+    "left": "Whipple disease, maintenance therapy",
+    "right": "Cotrimoxazole"
+  },
+  {
+    "id": "doc-9",
+    "left": "Acute bleeding gastric ulcer",
+    "right": "IV proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-10",
+    "left": "Acute colonic pseudo-obstruction (Ogilvie syndrome)",
+    "right": "Neostigmine"
+  },
+  {
+    "id": "doc-11",
+    "left": "Aspiration pneumonia prophylaxis in surgical patients",
+    "right": "H2 blockers"
+  },
+  {
+    "id": "doc-12",
+    "left": "Chemotherapy-induced nausea and vomiting, early onset",
+    "right": "Ondansetron"
+  },
+  {
+    "id": "doc-13",
+    "left": "Chemotherapy-induced nausea and vomiting, late onset",
+    "right": "Aprepitant"
+  },
+  {
+    "id": "doc-14",
+    "left": "Dyspepsia",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-15",
+    "left": "Gastrinoma",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-16",
+    "left": "Gastroesophageal reflux disease (GERD)",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-17",
+    "left": "NSAID-induced ulcers",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-18",
+    "left": "Peptic ulcer disease",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-19",
+    "left": "Zollinger-Ellison syndrome",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-20",
+    "left": "Stress ulcer prophylaxis",
+    "right": "Proton pump inhibitors (PPIs)"
+  },
+  {
+    "id": "doc-21",
+    "left": "GERD in pregnancy",
+    "right": "Antacids or Sucralfate"
+  },
+  {
+    "id": "doc-22",
+    "left": "Hemochromatosis, chelation therapy",
+    "right": "Deferoxamine"
+  },
+  {
+    "id": "doc-23",
+    "left": "Hiccups",
+    "right": "Chlorpromazine"
+  },
+  {
+    "id": "doc-24",
+    "left": "HIV-associated secretory diarrhea",
+    "right": "Octreotide"
+  },
+  {
+    "id": "doc-25",
+    "left": "Cerebral protection, IV induction agent of choice",
+    "right": "Thiopental sodium"
+  },
+  {
+    "id": "doc-26",
+    "left": "Raised intracranial tension, IV induction agent of choice",
+    "right": "Thiopental sodium"
+  },
+  {
+    "id": "doc-27",
+    "left": "Status epilepticus, refractory (anesthesia)",
+    "right": "Thiopental sodium"
+  },
+  {
+    "id": "doc-28",
+    "left": "Hyperthyroid patient, anesthesia induction agent of choice",
+    "right": "Thiopental sodium"
+  },
+  {
+    "id": "doc-29",
+    "left": "LSCS, induction agent of choice",
+    "right": "Thiopental sodium"
+  },
+  {
+    "id": "doc-30",
+    "left": "Electroconvulsive therapy, anesthetic agent of choice",
+    "right": "Methohexital"
+  },
+  {
+    "id": "doc-31",
+    "left": "Day-care surgery, IV induction agent of choice",
+    "right": "Propofol"
+  },
+  {
+    "id": "doc-32",
+    "left": "Total intravenous anesthesia, agent of choice",
+    "right": "Propofol"
+  },
+  {
+    "id": "doc-33",
+    "left": "Sedation in ICU, agent of choice",
+    "right": "Propofol"
+  },
+  {
+    "id": "doc-34",
+    "left": "Malignant hyperthermia, susceptible patient induction agent",
+    "right": "Propofol"
+  },
+  {
+    "id": "doc-35",
+    "left": "Bronchial asthma, anesthesia induction agent of choice",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-36",
+    "left": "Status asthmaticus, anesthesia induction agent of choice",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-37",
+    "left": "Shock (hypovolemic, hemorrhagic, septic), induction agent of choice",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-38",
+    "left": "DIC, anesthesia induction agent of choice",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-39",
+    "left": "Cyanotic congenital heart disease with right-to-left shunt, induction agent",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-40",
+    "left": "Hypothyroid patient, anesthesia induction agent of choice",
+    "right": "Ketamine"
+  },
+  {
+    "id": "doc-41",
+    "left": "Elderly patients, IV induction agent of choice",
+    "right": "Etomidate"
+  },
+  {
+    "id": "doc-42",
+    "left": "Cardiovascular disease (aneurysm, cardiomyopathy, CHF, CAD, aortic stenosis), induction agent",
+    "right": "Etomidate"
+  },
+  {
+    "id": "doc-43",
+    "left": "Altered hemodynamic state, induction agent of choice",
+    "right": "Etomidate"
+  },
+  {
+    "id": "doc-44",
+    "left": "Anemia associated with CKD or inflammation",
+    "right": "Erythropoietin analogue (Darbepoetin alfa)"
+  },
+  {
+    "id": "doc-45",
+    "left": "Atrial fibrillation associated thrombosis prophylaxis",
+    "right": "Dabigatran or Apixaban"
+  },
+  {
+    "id": "doc-46",
+    "left": "Autoimmune hemolytic anemia",
+    "right": "Prednisolone + Rituximab"
+  },
+  {
+    "id": "doc-47",
+    "left": "Deep vein thrombosis, treatment",
+    "right": "LMWH"
+  },
+  {
+    "id": "doc-48",
+    "left": "Deep vein thrombosis, prophylaxis",
+    "right": "Warfarin"
+  },
+  {
+    "id": "doc-49",
+    "left": "Essential thrombocythaemia",
+    "right": "Hydroxyurea + Aspirin"
+  },
+  {
+    "id": "doc-50",
+    "left": "Fibrinolysis",
+    "right": "Epsilon aminocaproic acid"
+  },
+  {
+    "id": "doc-51",
+    "left": "Heparin toxicity",
+    "right": "Protamine sulfate"
+  },
+  {
+    "id": "doc-52",
+    "left": "Heparin-induced thrombocytopenia",
+    "right": "Argatroban"
+  },
+  {
+    "id": "doc-53",
+    "left": "Immune thrombocytopenic purpura",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-54",
+    "left": "Asymptomatic iron deficiency anemia",
+    "right": "Oral iron"
+  },
+  {
+    "id": "doc-55",
+    "left": "Myelodysplasia",
+    "right": "Azacitidine"
+  },
+  {
+    "id": "doc-56",
+    "left": "Neutropenia",
+    "right": "Filgrastim"
+  },
+  {
+    "id": "doc-57",
+    "left": "Paroxysmal nocturnal haemoglobinuria",
+    "right": "Eculizumab"
+  },
+  {
+    "id": "doc-58",
+    "left": "Polycythemia vera",
+    "right": "Hydroxyurea"
+  },
+  {
+    "id": "doc-59",
+    "left": "Pure red cell aplasia",
+    "right": "Glucocorticoids"
+  },
+  {
+    "id": "doc-60",
+    "left": "Sickle cell anemia",
+    "right": "Hydroxyurea"
+  },
+  {
+    "id": "doc-61",
+    "left": "Myelofibrosis",
+    "right": "Hydroxyurea"
+  },
+  {
+    "id": "doc-62",
+    "left": "Thrombocytopenia (chemotherapy-induced)",
+    "right": "Oprelvekin"
+  },
+  {
+    "id": "doc-63",
+    "left": "Transfusional hemosiderosis",
+    "right": "Desferrioxamine"
+  },
+  {
+    "id": "doc-64",
+    "left": "Von Willebrand disease",
+    "right": "Desmopressin"
+  },
+  {
+    "id": "doc-65",
+    "left": "Asymptomatic warfarin toxicity (elevated INR only)",
+    "right": "Vitamin K"
+  },
+  {
+    "id": "doc-66",
+    "left": "Symptomatic warfarin toxicity (active bleeding)",
+    "right": "Fresh frozen plasma (FFP)"
+  },
+  {
+    "id": "doc-67",
+    "left": "Bronchial asthma, anesthesia maintenance agent",
+    "right": "Halothane"
+  },
+  {
+    "id": "doc-68",
+    "left": "Tocolysis, inhalational anesthetic option",
+    "right": "Halothane"
+  },
+  {
+    "id": "doc-69",
+    "left": "Cardiac surgery, inhalational agent of choice",
+    "right": "Isoflurane"
+  },
+  {
+    "id": "doc-70",
+    "left": "Controlled hypotension (anesthesia)",
+    "right": "Isoflurane"
+  },
+  {
+    "id": "doc-71",
+    "left": "LSCS, maintenance agent of choice",
+    "right": "Isoflurane"
+  },
+  {
+    "id": "doc-72",
+    "left": "Induction in infants and children, day-care surgery",
+    "right": "Sevoflurane"
+  },
+  {
+    "id": "doc-73",
+    "left": "Myocardial ischemia, inhalational agent of choice",
+    "right": "Sevoflurane"
+  },
+  {
+    "id": "doc-74",
+    "left": "Neurosurgery, inhalational agent of choice",
+    "right": "Sevoflurane"
+  },
+  {
+    "id": "doc-75",
+    "left": "Day-care surgery, maintenance agent of choice",
+    "right": "Desflurane"
+  },
+  {
+    "id": "doc-76",
+    "left": "Renal failure, anesthesia maintenance agent",
+    "right": "Desflurane"
+  },
+  {
+    "id": "doc-77",
+    "left": "Obese patient, anesthesia maintenance agent",
+    "right": "Desflurane"
+  },
+  {
+    "id": "doc-78",
+    "left": "Intubation, depolarizing muscle relaxant of choice",
+    "right": "Succinylcholine"
+  },
+  {
+    "id": "doc-79",
+    "left": "Day-care surgery, muscle relaxant for intubation",
+    "right": "Succinylcholine"
+  },
+  {
+    "id": "doc-80",
+    "left": "Intubation, non-depolarizing muscle relaxant of choice",
+    "right": "Rocuronium"
+  },
+  {
+    "id": "doc-81",
+    "left": "Precurarization",
+    "right": "Rocuronium"
+  },
+  {
+    "id": "doc-82",
+    "left": "Day-care surgery, NDMR of choice",
+    "right": "Mivacurium"
+  },
+  {
+    "id": "doc-83",
+    "left": "Hepatic failure, muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-84",
+    "left": "Renal failure, muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-85",
+    "left": "Myasthenia gravis, anesthesia muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-86",
+    "left": "Elderly patients, muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-87",
+    "left": "Neonate, muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-88",
+    "left": "Obese patient, muscle relaxant of choice",
+    "right": "Atracurium"
+  },
+  {
+    "id": "doc-89",
+    "left": "Cardiac surgery, muscle relaxant of choice",
+    "right": "Vecuronium"
+  },
+  {
+    "id": "doc-90",
+    "left": "Bronchial asthma, muscle relaxant of choice",
+    "right": "Vecuronium"
+  },
+  {
+    "id": "doc-91",
+    "left": "Cyanotic congenital heart disease with right-to-left shunt, muscle relaxant",
+    "right": "Pancuronium"
+  },
+  {
+    "id": "doc-92",
+    "left": "Acromegaly",
+    "right": "Octreotide"
+  },
+  {
+    "id": "doc-93",
+    "left": "Addison disease",
+    "right": "Hydrocortisone"
+  },
+  {
+    "id": "doc-94",
+    "left": "Congenital adrenal hyperplasia",
+    "right": "Hydrocortisone"
+  },
+  {
+    "id": "doc-95",
+    "left": "Anovulation",
+    "right": "Clomiphene citrate"
+  },
+  {
+    "id": "doc-96",
+    "left": "PCOS, ovulation induction",
+    "right": "Clomiphene citrate"
+  },
+  {
+    "id": "doc-97",
+    "left": "BPH",
+    "right": "Tamsulosin (alpha-1A antagonist)"
+  },
+  {
+    "id": "doc-98",
+    "left": "Carcinoid syndrome",
+    "right": "Somatostatin analogues (Octreotide)"
+  },
+  {
+    "id": "doc-99",
+    "left": "GRFoma",
+    "right": "Somatostatin analogues"
+  },
+  {
+    "id": "doc-100",
+    "left": "Glucagonoma",
+    "right": "Somatostatin analogues"
+  },
+  {
+    "id": "doc-101",
+    "left": "Somatostatinoma",
+    "right": "Somatostatin analogues"
+  },
+  {
+    "id": "doc-102",
+    "left": "VIPoma",
+    "right": "Somatostatin analogues"
+  },
+  {
+    "id": "doc-103",
+    "left": "Diabetes insipidus",
+    "right": "Desmopressin"
+  },
+  {
+    "id": "doc-104",
+    "left": "Diabetes mellitus type 1",
+    "right": "Insulin"
+  },
+  {
+    "id": "doc-105",
+    "left": "Gestational diabetes",
+    "right": "Insulin"
+  },
+  {
+    "id": "doc-106",
+    "left": "Diabetic ketoacidosis",
+    "right": "Insulin"
+  },
+  {
+    "id": "doc-107",
+    "left": "Diabetes mellitus type 2, first-line treatment",
+    "right": "Metformin"
+  },
+  {
+    "id": "doc-108",
+    "left": "Hypercalcemia of malignancy",
+    "right": "Bisphosphonates"
+  },
+  {
+    "id": "doc-109",
+    "left": "Hyperprolactinemia",
+    "right": "Cabergoline"
+  },
+  {
+    "id": "doc-110",
+    "left": "Hyperthyroidism, drug treatment",
+    "right": "Methimazole"
+  },
+  {
+    "id": "doc-111",
+    "left": "Hyperthyroidism in pregnancy, 1st trimester",
+    "right": "Propylthiouracil"
+  },
+  {
+    "id": "doc-112",
+    "left": "Hyperthyroidism in pregnancy, 2nd and 3rd trimester",
+    "right": "Methimazole"
+  },
+  {
+    "id": "doc-113",
+    "left": "Hypothyroidism, treatment",
+    "right": "Levothyroxine sodium"
+  },
+  {
+    "id": "doc-114",
+    "left": "Insulinoma, medical management",
+    "right": "Diazoxide"
+  },
+  {
+    "id": "doc-115",
+    "left": "Oral contraception, standard choice",
+    "right": "Monophasic pills"
+  },
+  {
+    "id": "doc-116",
+    "left": "Oligospermia",
+    "right": "Clomiphene citrate"
+  },
+  {
+    "id": "doc-117",
+    "left": "Osteoporosis",
+    "right": "Zoledronic acid"
+  },
+  {
+    "id": "doc-118",
+    "left": "Paget's disease of bone",
+    "right": "Zoledronic acid"
+  },
+  {
+    "id": "doc-119",
+    "left": "Premature labor, fetal lung maturation",
+    "right": "Dexamethasone"
+  },
+  {
+    "id": "doc-120",
+    "left": "Fetal congenital adrenal hyperplasia (prenatal treatment)",
+    "right": "Dexamethasone"
+  },
+  {
+    "id": "doc-121",
+    "left": "Prolactinoma",
+    "right": "Dopamine agonists (Cabergoline)"
+  },
+  {
+    "id": "doc-122",
+    "left": "Riedel struma",
+    "right": "Tamoxifen"
+  },
+  {
+    "id": "doc-123",
+    "left": "Subacute thyroiditis",
+    "right": "Aspirin"
+  },
+  {
+    "id": "doc-124",
+    "left": "SIADH",
+    "right": "Vaptans (Tolvaptan)"
+  },
+  {
+    "id": "doc-125",
+    "left": "Thyroid storm, initial drug of choice",
+    "right": "Propranolol"
+  },
+  {
+    "id": "doc-126",
+    "left": "Thyroid storm, overall drug of choice",
+    "right": "Propylthiouracil"
+  },
+  {
+    "id": "doc-127",
+    "left": "Toxic multinodular goitre",
+    "right": "Radioiodine"
+  },
+  {
+    "id": "doc-128",
+    "left": "Hyperfunctioning solitary thyroid nodule",
+    "right": "Radioiodine"
+  },
+  {
+    "id": "doc-129",
+    "left": "Acute mountain sickness",
+    "right": "Acetazolamide"
+  },
+  {
+    "id": "doc-130",
+    "left": "Acetaminophen (paracetamol) toxicity",
+    "right": "N-acetylcysteine"
+  },
+  {
+    "id": "doc-131",
+    "left": "Allergic rhinitis",
+    "right": "Steroids (intranasal)"
+  },
+  {
+    "id": "doc-132",
+    "left": "Ankylosing spondylitis",
+    "right": "NSAIDs"
+  },
+  {
+    "id": "doc-133",
+    "left": "Cold agglutinin disease",
+    "right": "Rituximab"
+  },
+  {
+    "id": "doc-134",
+    "left": "Familial Mediterranean fever",
+    "right": "Colchicine"
+  },
+  {
+    "id": "doc-135",
+    "left": "Genital warts, patient-applied therapy",
+    "right": "Podophyllotoxin or Imiquimod"
+  },
+  {
+    "id": "doc-136",
+    "left": "Acute gout",
+    "right": "Indomethacin"
+  },
+  {
+    "id": "doc-137",
+    "left": "Chronic gout",
+    "right": "Allopurinol"
+  },
+  {
+    "id": "doc-138",
+    "left": "Head lice",
+    "right": "Permethrin 1% cream"
+  },
+  {
+    "id": "doc-139",
+    "left": "Hypersensitivity reaction (anaphylaxis)",
+    "right": "Epinephrine"
+  },
+  {
+    "id": "doc-140",
+    "left": "Pseudotumor cerebri",
+    "right": "Acetazolamide"
+  },
+  {
+    "id": "doc-141",
+    "left": "Migraine, prophylaxis",
+    "right": "Propranolol"
+  },
+  {
+    "id": "doc-142",
+    "left": "Migraine, acute attack",
+    "right": "Triptans (e.g. Sumatriptan)"
+  },
+  {
+    "id": "doc-143",
+    "left": "Morning sickness",
+    "right": "Doxylamine"
+  },
+  {
+    "id": "doc-144",
+    "left": "Patent ductus arteriosus, closure",
+    "right": "Indomethacin"
+  },
+  {
+    "id": "doc-145",
+    "left": "Patent ductus arteriosus, maintain patency",
+    "right": "Alprostadil (PGE1)"
+  },
+  {
+    "id": "doc-146",
+    "left": "Niacin-induced flushing",
+    "right": "Aspirin"
+  },
+  {
+    "id": "doc-147",
+    "left": "Mild psoriasis",
+    "right": "Topical corticosteroids"
+  },
+  {
+    "id": "doc-148",
+    "left": "Psoriatic arthritis",
+    "right": "Methotrexate"
+  },
+  {
+    "id": "doc-149",
+    "left": "Erythrodermic psoriasis",
+    "right": "Methotrexate"
+  },
+  {
+    "id": "doc-150",
+    "left": "Pustular psoriasis",
+    "right": "Acitretin"
+  },
+  {
+    "id": "doc-151",
+    "left": "Pyrexia in children",
+    "right": "Acetaminophen"
+  },
+  {
+    "id": "doc-152",
+    "left": "Rheumatoid arthritis",
+    "right": "Methotrexate"
+  },
+  {
+    "id": "doc-153",
+    "left": "Raynaud phenomenon",
+    "right": "Calcium channel blockers (dihydropyridines)"
+  },
+  {
+    "id": "doc-154",
+    "left": "Tumor lysis syndrome, prophylaxis",
+    "right": "Allopurinol"
+  },
+  {
+    "id": "doc-155",
+    "left": "Urticaria",
+    "right": "2nd-generation antihistamines"
+  },
+  {
+    "id": "doc-156",
+    "left": "Allergic bronchopulmonary aspergillosis",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-157",
+    "left": "Proliferative bronchiolitis",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-158",
+    "left": "Cryptogenic organizing pneumonia",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-159",
+    "left": "Eosinophilic pneumonia",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-160",
+    "left": "Pulmonary vasculitis",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-161",
+    "left": "Sarcoidosis",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-162",
+    "left": "Bronchial asthma, acute attack",
+    "right": "Short-acting beta-2 agonists"
+  },
+  {
+    "id": "doc-163",
+    "left": "Bronchial asthma, prophylaxis",
+    "right": "Inhaled corticosteroids"
+  },
+  {
+    "id": "doc-164",
+    "left": "Exercise-induced bronchial asthma",
+    "right": "Inhaled corticosteroids"
+  },
+  {
+    "id": "doc-165",
+    "left": "Chylothorax",
+    "right": "Octreotide (via chest tube)"
+  },
+  {
+    "id": "doc-166",
+    "left": "COPD",
+    "right": "Anticholinergics (Tiotropium)"
+  },
+  {
+    "id": "doc-167",
+    "left": "Cough, non-specific",
+    "right": "Codeine"
+  },
+  {
+    "id": "doc-168",
+    "left": "Cough due to bronchial cancer",
+    "right": "Morphine"
+  },
+  {
+    "id": "doc-169",
+    "left": "Pleurodesis",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-170",
+    "left": "Pericardiodesis",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-171",
+    "left": "Pulmonary hypertension, class II and III (low risk)",
+    "right": "Bosentan"
+  },
+  {
+    "id": "doc-172",
+    "left": "Pulmonary hypertension, class IV (high risk)",
+    "right": "Epoprostenol"
+  },
+  {
+    "id": "doc-173",
+    "left": "Pulmonary edema, diuretic of choice",
+    "right": "Loop diuretics"
+  },
+  {
+    "id": "doc-174",
+    "left": "Endemic mycosis",
+    "right": "Itraconazole"
+  },
+  {
+    "id": "doc-175",
+    "left": "Sporotrichosis",
+    "right": "Itraconazole"
+  },
+  {
+    "id": "doc-176",
+    "left": "Enterococcus faecalis",
+    "right": "Ampicillin + Aminoglycosides"
+  },
+  {
+    "id": "doc-177",
+    "left": "Giardia",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-178",
+    "left": "Gonococcus (uncomplicated)",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-179",
+    "left": "Hepatitis B",
+    "right": "Entecavir"
+  },
+  {
+    "id": "doc-180",
+    "left": "Hepatitis C",
+    "right": "Direct-acting antivirals"
+  },
+  {
+    "id": "doc-181",
+    "left": "HSV and VZV infection",
+    "right": "Acyclovir"
+  },
+  {
+    "id": "doc-182",
+    "left": "CMV infection",
+    "right": "Ganciclovir"
+  },
+  {
+    "id": "doc-183",
+    "left": "H. influenzae, prophylaxis",
+    "right": "Rifampicin"
+  },
+  {
+    "id": "doc-184",
+    "left": "H. pylori eradication",
+    "right": "Amoxicillin + Clarithromycin + PPI"
+  },
+  {
+    "id": "doc-185",
+    "left": "Influenza A",
+    "right": "Oseltamivir"
+  },
+  {
+    "id": "doc-186",
+    "left": "Cutaneous leishmaniasis",
+    "right": "Sodium stibogluconate"
+  },
+  {
+    "id": "doc-187",
+    "left": "RSV, treatment",
+    "right": "Ribavirin"
+  },
+  {
+    "id": "doc-188",
+    "left": "RSV, prophylaxis",
+    "right": "Palivizumab"
+  },
+  {
+    "id": "doc-189",
+    "left": "Sleeping sickness, early East African",
+    "right": "Suramin"
+  },
+  {
+    "id": "doc-190",
+    "left": "Sleeping sickness, late East African",
+    "right": "Melarsoprol"
+  },
+  {
+    "id": "doc-191",
+    "left": "Sleeping sickness, early West African",
+    "right": "Pentamidine"
+  },
+  {
+    "id": "doc-192",
+    "left": "Sleeping sickness, late West African",
+    "right": "Eflornithine"
+  },
+  {
+    "id": "doc-193",
+    "left": "Scabies",
+    "right": "Permethrin cream (5%)"
+  },
+  {
+    "id": "doc-194",
+    "left": "Non-penicillinase-producing staphylococcus",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-195",
+    "left": "MRSA",
+    "right": "Vancomycin"
+  },
+  {
+    "id": "doc-196",
+    "left": "VRSA",
+    "right": "Daptomycin"
+  },
+  {
+    "id": "doc-197",
+    "left": "Syphilis, all stages except CNS involvement",
+    "right": "Benzathine penicillin G"
+  },
+  {
+    "id": "doc-198",
+    "left": "Syphilis, CNS involvement",
+    "right": "Aqueous penicillin G"
+  },
+  {
+    "id": "doc-199",
+    "left": "Toxoplasmosis",
+    "right": "Sulfadiazine + Pyrimethamine"
+  },
+  {
+    "id": "doc-200",
+    "left": "Toxoplasmosis in pregnancy",
+    "right": "Spiramycin"
+  },
+  {
+    "id": "doc-201",
+    "left": "Antifungal prophylaxis in induction chemotherapy of acute leukemia",
+    "right": "Posaconazole"
+  },
+  {
+    "id": "doc-202",
+    "left": "Asymptomatic bacteriuria in pregnancy",
+    "right": "Nitrofurantoin or Amoxicillin"
+  },
+  {
+    "id": "doc-203",
+    "left": "Brain abscess",
+    "right": "Ceftriaxone/Cefotaxime + Metronidazole"
+  },
+  {
+    "id": "doc-204",
+    "left": "Subdural empyema",
+    "right": "Ceftriaxone/Cefotaxime + Metronidazole"
+  },
+  {
+    "id": "doc-205",
+    "left": "Cervicitis",
+    "right": "Ceftriaxone + Azithromycin"
+  },
+  {
+    "id": "doc-206",
+    "left": "Urethritis",
+    "right": "Ceftriaxone + Azithromycin"
+  },
+  {
+    "id": "doc-207",
+    "left": "Malignant otitis externa",
+    "right": "Piperacillin + Tazobactam"
+  },
+  {
+    "id": "doc-208",
+    "left": "Malaria, treatment and prophylaxis (non-falciparum)",
+    "right": "Chloroquine"
+  },
+  {
+    "id": "doc-209",
+    "left": "P. falciparum malaria",
+    "right": "Artesunate combination therapy (ACT)"
+  },
+  {
+    "id": "doc-210",
+    "left": "Chloroquine-resistant malaria, treatment",
+    "right": "Artesunate combination therapy (ACT)"
+  },
+  {
+    "id": "doc-211",
+    "left": "Chloroquine-resistant malaria, prophylaxis",
+    "right": "Mefloquine"
+  },
+  {
+    "id": "doc-212",
+    "left": "Severe falciparum malaria",
+    "right": "IV Artesunate"
+  },
+  {
+    "id": "doc-213",
+    "left": "Melioidosis",
+    "right": "Ceftazidime"
+  },
+  {
+    "id": "doc-214",
+    "left": "Moraxella infection",
+    "right": "Fluoroquinolone"
+  },
+  {
+    "id": "doc-215",
+    "left": "Mycobacterium avium complex",
+    "right": "Clarithromycin + Ethambutol"
+  },
+  {
+    "id": "doc-216",
+    "left": "Mycobacterium tuberculosis, first-line regimen",
+    "right": "Isoniazid + Rifampicin + Pyrazinamide + Ethambutol"
+  },
+  {
+    "id": "doc-217",
+    "left": "Nocardia infection",
+    "right": "Cotrimoxazole"
+  },
+  {
+    "id": "doc-218",
+    "left": "Pneumocystis jirovecii pneumonia",
+    "right": "Cotrimoxazole"
+  },
+  {
+    "id": "doc-219",
+    "left": "Plague",
+    "right": "Gentamicin"
+  },
+  {
+    "id": "doc-220",
+    "left": "Pneumococcal meningitis",
+    "right": "Vancomycin"
+  },
+  {
+    "id": "doc-221",
+    "left": "Rhodococcus infection",
+    "right": "Vancomycin"
+  },
+  {
+    "id": "doc-222",
+    "left": "Tularemia",
+    "right": "Gentamicin"
+  },
+  {
+    "id": "doc-223",
+    "left": "Pseudomonas infection",
+    "right": "Ceftazidime"
+  },
+  {
+    "id": "doc-224",
+    "left": "Pseudomonas, resistant strains",
+    "right": "Ceftazidime + Aminoglycosides"
+  },
+  {
+    "id": "doc-225",
+    "left": "Multidrug-resistant Pseudomonas",
+    "right": "Colistin"
+  },
+  {
+    "id": "doc-226",
+    "left": "Acute otitis media",
+    "right": "Amoxicillin + Clavulanate"
+  },
+  {
+    "id": "doc-227",
+    "left": "Acute mastoiditis",
+    "right": "Ceftriaxone/Cefotaxime"
+  },
+  {
+    "id": "doc-228",
+    "left": "Chronic mastoiditis",
+    "right": "Piperacillin + Tazobactam"
+  },
+  {
+    "id": "doc-229",
+    "left": "Epiglottitis",
+    "right": "Ceftriaxone/Cefotaxime"
+  },
+  {
+    "id": "doc-230",
+    "left": "Neonatal meningitis",
+    "right": "Ampicillin + Gentamicin"
+  },
+  {
+    "id": "doc-231",
+    "left": "Neonatal sepsis",
+    "right": "Ampicillin + Gentamicin"
+  },
+  {
+    "id": "doc-232",
+    "left": "Bacterial keratitis",
+    "right": "Moxifloxacin solution"
+  },
+  {
+    "id": "doc-233",
+    "left": "Fungal keratitis",
+    "right": "Natamycin"
+  },
+  {
+    "id": "doc-234",
+    "left": "Acute osteomyelitis",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-235",
+    "left": "Prostatitis",
+    "right": "Fluoroquinolone (e.g. Ciprofloxacin)"
+  },
+  {
+    "id": "doc-236",
+    "left": "Prosthetic joint infection",
+    "right": "Ceftriaxone + Vancomycin"
+  },
+  {
+    "id": "doc-237",
+    "left": "Infective endocarditis, Staphylococcal",
+    "right": "Vancomycin"
+  },
+  {
+    "id": "doc-238",
+    "left": "ALL, induction regimen of choice",
+    "right": "Vincristine, Prednisolone, Asparaginase, Daunorubicin"
+  },
+  {
+    "id": "doc-239",
+    "left": "AML",
+    "right": "Daunorubicin/Idarubicin + Cytarabine"
+  },
+  {
+    "id": "doc-240",
+    "left": "Anal cancer",
+    "right": "5-FU + Mitomycin"
+  },
+  {
+    "id": "doc-241",
+    "left": "Bladder cancer",
+    "right": "Cisplatin + Gemcitabine"
+  },
+  {
+    "id": "doc-242",
+    "left": "Brain tumor (glioblastoma)",
+    "right": "Temozolomide"
+  },
+  {
+    "id": "doc-243",
+    "left": "Carcinoid tumors",
+    "right": "Octreotide"
+  },
+  {
+    "id": "doc-244",
+    "left": "Carcinomatous meningitis",
+    "right": "Intrathecal Methotrexate"
+  },
+  {
+    "id": "doc-245",
+    "left": "Gestational trophoblastic disease / Choriocarcinoma",
+    "right": "Methotrexate"
+  },
+  {
+    "id": "doc-246",
+    "left": "CML",
+    "right": "Imatinib"
+  },
+  {
+    "id": "doc-247",
+    "left": "GIST",
+    "right": "Imatinib"
+  },
+  {
+    "id": "doc-248",
+    "left": "Hypereosinophilic syndrome",
+    "right": "Imatinib"
+  },
+  {
+    "id": "doc-249",
+    "left": "Dermatofibrosarcoma protuberans",
+    "right": "Imatinib"
+  },
+  {
+    "id": "doc-250",
+    "left": "Hairy cell leukemia",
+    "right": "Cladribine"
+  },
+  {
+    "id": "doc-251",
+    "left": "Hepatocellular carcinoma",
+    "right": "Sorafenib"
+  },
+  {
+    "id": "doc-252",
+    "left": "Kaposi sarcoma",
+    "right": "Daunorubicin or Doxorubicin"
+  },
+  {
+    "id": "doc-253",
+    "left": "BRAF-negative malignant melanoma",
+    "right": "PD-1 inhibitors (Pembrolizumab/Nivolumab)"
+  },
+  {
+    "id": "doc-254",
+    "left": "BRAF-positive malignant melanoma",
+    "right": "BRAF inhibitors (Vemurafenib/Dabrafenib)"
+  },
+  {
+    "id": "doc-255",
+    "left": "Mesothelioma",
+    "right": "Pemetrexed"
+  },
+  {
+    "id": "doc-256",
+    "left": "Pancreatic cancer",
+    "right": "Gemcitabine"
+  },
+  {
+    "id": "doc-257",
+    "left": "Waldenstrom macroglobulinemia",
+    "right": "Rituximab"
+  },
+  {
+    "id": "doc-258",
+    "left": "Essential tremor",
+    "right": "Propranolol"
+  },
+  {
+    "id": "doc-259",
+    "left": "Guillain-Barre syndrome",
+    "right": "IVIG"
+  },
+  {
+    "id": "doc-260",
+    "left": "Cluster headache, acute attack",
+    "right": "Triptans"
+  },
+  {
+    "id": "doc-261",
+    "left": "Raised CSF pressure (idiopathic intracranial hypertension)",
+    "right": "Acetazolamide"
+  },
+  {
+    "id": "doc-262",
+    "left": "Paroxysmal hemicrania",
+    "right": "Indomethacin"
+  },
+  {
+    "id": "doc-263",
+    "left": "Primary cough headache",
+    "right": "Indomethacin"
+  },
+  {
+    "id": "doc-264",
+    "left": "Hypnic headache",
+    "right": "Lithium"
+  },
+  {
+    "id": "doc-265",
+    "left": "Huntington's chorea",
+    "right": "Tetrabenazine"
+  },
+  {
+    "id": "doc-266",
+    "left": "Insomnia, sleep induction",
+    "right": "Zaleplon"
+  },
+  {
+    "id": "doc-267",
+    "left": "Insomnia, sleep maintenance",
+    "right": "Eszopiclone"
+  },
+  {
+    "id": "doc-268",
+    "left": "Jet lag",
+    "right": "Short-acting Z-drugs (Zaleplon)"
+  },
+  {
+    "id": "doc-269",
+    "left": "Mania, acute attack",
+    "right": "Atypical antipsychotics"
+  },
+  {
+    "id": "doc-270",
+    "left": "Mania, prophylaxis",
+    "right": "Lithium"
+  },
+  {
+    "id": "doc-271",
+    "left": "Multiple sclerosis, acute attack",
+    "right": "IV methylprednisolone"
+  },
+  {
+    "id": "doc-272",
+    "left": "Relapsing-remitting multiple sclerosis",
+    "right": "Interferon beta"
+  },
+  {
+    "id": "doc-273",
+    "left": "Secondary progressive multiple sclerosis",
+    "right": "Interferon beta"
+  },
+  {
+    "id": "doc-274",
+    "left": "Progressive-relapsing multiple sclerosis",
+    "right": "Mitoxantrone"
+  },
+  {
+    "id": "doc-275",
+    "left": "Narcolepsy",
+    "right": "Modafinil"
+  },
+  {
+    "id": "doc-276",
+    "left": "Glossopharyngeal neuralgia",
+    "right": "Carbamazepine"
+  },
+  {
+    "id": "doc-277",
+    "left": "Trigeminal neuralgia",
+    "right": "Carbamazepine"
+  },
+  {
+    "id": "doc-278",
+    "left": "Parkinson's disease",
+    "right": "Levodopa"
+  },
+  {
+    "id": "doc-279",
+    "left": "Young-onset Parkinson's disease",
+    "right": "Selegiline"
+  },
+  {
+    "id": "doc-280",
+    "left": "Motor fluctuation of levodopa (wearing-off)",
+    "right": "Pramipexole"
+  },
+  {
+    "id": "doc-281",
+    "left": "On-off phenomenon associated with levodopa",
+    "right": "Entacapone"
+  },
+  {
+    "id": "doc-282",
+    "left": "Neuroprotection in Parkinson's disease",
+    "right": "MAO-B inhibitors (Rasagiline, Selegiline)"
+  },
+  {
+    "id": "doc-283",
+    "left": "Peripheral neuropathy, neuropathic pain",
+    "right": "TCA/SNRI/Gabapentinoids"
+  },
+  {
+    "id": "doc-284",
+    "left": "Bipolar disorder, rapid cyclers",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-285",
+    "left": "Restless leg syndrome",
+    "right": "Dopamine agonists (Pramipexole, Ropinirole)"
+  },
+  {
+    "id": "doc-286",
+    "left": "Schizophrenia",
+    "right": "Atypical antipsychotics (Aripiprazole)"
+  },
+  {
+    "id": "doc-287",
+    "left": "Treatment-resistant schizophrenia",
+    "right": "Clozapine"
+  },
+  {
+    "id": "doc-288",
+    "left": "Schizophrenia with suicidal tendency",
+    "right": "Clozapine"
+  },
+  {
+    "id": "doc-289",
+    "left": "Tourette syndrome",
+    "right": "Clonidine or Guanfacine"
+  },
+  {
+    "id": "doc-290",
+    "left": "Amyotrophic lateral sclerosis",
+    "right": "Riluzole"
+  },
+  {
+    "id": "doc-291",
+    "left": "Alzheimer's disease, mild to moderate",
+    "right": "Donepezil"
+  },
+  {
+    "id": "doc-292",
+    "left": "Alzheimer's disease, severe",
+    "right": "Memantine"
+  },
+  {
+    "id": "doc-293",
+    "left": "Bell's palsy",
+    "right": "Prednisolone"
+  },
+  {
+    "id": "doc-294",
+    "left": "Bipolar disorder, general treatment",
+    "right": "Lithium"
+  },
+  {
+    "id": "doc-295",
+    "left": "Depression, first-line",
+    "right": "SSRIs"
+  },
+  {
+    "id": "doc-296",
+    "left": "Generalized tonic-clonic seizure",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-297",
+    "left": "Absence seizure",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-298",
+    "left": "Myoclonic seizure",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-299",
+    "left": "Partial (focal) seizure",
+    "right": "Carbamazepine"
+  },
+  {
+    "id": "doc-300",
+    "left": "Lennox-Gastaut syndrome",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-301",
+    "left": "Infantile spasm",
+    "right": "ACTH"
+  },
+  {
+    "id": "doc-302",
+    "left": "Infantile spasm with tuberous sclerosis",
+    "right": "Vigabatrin"
+  },
+  {
+    "id": "doc-303",
+    "left": "Rolandic epilepsy (benign epilepsy of childhood)",
+    "right": "Carbamazepine"
+  },
+  {
+    "id": "doc-304",
+    "left": "Eclamptic seizures",
+    "right": "Magnesium sulfate"
+  },
+  {
+    "id": "doc-305",
+    "left": "Seizure in neonates",
+    "right": "Phenobarbital"
+  },
+  {
+    "id": "doc-306",
+    "left": "Dravet syndrome",
+    "right": "Valproate"
+  },
+  {
+    "id": "doc-307",
+    "left": "West syndrome",
+    "right": "ACTH"
+  },
+  {
+    "id": "doc-308",
+    "left": "Status epilepticus, first-line treatment",
+    "right": "Lorazepam"
+  },
+  {
+    "id": "doc-309",
+    "left": "Actinomycosis",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-310",
+    "left": "Anthrax",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-311",
+    "left": "Gas gangrene",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-312",
+    "left": "Leptospirosis",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-313",
+    "left": "Rat bite fever",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-314",
+    "left": "Streptococcal infection",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-315",
+    "left": "Syphilis (Penicillin G class)",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-316",
+    "left": "Yaws",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-317",
+    "left": "Meningococcal meningitis",
+    "right": "Penicillin G"
+  },
+  {
+    "id": "doc-318",
+    "left": "Amoebiasis, extraintestinal or intestinal symptomatic",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-319",
+    "left": "Bacterial vaginosis",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-320",
+    "left": "Bacteroides infection",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-321",
+    "left": "Tetanus",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-322",
+    "left": "Trichomoniasis",
+    "right": "Metronidazole"
+  },
+  {
+    "id": "doc-323",
+    "left": "Intestinal symptomatic amebiasis, luminal agent",
+    "right": "Paromomycin"
+  },
+  {
+    "id": "doc-324",
+    "left": "Aspergillosis",
+    "right": "Voriconazole"
+  },
+  {
+    "id": "doc-325",
+    "left": "Scedosporium infection",
+    "right": "Voriconazole"
+  },
+  {
+    "id": "doc-326",
+    "left": "Trichosporon infection",
+    "right": "Voriconazole"
+  },
+  {
+    "id": "doc-327",
+    "left": "Pseudomembranous enterocolitis (C. difficile)",
+    "right": "Vancomycin (oral)"
+  },
+  {
+    "id": "doc-328",
+    "left": "Borrelia infection (Lyme disease)",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-329",
+    "left": "Brucella infection",
+    "right": "Doxycycline + Rifampin"
+  },
+  {
+    "id": "doc-330",
+    "left": "Bartonella infection",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-331",
+    "left": "Cholera",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-332",
+    "left": "Granuloma inguinale",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-333",
+    "left": "Lymphogranuloma venereum",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-334",
+    "left": "Mycoplasma hominis infection",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-335",
+    "left": "Inflammatory acne",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-336",
+    "left": "Rickettsial infection",
+    "right": "Doxycycline"
+  },
+  {
+    "id": "doc-337",
+    "left": "Babesiosis",
+    "right": "Atovaquone + Azithromycin"
+  },
+  {
+    "id": "doc-338",
+    "left": "Chancroid",
+    "right": "Azithromycin"
+  },
+  {
+    "id": "doc-339",
+    "left": "Legionella infection",
+    "right": "Azithromycin"
+  },
+  {
+    "id": "doc-340",
+    "left": "Chlamydia and cholera in pregnancy",
+    "right": "Azithromycin"
+  },
+  {
+    "id": "doc-341",
+    "left": "Campylobacter infection",
+    "right": "Azithromycin"
+  },
+  {
+    "id": "doc-342",
+    "left": "Candida infection",
+    "right": "Fluconazole"
+  },
+  {
+    "id": "doc-343",
+    "left": "Coccidioidal meningitis",
+    "right": "Fluconazole"
+  },
+  {
+    "id": "doc-344",
+    "left": "Chagas disease (American trypanosomiasis)",
+    "right": "Benznidazole"
+  },
+  {
+    "id": "doc-345",
+    "left": "Cryptococcal infection",
+    "right": "Amphotericin B"
+  },
+  {
+    "id": "doc-346",
+    "left": "Kala-azar (visceral leishmaniasis)",
+    "right": "Amphotericin B"
+  },
+  {
+    "id": "doc-347",
+    "left": "Mucormycosis",
+    "right": "Amphotericin B"
+  },
+  {
+    "id": "doc-348",
+    "left": "Primary amebic meningoencephalitis",
+    "right": "Amphotericin B"
+  },
+  {
+    "id": "doc-349",
+    "left": "Systemic fungal infection, severe",
+    "right": "Amphotericin B"
+  },
+  {
+    "id": "doc-350",
+    "left": "Cryptosporidium infection",
+    "right": "Nitazoxanide"
+  },
+  {
+    "id": "doc-351",
+    "left": "Dermatophyte infection",
+    "right": "Terbinafine"
+  },
+  {
+    "id": "doc-352",
+    "left": "Tinea capitis",
+    "right": "Griseofulvin"
+  },
+  {
+    "id": "doc-353",
+    "left": "Diarrhea, empirical therapy",
+    "right": "Fluoroquinolones"
+  },
+  {
+    "id": "doc-354",
+    "left": "E. coli infection, severe",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-355",
+    "left": "HACEK organisms",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-356",
+    "left": "H. influenzae meningitis",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-357",
+    "left": "Klebsiella infection, severe",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-358",
+    "left": "Providencia infection",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-359",
+    "left": "Typhoid fever",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-360",
+    "left": "Salmonella infection, severe",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-361",
+    "left": "Acute bacterial meningitis, empirical therapy",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-362",
+    "left": "Meningitis with basilar skull fracture",
+    "right": "Ceftriaxone"
+  },
+  {
+    "id": "doc-363",
+    "left": "ADHD",
+    "right": "Methylphenidate"
+  },
+  {
+    "id": "doc-364",
+    "left": "ADHD with Tourette syndrome",
+    "right": "Atomoxetine"
+  },
+  {
+    "id": "doc-365",
+    "left": "Aortic dissection / HOCM",
+    "right": "Beta blockers"
+  },
+  {
+    "id": "doc-366",
+    "left": "Atropine or Belladonna poisoning",
+    "right": "Physostigmine"
+  },
+  {
+    "id": "doc-367",
+    "left": "BPH with hypertension",
+    "right": "Terazosin"
+  },
+  {
+    "id": "doc-368",
+    "left": "Brittle asthma",
+    "right": "Epinephrine"
+  },
+  {
+    "id": "doc-369",
+    "left": "Bronchial challenge test",
+    "right": "Methacholine"
+  },
+  {
+    "id": "doc-370",
+    "left": "Cheese reaction (MAOI + tyramine)",
+    "right": "Phentolamine"
+  },
+  {
+    "id": "doc-371",
+    "left": "Clonidine withdrawal hypertension",
+    "right": "Phentolamine"
+  },
+  {
+    "id": "doc-372",
+    "left": "Intraoperative hypertension in pheochromocytoma",
+    "right": "Phentolamine"
+  },
+  {
+    "id": "doc-373",
+    "left": "Cycloplegia, adult",
+    "right": "Tropicamide"
+  },
+  {
+    "id": "doc-374",
+    "left": "Cycloplegia, children",
+    "right": "Atropine"
+  },
+  {
+    "id": "doc-375",
+    "left": "CHF with oliguria",
+    "right": "Dopamine"
+  },
+  {
+    "id": "doc-376",
+    "left": "Hypotension caused by hypothermia",
+    "right": "Dopamine"
+  },
+  {
+    "id": "doc-377",
+    "left": "Glaucoma, closed angle (acute)",
+    "right": "Acetazolamide"
+  },
+  {
+    "id": "doc-378",
+    "left": "Glaucoma, open angle",
+    "right": "Latanoprost"
+  },
+  {
+    "id": "doc-379",
+    "left": "Glaucoma, normal tension",
+    "right": "Latanoprost"
+  },
+  {
+    "id": "doc-380",
+    "left": "Hypotension in pregnancy",
+    "right": "Ephedrine"
+  },
+  {
+    "id": "doc-381",
+    "left": "Hypotension caused by anesthetic agents",
+    "right": "Ephedrine"
+  },
+  {
+    "id": "doc-382",
+    "left": "Motion sickness",
+    "right": "Scopolamine"
+  },
+  {
+    "id": "doc-383",
+    "left": "Myasthenia gravis, diagnosis",
+    "right": "Edrophonium"
+  },
+  {
+    "id": "doc-384",
+    "left": "Myasthenia gravis, treatment",
+    "right": "Pyridostigmine"
+  },
+  {
+    "id": "doc-385",
+    "left": "Myasthenic crisis",
+    "right": "IVIG"
+  },
+  {
+    "id": "doc-386",
+    "left": "Angina, acute attack",
+    "right": "Sublingual nitroglycerin"
+  },
+  {
+    "id": "doc-387",
+    "left": "Stable angina, long-term prophylaxis",
+    "right": "Beta blockers"
+  },
+  {
+    "id": "doc-388",
+    "left": "Aortic dissection, blood pressure control",
+    "right": "Labetalol"
+  },
+  {
+    "id": "doc-389",
+    "left": "Atrial fibrillation and flutter, acute rhythm conversion",
+    "right": "IV Ibutilide"
+  },
+  {
+    "id": "doc-390",
+    "left": "Atrial fibrillation, rhythm control",
+    "right": "Amiodarone"
+  },
+  {
+    "id": "doc-391",
+    "left": "Atrial fibrillation, rate control",
+    "right": "Beta blockers"
+  },
+  {
+    "id": "doc-392",
+    "left": "Atrial fibrillation, anticoagulation",
+    "right": "Dabigatran or Apixaban"
+  },
+  {
+    "id": "doc-393",
+    "left": "Acute CHF, first drug of choice",
+    "right": "Furosemide"
+  },
+  {
+    "id": "doc-394",
+    "left": "Acute CHF, inotrope of choice",
+    "right": "Dobutamine"
+  },
+  {
+    "id": "doc-395",
+    "left": "Chronic CHF",
+    "right": "ACE inhibitors / ARBs"
+  },
+  {
+    "id": "doc-396",
+    "left": "Hypertriglyceridemia",
+    "right": "Fibrates"
+  },
+  {
+    "id": "doc-397",
+    "left": "Chylomicronemia syndrome",
+    "right": "Fibrates"
+  },
+  {
+    "id": "doc-398",
+    "left": "Type III hyperlipoproteinemia",
+    "right": "Fibrates"
+  },
+  {
+    "id": "doc-399",
+    "left": "Hypercholesterolemia",
+    "right": "Statins"
+  },
+  {
+    "id": "doc-400",
+    "left": "Hypertension, first-line drugs",
+    "right": "ACE inhibitors, ARB, or CCB"
+  },
+  {
+    "id": "doc-401",
+    "left": "Resistant hypertension",
+    "right": "Aldosterone antagonists"
+  },
+  {
+    "id": "doc-402",
+    "left": "Hypertension in elderly patients",
+    "right": "Calcium channel blockers"
+  },
+  {
+    "id": "doc-403",
+    "left": "Hypertension in young patients",
+    "right": "ACE inhibitors / ARBs"
+  },
+  {
+    "id": "doc-404",
+    "left": "PSVT, acute treatment",
+    "right": "IV Adenosine"
+  },
+  {
+    "id": "doc-405",
+    "left": "PSVT, prophylaxis",
+    "right": "Verapamil or beta blockers"
+  },
+  {
+    "id": "doc-406",
+    "left": "Anaphylactic shock",
+    "right": "Epinephrine"
+  },
+  {
+    "id": "doc-407",
+    "left": "Cardiogenic shock",
+    "right": "Norepinephrine or Dopamine"
+  },
+  {
+    "id": "doc-408",
+    "left": "Septic shock",
+    "right": "Norepinephrine"
+  },
+  {
+    "id": "doc-409",
+    "left": "Vasodilatory shock",
+    "right": "Norepinephrine"
+  },
+  {
+    "id": "doc-410",
+    "left": "SVT, treatment and prophylaxis",
+    "right": "Verapamil"
+  },
+  {
+    "id": "doc-411",
+    "left": "SVT associated with CHF",
+    "right": "Digoxin"
+  },
+  {
+    "id": "doc-412",
+    "left": "Torsades de pointes",
+    "right": "Magnesium sulfate"
+  },
+  {
+    "id": "doc-413",
+    "left": "Symptomatic ventricular extrasystole",
+    "right": "Beta blockers"
+  },
+  {
+    "id": "doc-414",
+    "left": "Ventricular fibrillation",
+    "right": "Amiodarone"
+  },
+  {
+    "id": "doc-415",
+    "left": "Ventricular tachycardia in MI and digitalis toxicity",
+    "right": "Lidocaine"
+  },
+  {
+    "id": "doc-416",
+    "left": "WPW syndrome",
+    "right": "IV Procainamide"
+  },
+  {
+    "id": "doc-417",
+    "left": "Cystinuria",
+    "right": "Tiopronin + urine alkalinizer (Potassium citrate)"
+  },
+  {
+    "id": "doc-418",
+    "left": "Pulmonary edema with CHF",
+    "right": "Furosemide"
+  },
+  {
+    "id": "doc-419",
+    "left": "Edema caused by liver cirrhosis",
+    "right": "Spironolactone"
+  },
+  {
+    "id": "doc-420",
+    "left": "Cerebral edema",
+    "right": "Mannitol"
+  },
+  {
+    "id": "doc-421",
+    "left": "Lupus nephritis",
+    "right": "Cyclophosphamide + Glucocorticoids"
+  },
+  {
+    "id": "doc-422",
+    "left": "Rapidly progressive glomerulonephritis",
+    "right": "Cyclophosphamide + Glucocorticoids"
+  },
+  {
+    "id": "doc-423",
+    "left": "Nephrotic syndrome, initial treatment",
+    "right": "Steroids"
+  },
+  {
+    "id": "doc-424",
+    "left": "Steroid-resistant nephrotic syndrome",
+    "right": "Cyclosporine"
+  },
+  {
+    "id": "doc-425",
+    "left": "Steroid-dependent nephrotic syndrome",
+    "right": "Cyclophosphamide"
+  },
+  {
+    "id": "doc-426",
+    "left": "Nephrotic syndrome with frequent relapse",
+    "right": "Cyclophosphamide"
+  },
+  {
+    "id": "doc-427",
+    "left": "Overflow incontinence",
+    "right": "Cholinergics (Bethanechol)"
+  },
+  {
+    "id": "doc-428",
+    "left": "Urge incontinence",
+    "right": "Anticholinergics (Darifenacin)"
+  },
+  {
+    "id": "doc-429",
+    "left": "Stress incontinence",
+    "right": "SNRI (Duloxetine)"
+  },
+  {
+    "id": "doc-430",
+    "left": "Urinary tract infection, cystitis",
+    "right": "Cotrimoxazole"
+  },
+  {
+    "id": "doc-431",
+    "left": "Pyelonephritis",
+    "right": "Ciprofloxacin"
+  },
+  {
+    "id": "doc-432",
+    "left": "Methanol or ethylene glycol poisoning",
+    "right": "Fomepizole"
+  },
+  {
+    "id": "doc-433",
+    "left": "Cyanide poisoning",
+    "right": "Hydroxocobalamin"
+  },
+  {
+    "id": "doc-434",
+    "left": "Lead poisoning, severe",
+    "right": "Dimercaprol + Calcium disodium EDTA"
+  },
+  {
+    "id": "doc-435",
+    "left": "Lead poisoning, mild to moderate",
+    "right": "Succimer (DMSA)"
+  },
+  {
+    "id": "doc-436",
+    "left": "Beta-blocker overdose",
+    "right": "Glucagon"
+  },
+  {
+    "id": "doc-437",
+    "left": "Calcium channel blocker overdose",
+    "right": "Calcium gluconate or High-dose insulin"
+  },
+  {
+    "id": "doc-438",
+    "left": "Iron poisoning",
+    "right": "Deferoxamine"
+  },
+  {
+    "id": "doc-439",
+    "left": "Carbon monoxide poisoning",
+    "right": "100% Oxygen (Hyperbaric O2 if severe)"
+  },
+  {
+    "id": "doc-440",
+    "left": "Methemoglobinemia",
+    "right": "Methylene blue"
+  },
+  {
+    "id": "doc-441",
+    "left": "Mercury poisoning",
+    "right": "Dimercaprol or Succimer (DMSA)"
+  },
+  {
+    "id": "doc-442",
+    "left": "Arsenic poisoning",
+    "right": "Dimercaprol"
+  },
+  {
+    "id": "doc-443",
+    "left": "Wilson's disease (copper toxicity)",
+    "right": "Penicillamine"
+  },
+  {
+    "id": "doc-444",
+    "left": "Isoniazid overdose (seizures)",
+    "right": "Pyridoxine (Vitamin B6)"
+  },
+  {
+    "id": "doc-445",
+    "left": "Digoxin toxicity, severe",
+    "right": "Digoxin immune Fab"
+  },
+  {
+    "id": "doc-446",
+    "left": "Benzodiazepine overdose",
+    "right": "Flumazenil"
+  },
+  {
+    "id": "doc-447",
+    "left": "Opioid overdose",
+    "right": "Naloxone"
+  },
+  {
+    "id": "doc-448",
+    "left": "Organophosphate poisoning",
+    "right": "Atropine + Pralidoxime"
+  },
+  {
+    "id": "doc-449",
+    "left": "Preterm labor, tocolysis first-line",
+    "right": "Nifedipine"
+  },
+  {
+    "id": "doc-450",
+    "left": "Fetal lung maturation, antenatal steroid of choice",
+    "right": "Betamethasone"
+  },
+  {
+    "id": "doc-451",
+    "left": "Postpartum hemorrhage, first-line uterotonic",
+    "right": "Oxytocin"
+  },
+  {
+    "id": "doc-452",
+    "left": "Labor induction",
+    "right": "Oxytocin"
+  },
+  {
+    "id": "doc-453",
+    "left": "Magnesium sulfate toxicity",
+    "right": "Calcium gluconate"
+  },
+  {
+    "id": "doc-454",
+    "left": "Mastitis",
+    "right": "Dicloxacillin or Flucloxacillin"
+  },
+  {
+    "id": "doc-455",
+    "left": "Hypertension in pregnancy, non-severe (chronic/gestational)",
+    "right": "Labetalol or Methyldopa"
+  },
+  {
+    "id": "doc-456",
+    "left": "Severe hypertension in pregnancy, urgent control",
+    "right": "IV Labetalol or Hydralazine"
+  },
+  {
+    "id": "doc-457",
+    "left": "Ectopic pregnancy, medical management",
+    "right": "Methotrexate"
+  },
+  {
+    "id": "doc-458",
+    "left": "Rh isoimmunization, prevention",
+    "right": "Anti-D immunoglobulin"
+  }
+]

@@ -5,13 +5,13 @@ import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import moaData from '../data/moa.json';
 import adrData from '../data/adr.json';
-import therapyData from '../data/therapy.json';
+import docData from '../data/doc.json';
 import './SectionPage.css';
 
 const SECTION_CONFIG = {
   moa: { title: 'MOA', sub: 'Mechanism of Action', accent: 'teal', data: moaData },
   adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'coral', data: adrData },
-  therapy: { title: 'THERAPY', sub: 'Clinical Therapeutics', accent: 'gold', data: therapyData },
+  doc: { title: 'DOC', sub: 'Drugs of Choice', accent: 'gold', data: docData },
 };
 
 export default function SectionPage() {

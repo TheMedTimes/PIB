@@ -5,7 +5,7 @@ import './Home.css';
 const sections = [
   { key: 'moa', label: 'MOA', sub: 'Mechanism of Action', accent: 'teal', icon: '⚙️' },
   { key: 'adr', label: 'ADR', sub: 'Adverse Drug Reactions', accent: 'coral', icon: '⚠️' },
-  { key: 'therapy', label: 'THERAPY', sub: 'Clinical Therapeutics', accent: 'gold', icon: '💊' },
+  { key: 'doc', label: 'DOC', sub: 'Drugs of Choice', accent: 'gold', icon: '💊' },
 ];
 
 export default function Home() {
