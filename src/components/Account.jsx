@@ -145,8 +145,7 @@ export default function Account() {
         </form>
 
         <p className="account-note">
-          Logging in is optional. Without it you can play freely, just nothing is saved and you will not
-          appear on the leaderboard.
+          Logging in is optional. Without it you can play for free without your time being recorded.
         </p>
       </div>
     </>
