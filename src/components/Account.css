@@ -57,6 +57,30 @@
   border-color: var(--teal);
 }
 
+.account-password-row {
+  position: relative;
+  display: flex;
+}
+.account-password-row input {
+  flex: 1;
+  padding-right: 44px;
+}
+.account-password-toggle {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 8px;
+}
+.account-password-toggle:active {
+  transform: translateY(-50%) scale(0.9);
+}
+
 .account-error {
   font-size: 0.75rem;
   color: var(--coral);

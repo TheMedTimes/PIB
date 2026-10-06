@@ -63,7 +63,7 @@ export default function Leaderboard() {
 
   return (
     <>
-      <TopBar back title="Leaderboard" accent="gold" />
+      <TopBar back title="Leaderboard" accent="purple" />
       <div className="leaderboard-wrap">
         <p className="leaderboard-sub">
           Today's fastest cumulative times across MOA, ADR, and DOC. Resets daily. Completing all three

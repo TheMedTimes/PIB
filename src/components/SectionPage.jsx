@@ -12,7 +12,7 @@ import './SectionPage.css';
 
 const SECTION_CONFIG = {
   moa: { title: 'MOA', sub: 'Mechanism of Action', accent: 'teal', data: moaData },
-  adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'coral', data: adrData },
+  adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', data: adrData },
   doc: { title: 'DOC', sub: 'Drugs of Choice', accent: 'gold', data: docData },
 };
 

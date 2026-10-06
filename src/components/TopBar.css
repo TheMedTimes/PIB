@@ -77,9 +77,10 @@
   font-size: 1rem;
   margin-top: 2px;
 }
-.topbar-section-title.accent-coral { color: var(--coral); }
+.topbar-section-title.accent-pink { color: var(--pink); }
 .topbar-section-title.accent-gold { color: var(--gold); }
 .topbar-section-title.accent-teal { color: var(--teal); }
+.topbar-section-title.accent-purple { color: var(--purple-accent); }
 
 @media (min-width: 480px) {
   .topbar-sub { white-space: normal; }
