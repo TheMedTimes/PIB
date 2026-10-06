@@ -128,8 +128,10 @@
   padding: 40px 16px;
 }
 .match-complete-icon {
-  font-size: 3rem;
+  width: 52px;
+  height: 52px;
   margin-bottom: 12px;
+  color: var(--gold);
 }
 .match-complete-time {
   font-size: 1.6rem;

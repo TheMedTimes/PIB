@@ -43,7 +43,12 @@
   border-top: 2px dashed var(--navy-700);
 }
 
-.home-card-icon { font-size: 1.6rem; }
+.home-card-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--ink);
+}
 
 .home-card-label {
   font-size: 0.95rem;

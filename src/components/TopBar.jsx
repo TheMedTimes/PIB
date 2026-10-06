@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { Volume2, VolumeX, ChevronLeft } from 'lucide-react';
 import { isMuted, setMuted } from '../utils/sound';
 import { useState } from 'react';
 import './TopBar.css';
@@ -24,14 +25,16 @@ export default function TopBar({ back, title, accent }) {
 
       <div className="topbar-right">
         {back && (
-          <Link to="/" className="topbar-back pixel-text">&lt; Back</Link>
+          <Link to="/" className="topbar-back pixel-text">
+            <ChevronLeft size={14} strokeWidth={3} /> Back
+          </Link>
         )}
         <button
           className="topbar-mute"
           aria-label={muted ? 'Unmute sound' : 'Mute sound'}
           onClick={toggleMute}
         >
-          {muted ? '🔇' : '🔊'}
+          {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
         </button>
       </div>
 

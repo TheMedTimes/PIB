@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
@@ -106,7 +107,7 @@ export default function SectionPage() {
             <p className="section-checking">Checking today's progress...</p>
           ) : todaysResult ? (
             <div className="match-complete">
-              <div className="match-complete-icon">✅</div>
+              <CheckCircle2 className="match-complete-icon" strokeWidth={2} />
               <h2 className="pixel-text">Already done for today</h2>
               <p className="match-complete-time pixel-text">{formatTime(todaysResult.time_seconds)}</p>
               <p className="match-complete-sub">One attempt per section per day. Come back tomorrow for a new set.</p>

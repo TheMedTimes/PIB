@@ -1,41 +1,41 @@
 import { Link } from 'react-router-dom';
+import { Settings, AlertTriangle, Pill, Trophy, User } from 'lucide-react';
 import TopBar from './TopBar';
 import { useAuth } from '../context/AuthContext';
 import './Home.css';
 
 const sections = [
-  { key: 'moa', label: 'MOA', sub: 'Mechanism of Action', accent: 'teal', icon: '⚙️' },
-  { key: 'adr', label: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', icon: '⚠️' },
-  { key: 'doc', label: 'DOC', sub: 'Drugs of Choice', accent: 'gold', icon: '💊' },
+  { key: 'moa', label: 'MOA', sub: 'Mechanism of Action', accent: 'teal', Icon: Settings },
+  { key: 'adr', label: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', Icon: AlertTriangle },
+  { key: 'doc', label: 'DOC', sub: 'Drugs of Choice', accent: 'gold', Icon: Pill },
 ];
 
 export default function Home() {
-  const { user, profile } = useAuth();
+  const { user } = useAuth();
 
   return (
     <>
       <TopBar />
       <div className="home-wrap">
         <div className="home-sections">
-          {sections.map((s) => (
-            <Link key={s.key} to={`/${s.key}`} className={`home-card accent-${s.accent}`}>
-              <span className="home-card-icon">{s.icon}</span>
-              <span className="home-card-label pixel-text">{s.label}</span>
-              <span className="home-card-sub">{s.sub}</span>
+          {sections.map(({ key, label, sub, accent, Icon }) => (
+            <Link key={key} to={`/${key}`} className={`home-card accent-${accent}`}>
+              <Icon className="home-card-icon" strokeWidth={2.25} />
+              <span className="home-card-label pixel-text">{label}</span>
+              <span className="home-card-sub">{sub}</span>
             </Link>
           ))}
         </div>
 
         <div className="home-sections home-sections-utility">
           <Link to="/leaderboard" className="home-card accent-purple">
-            <span className="home-card-icon">🏆</span>
+            <Trophy className="home-card-icon" strokeWidth={2.25} />
             <span className="home-card-label pixel-text">LEADERBOARD</span>
-            <span className="home-card-sub">Today's top 10</span>
           </Link>
           <Link to="/account" className="home-card accent-muted">
-            <span className="home-card-icon">👤</span>
-            <span className="home-card-label pixel-text">{user ? (profile?.nickname || 'PROFILE') : 'LOGIN'}</span>
-            <span className="home-card-sub">{user ? 'View your account' : 'Optional, saves your times'}</span>
+            <User className="home-card-icon" strokeWidth={2.25} />
+            <span className="home-card-label pixel-text">{user ? 'PROFILE' : 'LOGIN'}</span>
+            {!user && <span className="home-card-sub">Optional, saves your times</span>}
           </Link>
         </div>
 

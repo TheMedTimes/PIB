@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { FlaskConical } from 'lucide-react';
 import { playTap, playCorrect, playWrong, playComplete } from '../utils/sound';
 import { hapticTap, hapticCorrect, hapticWrong, hapticComplete } from '../utils/haptics';
 import './MatchGame.css';
@@ -104,7 +105,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
   if (done) {
     return (
       <div className="match-complete">
-        <div className="match-complete-icon">🧪</div>
+        <FlaskConical className="match-complete-icon" strokeWidth={2} />
         <h2 className="pixel-text">Set cleared!</h2>
         <p className="match-complete-time pixel-text">{formatTime(finalSeconds ?? elapsedSeconds + penaltySeconds)}</p>
         <p>{mistakes === 0 ? 'Flawless run, no mistakes.' : `Cleared with ${mistakes} mistake${mistakes === 1 ? '' : 's'} (+${mistakes * WRONG_PENALTY_SECONDS}s).`}</p>

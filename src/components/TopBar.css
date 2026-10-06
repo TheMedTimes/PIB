@@ -55,16 +55,20 @@
 }
 
 .topbar-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   font-size: 0.6rem;
   color: var(--teal);
   text-decoration: none;
 }
 
 .topbar-mute {
+  display: flex;
+  align-items: center;
   background: none;
   border: none;
-  font-size: 1.1rem;
-  line-height: 1;
+  color: var(--ink-dim);
   cursor: pointer;
   padding: 4px;
 }
