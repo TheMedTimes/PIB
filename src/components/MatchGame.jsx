@@ -1,7 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { playTap, playCorrect, playWrong, playComplete } from '../utils/sound';
 import { hapticTap, hapticCorrect, hapticWrong, hapticComplete } from '../utils/haptics';
 import './MatchGame.css';
+
+const WRONG_PENALTY_SECONDS = 10;
+
+function formatTime(totalSeconds) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
 
 function shuffleOnce(arr) {
   const a = [...arr];
@@ -25,11 +33,29 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
   const total = items.length;
   const done = matched.size === total;
 
+  // Timer: starts the instant the set is shown, runs until every pair is
+  // matched. Each wrong pick adds a fixed penalty on top of real elapsed time.
+  const startRef = useRef(Date.now());
+  const [elapsedSeconds, setElapsedSeconds] = useState(0);
+  const [penaltySeconds, setPenaltySeconds] = useState(0);
+  const [finalSeconds, setFinalSeconds] = useState(null);
+  const [penaltyPopId, setPenaltyPopId] = useState(0);
+
+  useEffect(() => {
+    if (done) return undefined;
+    const id = setInterval(() => {
+      setElapsedSeconds(Math.floor((Date.now() - startRef.current) / 1000));
+    }, 250);
+    return () => clearInterval(id);
+  }, [done]);
+
   useEffect(() => {
     if (done) {
+      const total_s = Math.floor((Date.now() - startRef.current) / 1000) + penaltySeconds;
+      setFinalSeconds(total_s);
       playComplete();
       hapticComplete();
-      onComplete && onComplete({ mistakes, total });
+      onComplete && onComplete({ mistakes, total, totalSeconds: total_s });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [done]);
@@ -47,6 +73,8 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
         hapticWrong();
         setWrongFlash({ left: selectedLeft, right: selectedRight });
         setMistakes((m) => m + 1);
+        setPenaltySeconds((p) => p + WRONG_PENALTY_SECONDS);
+        setPenaltyPopId((id) => id + 1);
         const t = setTimeout(() => {
           setWrongFlash(null);
           setSelectedLeft(null);
@@ -78,7 +106,8 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
       <div className="match-complete">
         <div className="match-complete-icon">🧪</div>
         <h2 className="pixel-text">Set cleared!</h2>
-        <p>{mistakes === 0 ? 'Flawless run, no mistakes.' : `Cleared with ${mistakes} mistake${mistakes === 1 ? '' : 's'}.`}</p>
+        <p className="match-complete-time pixel-text">{formatTime(finalSeconds ?? elapsedSeconds + penaltySeconds)}</p>
+        <p>{mistakes === 0 ? 'Flawless run, no mistakes.' : `Cleared with ${mistakes} mistake${mistakes === 1 ? '' : 's'} (+${mistakes * WRONG_PENALTY_SECONDS}s).`}</p>
         <p className="match-complete-sub">Come back tomorrow for a new set.</p>
       </div>
     );
@@ -86,6 +115,12 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
 
   return (
     <div className={`match-game accent-${accentClass}`}>
+      <div className="match-timer">
+        <span className="pixel-text match-timer-value">{formatTime(elapsedSeconds + penaltySeconds)}</span>
+        {penaltyPopId > 0 && (
+          <span key={penaltyPopId} className="match-timer-penalty-pop">+{WRONG_PENALTY_SECONDS}s</span>
+        )}
+      </div>
       <div className="match-progress">
         <div className="match-progress-bar" style={{ width: `${(matched.size / total) * 100}%` }} />
         <span className="match-progress-label">{matched.size}/{total} matched</span>

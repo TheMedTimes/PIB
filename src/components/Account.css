@@ -1,0 +1,95 @@
+.account-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px 20px 40px;
+}
+
+.account-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.account-tab {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  padding: 10px;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-700);
+  color: var(--ink-dim);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+.account-tab.active {
+  color: var(--navy-950);
+  background: var(--teal);
+  border-color: var(--teal);
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: var(--ink-dim);
+}
+
+.account-field input {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 10px;
+  background: var(--navy-800);
+  border: 2px solid var(--navy-700);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
+.account-field input:focus {
+  outline: none;
+  border-color: var(--teal);
+}
+
+.account-error {
+  font-size: 0.75rem;
+  color: var(--coral);
+}
+
+.account-message {
+  font-size: 0.75rem;
+  color: var(--teal);
+}
+
+.account-note {
+  margin-top: 22px;
+  font-size: 0.68rem;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+.account-note a {
+  color: var(--teal);
+}
+
+.account-signed-in {
+  padding: 20px;
+  text-align: center;
+}
+
+.account-nickname {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.account-email {
+  font-size: 0.7rem;
+  color: var(--ink-dim);
+  margin-bottom: 16px;
+}

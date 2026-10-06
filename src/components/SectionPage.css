@@ -25,3 +25,10 @@
 .section-frame {
   padding: 16px;
 }
+
+.section-checking {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+}

@@ -6,6 +6,41 @@
 .match-game.accent-gold { --accent: var(--gold); --accent-dark: var(--gold-dark); }
 .match-game.accent-pink { --accent: var(--pink); --accent-dark: var(--pink-dark); }
 
+.match-timer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.match-timer-value {
+  font-size: 1.1rem;
+  color: var(--accent);
+  background: var(--navy-950);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  letter-spacing: 1px;
+}
+
+.match-timer-penalty-pop {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--coral);
+  pointer-events: none;
+  animation: penaltyPop 0.9s ease-out forwards;
+}
+
+@keyframes penaltyPop {
+  0% { opacity: 0; transform: translate(-50%, 0) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -8px) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -34px) scale(1); }
+}
+
 .match-progress {
   position: relative;
   height: 22px;
@@ -95,6 +130,12 @@
 .match-complete-icon {
   font-size: 3rem;
   margin-bottom: 12px;
+}
+.match-complete-time {
+  font-size: 1.6rem;
+  color: var(--gold);
+  margin: 4px 0 10px;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 .match-complete-sub {
   color: var(--ink-dim);
