@@ -21,7 +21,7 @@ function shuffleOnce(arr) {
   return a;
 }
 
-export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
+export default function MatchGame({ items, accentClass = 'teal', onComplete, statusNote }) {
   const leftItems = useMemo(() => shuffleOnce(items.map((it) => ({ id: it.id, text: it.left }))), [items]);
   const rightItems = useMemo(() => shuffleOnce(items.map((it) => ({ id: it.id, text: it.right }))), [items]);
 
@@ -110,6 +110,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete }) {
         <p className="match-complete-time pixel-text">{formatTime(finalSeconds ?? elapsedSeconds + penaltySeconds)}</p>
         <p>{mistakes === 0 ? 'Flawless run, no mistakes.' : `Cleared with ${mistakes} mistake${mistakes === 1 ? '' : 's'} (+${mistakes * WRONG_PENALTY_SECONDS}s).`}</p>
         <p className="match-complete-sub">Come back tomorrow for a new set.</p>
+        {statusNote && <p className="match-complete-status">{statusNote}</p>}
       </div>
     );
   }

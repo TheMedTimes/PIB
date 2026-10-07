@@ -30,10 +30,18 @@ export default function SectionPage() {
 
   const [data, setData] = useState(null);
   const [checking, setChecking] = useState(!!user);
-  const [todaysResult, setTodaysResult] = useState(null);
+  // priorResult: a result that already existed in the database BEFORE this
+  // page even loaded, this is what triggers the cold "already done for
+  // today" lock screen in place of the game itself. It deliberately does
+  // NOT get set when you finish a set in this session, finishing should
+  // show the match game's own celebration screen, not this lock screen.
+  // The lock screen is only for someone who already played earlier and
+  // comes back later the same day.
+  const [priorResult, setPriorResult] = useState(null);
   const [saveError, setSaveError] = useState(null);
   const [pendingSeconds, setPendingSeconds] = useState(null);
   const [retrying, setRetrying] = useState(false);
+  const [justSaved, setJustSaved] = useState(false);
 
   useEffect(() => {
     setData(null);
@@ -65,7 +73,7 @@ export default function SectionPage() {
         .maybeSingle();
       if (error) console.error('Failed to check today\'s result:', error);
       if (!cancelled) {
-        setTodaysResult(row || null);
+        setPriorResult(row || null);
         setChecking(false);
       }
     }
@@ -93,10 +101,14 @@ export default function SectionPage() {
 
     // Either the insert succeeded, or it failed with 23505 (unique
     // violation) meaning a row for today already exists, both cases mean
-    // the database genuinely has today's result, so it's safe to lock.
+    // the database genuinely has today's result. Deliberately NOT setting
+    // priorResult here, MatchGame is already showing its own "Set
+    // cleared!" screen with this exact time, that should stay visible for
+    // the rest of this session. The colder "already done" lock screen is
+    // reserved for a fresh page load on a later visit.
     setSaveError(null);
     setPendingSeconds(null);
-    setTodaysResult({ time_seconds: totalSeconds });
+    setJustSaved(true);
     return true;
   }
 
@@ -150,15 +162,20 @@ export default function SectionPage() {
         <div className="arcade-frame section-frame">
           {!data || checking ? (
             <p className="section-checking">Loading today's set...</p>
-          ) : todaysResult ? (
+          ) : priorResult ? (
             <div className="match-complete">
               <CheckCircle2 className="match-complete-icon" strokeWidth={2} />
               <h2 className="pixel-text">Already done for today</h2>
-              <p className="match-complete-time pixel-text">{formatTime(todaysResult.time_seconds)}</p>
+              <p className="match-complete-time pixel-text">{formatTime(priorResult.time_seconds)}</p>
               <p className="match-complete-sub">One attempt per section per day. Come back tomorrow for a new set.</p>
             </div>
           ) : (
-            <MatchGame items={items} accentClass={config.accent} onComplete={handleComplete} />
+            <MatchGame
+              items={items}
+              accentClass={config.accent}
+              onComplete={handleComplete}
+              statusNote={user ? (justSaved ? 'Saved to the leaderboard.' : undefined) : undefined}
+            />
           )}
         </div>
       </div>

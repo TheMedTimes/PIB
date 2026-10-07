@@ -143,3 +143,9 @@
   color: var(--ink-dim);
   font-size: 0.85rem;
 }
+
+.match-complete-status {
+  margin-top: 10px;
+  font-size: 0.72rem;
+  color: var(--teal);
+}
