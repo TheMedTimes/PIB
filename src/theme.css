@@ -22,6 +22,7 @@
 
   --yellow-frame: #f7e94f; /* arcade screen border */
   --purple-accent: #8b6ff0;
+  --success-green: #4ade80; /* "completed today" tinge, distinct from any section accent */
 
   --ink: #eef0ff;        /* primary text on navy */
   --ink-dim: #a9aed6;    /* secondary text on navy */

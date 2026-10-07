@@ -21,7 +21,7 @@ function shuffleOnce(arr) {
   return a;
 }
 
-export default function MatchGame({ items, accentClass = 'teal', onComplete, statusNote }) {
+export default function MatchGame({ items, accentClass = 'teal', onComplete, onProgress, statusNote }) {
   const leftItems = useMemo(() => shuffleOnce(items.map((it) => ({ id: it.id, text: it.left }))), [items]);
   const rightItems = useMemo(() => shuffleOnce(items.map((it) => ({ id: it.id, text: it.right }))), [items]);
 
@@ -66,6 +66,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, sta
       if (selectedLeft === selectedRight) {
         playCorrect();
         hapticCorrect();
+        onProgress && onProgress();
         setMatched((prev) => new Set(prev).add(selectedLeft));
         setSelectedLeft(null);
         setSelectedRight(null);

@@ -6,6 +6,7 @@ import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import { useAuth } from '../context/AuthContext';
 import { supabase, todayUTC } from '../utils/supabaseClient';
+import { fetchTodayStatus, bumpStreakIfNeeded } from '../utils/todayStatus';
 import './SectionPage.css';
 
 // Each section's ~50KB data file is loaded on demand (dynamic import)
@@ -42,6 +43,21 @@ export default function SectionPage() {
   const [pendingSeconds, setPendingSeconds] = useState(null);
   const [retrying, setRetrying] = useState(false);
   const [justSaved, setJustSaved] = useState(false);
+  const [hasProgress, setHasProgress] = useState(false); // at least one match made this visit
+  const [gameFinished, setGameFinished] = useState(false);
+  const leaveWarningActive = hasProgress && !gameFinished;
+
+  // Warn before closing the tab/app or hitting browser back/refresh while
+  // a set is genuinely in progress (at least one match made, not finished).
+  useEffect(() => {
+    function handleBeforeUnload(e) {
+      if (!leaveWarningActive) return;
+      e.preventDefault();
+      e.returnValue = '';
+    }
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, [leaveWarningActive]);
 
   useEffect(() => {
     setData(null);
@@ -82,6 +98,12 @@ export default function SectionPage() {
   }, [user, section, config]);
 
   async function saveResult(totalSeconds) {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      setSaveError('You appear to be offline. Reconnect, then tap retry, your set is already cleared, this just saves the time.');
+      setPendingSeconds(totalSeconds);
+      return false;
+    }
+
     const { error } = await supabase.from('results').insert({
       user_id: user.id,
       section,
@@ -109,10 +131,18 @@ export default function SectionPage() {
     setSaveError(null);
     setPendingSeconds(null);
     setJustSaved(true);
+
+    // If this save just completed all three sections for today, bump the
+    // streak. Checked fresh from the database rather than assumed, so it
+    // stays correct even with multiple tabs/devices.
+    const status = await fetchTodayStatus(user.id);
+    if (status.allThreeDone) bumpStreakIfNeeded(user.id);
+
     return true;
   }
 
   async function handleComplete({ totalSeconds }) {
+    setGameFinished(true); // the match itself is done, nothing left to lose by leaving now
     if (!user) return; // guests play freely, nothing to save
     await saveResult(totalSeconds);
   }
@@ -138,7 +168,7 @@ export default function SectionPage() {
 
   return (
     <>
-      <TopBar back title={config.title} accent={config.accent} />
+      <TopBar back title={config.title} accent={config.accent} confirmLeave={leaveWarningActive} />
       <div className="section-wrap">
         <p className="section-sub">{config.sub}</p>
 
@@ -174,6 +204,7 @@ export default function SectionPage() {
               items={items}
               accentClass={config.accent}
               onComplete={handleComplete}
+              onProgress={() => setHasProgress(true)}
               statusNote={user ? (justSaved ? 'Saved to the leaderboard.' : undefined) : undefined}
             />
           )}

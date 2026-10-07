@@ -4,7 +4,7 @@ import { isMuted, setMuted } from '../utils/sound';
 import { useState } from 'react';
 import './TopBar.css';
 
-export default function TopBar({ back, title, accent }) {
+export default function TopBar({ back, title, accent, confirmLeave }) {
   const [muted, setMutedState] = useState(isMuted());
 
   function toggleMute() {
@@ -13,9 +13,15 @@ export default function TopBar({ back, title, accent }) {
     setMuted(next);
   }
 
+  function handleNavClick(e) {
+    if (confirmLeave && !window.confirm("Leave now? Your progress on this set won't be saved.")) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <header className="topbar">
-      <Link to="/" className="topbar-brand">
+      <Link to="/" className="topbar-brand" onClick={handleNavClick}>
         <img src={`${import.meta.env.BASE_URL}icons/icon-192.png`} alt="" className="topbar-icon" />
         <div className="topbar-text">
           <span className="pixel-text topbar-title">P.I.B.</span>
@@ -25,7 +31,7 @@ export default function TopBar({ back, title, accent }) {
 
       <div className="topbar-right">
         {back && (
-          <Link to="/" className="topbar-back pixel-text">
+          <Link to="/" className="topbar-back pixel-text" onClick={handleNavClick}>
             <ChevronLeft size={14} strokeWidth={3} /> Back
           </Link>
         )}

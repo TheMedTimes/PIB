@@ -34,8 +34,43 @@
 
 .home-card.accent-pink { border-left-color: var(--pink); }
 .home-card.accent-gold { border-left-color: var(--gold); }
-.home-card.accent-purple { border-left-color: var(--purple-accent); }
+.home-card.accent-purple { border-left-color: var(--purple-accent); position: relative; }
 .home-card.accent-muted { border-left-color: var(--navy-700); }
+
+/* Completed-today tinge: a light green wash over the card, the section's
+   own accent color stays on the left border so you can still tell MOA
+   from ADR from DOC at a glance. */
+.home-card.completed {
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.14), rgba(74, 222, 128, 0.04));
+  border-color: rgba(74, 222, 128, 0.35);
+}
+
+.home-card-rank {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 0.78rem;
+  color: var(--gold);
+}
+
+.home-streak {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.home-streak-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--coral);
+}
+
+.home-streak-count {
+  font-size: 0.85rem;
+  color: var(--ink);
+}
 
 .home-sections-utility {
   margin-top: 22px;
