@@ -1,8 +1,18 @@
 // All sound effects are synthesized on the fly with the Web Audio API,
 // so there are no audio files to host, license, or download.
+//
+// iOS Safari (especially inside an installed/standalone PWA) creates a new
+// AudioContext in a "suspended" state and will only let it start running
+// if it's resumed directly inside a trusted user-gesture event, and the
+// very first resume often needs a dummy sound actually played through it
+// before the context is truly "unlocked" for everything after. If we just
+// lazily create the context on the first real beep, that first beep (and
+// sometimes all beeps) can end up silent. So instead we proactively unlock
+// a shared context on the very first tap/click/key anywhere in the app.
 
 const MUTE_KEY = 'pib-muted';
 let ctx = null;
+let unlocked = false;
 
 function getCtx() {
   if (!ctx) {
@@ -10,8 +20,36 @@ function getCtx() {
     if (!AC) return null;
     ctx = new AC();
   }
-  if (ctx.state === 'suspended') ctx.resume();
   return ctx;
+}
+
+function unlock() {
+  if (unlocked) return;
+  const audio = getCtx();
+  if (!audio) return;
+  unlocked = true;
+
+  const resumed = audio.state === 'suspended' ? audio.resume() : Promise.resolve();
+  resumed.finally(() => {
+    // Play a near-silent buffer once, this is what actually "wakes up"
+    // audio output on iOS, a resume() call alone isn't always enough.
+    try {
+      const buffer = audio.createBuffer(1, 1, 22050);
+      const src = audio.createBufferSource();
+      src.buffer = buffer;
+      src.connect(audio.destination);
+      src.start(0);
+    } catch {
+      /* ignore */
+    }
+  });
+}
+
+if (typeof window !== 'undefined') {
+  const opts = { once: true, passive: true };
+  window.addEventListener('touchend', unlock, opts);
+  window.addEventListener('mousedown', unlock, opts);
+  window.addEventListener('keydown', unlock, opts);
 }
 
 export function isMuted() {
@@ -34,6 +72,7 @@ function beep({ freq = 440, duration = 0.08, type = 'square', gain = 0.05, glide
   if (isMuted()) return;
   const audio = getCtx();
   if (!audio) return;
+  if (audio.state === 'suspended') audio.resume();
 
   const osc = audio.createOscillator();
   const g = audio.createGain();

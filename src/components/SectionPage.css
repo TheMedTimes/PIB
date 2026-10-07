@@ -12,6 +12,12 @@
   margin: 0 0 14px;
 }
 
+.section-dev-note .pixel-btn {
+  margin-top: 10px;
+  font-size: 0.65rem;
+  padding: 10px 14px;
+}
+
 .section-dev-note {
   font-size: 0.65rem;
   color: var(--gold);

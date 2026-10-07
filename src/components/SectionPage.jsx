@@ -6,15 +6,15 @@ import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import { useAuth } from '../context/AuthContext';
 import { supabase, todayUTC } from '../utils/supabaseClient';
-import moaData from '../data/moa.json';
-import adrData from '../data/adr.json';
-import docData from '../data/doc.json';
 import './SectionPage.css';
 
-const SECTION_CONFIG = {
-  moa: { title: 'MOA', sub: 'Mechanism of Action', accent: 'teal', data: moaData },
-  adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', data: adrData },
-  doc: { title: 'DOC', sub: 'Drugs of Choice', accent: 'gold', data: docData },
+// Each section's ~50KB data file is loaded on demand (dynamic import)
+// instead of all three being bundled into every page load, a visit to
+// /moa never has to download ADR's or DOC's data.
+const SECTION_META = {
+  moa: { title: 'MOA', sub: 'Mechanism of Action', accent: 'teal', loadData: () => import('../data/moa.json') },
+  adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', loadData: () => import('../data/adr.json') },
+  doc: { title: 'DOC', sub: 'Drugs of Choice', accent: 'gold', loadData: () => import('../data/doc.json') },
 };
 
 function formatTime(totalSeconds) {
@@ -25,15 +25,28 @@ function formatTime(totalSeconds) {
 
 export default function SectionPage() {
   const { section } = useParams();
-  const config = SECTION_CONFIG[section];
+  const config = SECTION_META[section];
   const { user, profile } = useAuth();
 
-  const { items } = useMemo(() => (config ? getTodaysSet(config.data) : { items: [] }), [config]);
-  const warning = config ? poolSizeWarning(config.data) : null;
-
+  const [data, setData] = useState(null);
   const [checking, setChecking] = useState(!!user);
   const [todaysResult, setTodaysResult] = useState(null);
   const [saveError, setSaveError] = useState(null);
+  const [pendingSeconds, setPendingSeconds] = useState(null);
+  const [retrying, setRetrying] = useState(false);
+
+  useEffect(() => {
+    setData(null);
+    if (!config) return;
+    let cancelled = false;
+    config.loadData().then((mod) => {
+      if (!cancelled) setData(mod.default);
+    });
+    return () => { cancelled = true; };
+  }, [config]);
+
+  const { items } = useMemo(() => (data ? getTodaysSet(data) : { items: [] }), [data]);
+  const warning = data ? poolSizeWarning(data) : null;
 
   useEffect(() => {
     let cancelled = false;
@@ -43,15 +56,16 @@ export default function SectionPage() {
         return;
       }
       setChecking(true);
-      const { data } = await supabase
+      const { data: row, error } = await supabase
         .from('results')
         .select('time_seconds')
         .eq('user_id', user.id)
         .eq('section', section)
         .eq('day', todayUTC())
         .maybeSingle();
+      if (error) console.error('Failed to check today\'s result:', error);
       if (!cancelled) {
-        setTodaysResult(data || null);
+        setTodaysResult(row || null);
         setChecking(false);
       }
     }
@@ -59,19 +73,43 @@ export default function SectionPage() {
     return () => { cancelled = true; };
   }, [user, section, config]);
 
-  async function handleComplete({ totalSeconds }) {
-    if (!user) return; // guests play freely, nothing to save
+  async function saveResult(totalSeconds) {
     const { error } = await supabase.from('results').insert({
       user_id: user.id,
       section,
       time_seconds: totalSeconds,
     });
-    if (error) {
-      // A duplicate-key error here just means another tab/device already
-      // submitted today's result first, treat it the same as "already played".
-      setSaveError(error.code === '23505' ? null : 'Could not save your time, but your set is still cleared.');
+
+    if (error && error.code !== '23505') {
+      // Genuine failure (not just "already saved elsewhere"): do NOT lock
+      // the screen, since nothing actually made it into the database.
+      console.error('Failed to save result:', error);
+      setSaveError(
+        `Could not save your time (${error.message || error.code || 'unknown error'}). Tap retry, your set is already cleared, this just saves the time.`
+      );
+      setPendingSeconds(totalSeconds);
+      return false;
     }
+
+    // Either the insert succeeded, or it failed with 23505 (unique
+    // violation) meaning a row for today already exists, both cases mean
+    // the database genuinely has today's result, so it's safe to lock.
+    setSaveError(null);
+    setPendingSeconds(null);
     setTodaysResult({ time_seconds: totalSeconds });
+    return true;
+  }
+
+  async function handleComplete({ totalSeconds }) {
+    if (!user) return; // guests play freely, nothing to save
+    await saveResult(totalSeconds);
+  }
+
+  async function handleRetry() {
+    if (pendingSeconds == null) return;
+    setRetrying(true);
+    await saveResult(pendingSeconds);
+    setRetrying(false);
   }
 
   if (!config) {
@@ -93,7 +131,14 @@ export default function SectionPage() {
         <p className="section-sub">{config.sub}</p>
 
         {warning && <p className="section-dev-note">{warning}</p>}
-        {saveError && <p className="section-dev-note">{saveError}</p>}
+        {saveError && (
+          <div className="section-dev-note">
+            <p>{saveError}</p>
+            <button className="pixel-btn coral" onClick={handleRetry} disabled={retrying}>
+              {retrying ? 'Retrying...' : 'Retry save'}
+            </button>
+          </div>
+        )}
 
         {user && !profile && (
           <p className="section-dev-note">
@@ -103,8 +148,8 @@ export default function SectionPage() {
         )}
 
         <div className="arcade-frame section-frame">
-          {checking ? (
-            <p className="section-checking">Checking today's progress...</p>
+          {!data || checking ? (
+            <p className="section-checking">Loading today's set...</p>
           ) : todaysResult ? (
             <div className="match-complete">
               <CheckCircle2 className="match-complete-icon" strokeWidth={2} />
