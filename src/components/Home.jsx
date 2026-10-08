@@ -73,8 +73,9 @@ export default function Home() {
         <div className="home-sections home-sections-utility">
           <Link to="/leaderboard" className="home-card accent-purple" onClick={tap}>
             <Trophy className="home-card-icon" strokeWidth={2.25} />
-            <span className="home-card-label pixel-text">LEADERBOARD</span>
-            {rank && <span className="home-card-rank pixel-text">#{rank}</span>}
+            <span className="home-card-label pixel-text">
+              LEADERBOARD{rank && <span className="home-card-rank"> #{rank}</span>}
+            </span>
           </Link>
           <Link to="/account" className="home-card accent-muted" onClick={tap}>
             <User className="home-card-icon" strokeWidth={2.25} />

@@ -5,7 +5,7 @@ import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import { useAuth } from '../context/AuthContext';
-import { supabase, todayUTC } from '../utils/supabaseClient';
+import { supabase, todayIST } from '../utils/supabaseClient';
 import { fetchTodayStatus, bumpStreakIfNeeded } from '../utils/todayStatus';
 import './SectionPage.css';
 
@@ -85,7 +85,7 @@ export default function SectionPage() {
         .select('time_seconds')
         .eq('user_id', user.id)
         .eq('section', section)
-        .eq('day', todayUTC())
+        .eq('day', todayIST())
         .maybeSingle();
       if (error) console.error('Failed to check today\'s result:', error);
       if (!cancelled) {

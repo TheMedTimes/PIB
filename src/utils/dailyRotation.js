@@ -1,10 +1,16 @@
 // Deterministic, client-side "daily set" picker.
 // No backend, no per-user state. Every visitor on the same calendar day
-// (UTC) sees the exact same 6 items. A new shuffle happens every ISO week,
+// sees the exact same 6 items. A new shuffle happens every ISO week,
 // and slicing one shuffle into 7 non-overlapping chunks guarantees zero
 // repeats within that week (as long as the pool has >= 7 * PAIRS_PER_DAY items).
+//
+// The day boundary is India Standard Time (UTC+5:30), not the visitor's
+// own device timezone, so the set changes at midnight IST for everyone,
+// everywhere, consistently. IST has no DST, so this is a fixed offset,
+// no timezone database needed client-side.
 
 const PAIRS_PER_DAY = 6;
+export const IST_OFFSET_MS = 5.5 * 60 * 60 * 1000;
 
 // mulberry32: tiny, fast, deterministic PRNG from a numeric seed.
 function mulberry32(seed) {
@@ -37,10 +43,13 @@ function seededShuffle(array, seed) {
   return result;
 }
 
-// ISO week number (1-53) and its ISO week-year, computed in UTC so every
-// visitor's browser agrees on "today", regardless of local timezone.
+// ISO week number (1-53) and its ISO week-year, computed against the IST
+// calendar day (date shifted by +5:30 before reading its UTC getters), so
+// every visitor's browser agrees on "today" in IST, regardless of where
+// they actually are.
 function getISOWeekInfo(date) {
-  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const istShifted = new Date(date.getTime() + IST_OFFSET_MS);
+  const d = new Date(Date.UTC(istShifted.getUTCFullYear(), istShifted.getUTCMonth(), istShifted.getUTCDate()));
   const dayNum = d.getUTCDay() || 7; // Mon=1 ... Sun=7
   d.setUTCDate(d.getUTCDate() + 4 - dayNum);
   const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));

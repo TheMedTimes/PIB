@@ -1,4 +1,4 @@
-import { supabase, todayUTC } from './supabaseClient';
+import { supabase, todayIST, yesterdayIST } from './supabaseClient';
 
 const SECTIONS = ['moa', 'adr', 'doc'];
 
@@ -12,7 +12,7 @@ export async function fetchTodayStatus(userId) {
     .from('results')
     .select('section, time_seconds')
     .eq('user_id', userId)
-    .eq('day', todayUTC());
+    .eq('day', todayIST());
 
   if (error) {
     console.error('Failed to fetch today\'s status:', error);
@@ -29,7 +29,7 @@ export async function fetchTodayStatus(userId) {
 // this user hasn't completed all three sections today (not eligible yet).
 export async function fetchRank(userId) {
   if (!userId) return null;
-  const today = todayUTC();
+  const today = todayIST();
 
   const { data, error } = await supabase.from('results').select('user_id, section, time_seconds').eq('day', today);
   if (error) {
@@ -67,23 +67,17 @@ export async function fetchStreak(userId) {
   return data || { current_streak: 0, last_completed_day: null };
 }
 
-function yesterdayUTC() {
-  const d = new Date();
-  d.setUTCDate(d.getUTCDate() - 1);
-  return d.toISOString().slice(0, 10);
-}
-
 // Called right after a save that completes all three sections for today.
 // Increments the streak if yesterday was the last completed day, resets
 // to 1 on a gap, and is a no-op if already bumped today.
 export async function bumpStreakIfNeeded(userId) {
   if (!userId) return;
-  const today = todayUTC();
+  const today = todayIST();
   const existing = await fetchStreak(userId);
 
   if (existing.last_completed_day === today) return; // already counted today
 
-  const nextStreak = existing.last_completed_day === yesterdayUTC() ? existing.current_streak + 1 : 1;
+  const nextStreak = existing.last_completed_day === yesterdayIST() ? existing.current_streak + 1 : 1;
 
   const { error } = await supabase
     .from('streaks')

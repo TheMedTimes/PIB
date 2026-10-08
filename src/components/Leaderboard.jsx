@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import TopBar from './TopBar';
-import { supabase, todayUTC } from '../utils/supabaseClient';
+import { supabase, todayIST } from '../utils/supabaseClient';
 import './Leaderboard.css';
 
 const SECTIONS = ['moa', 'adr', 'doc'];
@@ -19,7 +19,7 @@ export default function Leaderboard() {
     let cancelled = false;
 
     async function load() {
-      const today = todayUTC();
+      const today = todayIST();
 
       // Opportunistic cleanup: delete any rows from before today. RLS only
       // allows this for day < today, so it can never touch current data.

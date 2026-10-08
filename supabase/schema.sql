@@ -1,6 +1,11 @@
+-- WARNING: this file DROPS and recreates the profiles and results tables,
+-- which deletes all existing data in them. It is only for the very first
+-- setup of a brand-new Supabase project. For changes to an existing,
+-- live project, use the separate migration files in this folder
+-- (add_streaks.sql, switch_to_ist.sql) instead, those are non-destructive.
+--
 -- P.I.B. login, timer, and leaderboard schema.
 -- Run this once in the Supabase SQL Editor (Dashboard > SQL Editor > New query).
--- Safe to re-run: it drops and recreates these two tables only.
 
 drop table if exists public.results;
 drop table if exists public.profiles;
@@ -26,13 +31,13 @@ create policy "Users can update their own profile"
   on public.profiles for update
   using (auth.uid() = id);
 
--- One row per user, per section, per UTC calendar day.
+-- One row per user, per section, per IST calendar day.
 -- The primary key itself enforces "one attempt per day": a second insert
 -- for the same user/section/day fails outright.
 create table public.results (
   user_id uuid not null references public.profiles(id) on delete cascade,
   section text not null check (section in ('moa', 'adr', 'doc')),
-  day date not null default (timezone('utc', now()))::date,
+  day date not null default (timezone('Asia/Kolkata', now()))::date,
   time_seconds integer not null check (time_seconds >= 0 and time_seconds < 86400),
   created_at timestamptz not null default now(),
   primary key (user_id, section, day)
@@ -46,14 +51,14 @@ create policy "Results are publicly readable"
   on public.results for select
   using (true);
 
--- A user may only insert their own result, and only dated today (UTC).
+-- A user may only insert their own result, and only dated today (IST).
 -- Combined with the primary key above, this makes today's row a
 -- one-shot write: no backdating, no overwriting, no padding.
 create policy "Users can submit only their own result for today"
   on public.results for insert
   with check (
     auth.uid() = user_id
-    and day = (timezone('utc', now()))::date
+    and day = (timezone('Asia/Kolkata', now()))::date
   );
 
 -- Minimal data retention: once a day is over, its rows are fair game for
@@ -62,7 +67,7 @@ create policy "Users can submit only their own result for today"
 -- can never be used to delete today's (or future) data, only past days.
 create policy "Anyone can delete results from a past day"
   on public.results for delete
-  using (day < (timezone('utc', now()))::date);
+  using (day < (timezone('Asia/Kolkata', now()))::date);
 
 -- Helpful index for the daily leaderboard query (filter by day, fetched often).
 create index results_day_idx on public.results (day);
