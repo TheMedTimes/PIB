@@ -181,7 +181,7 @@
   },
   {
     "id": "doc-37",
-    "left": "Shock (hypovolemic, hemorrhagic, septic), induction agent of choice",
+    "left": "Shock (hypovolemic, septic), induction agent of choice",
     "right": "Ketamine"
   },
   {
@@ -191,7 +191,7 @@
   },
   {
     "id": "doc-39",
-    "left": "Cyanotic congenital heart disease with right-to-left shunt, induction agent",
+    "left": "Cyanotic heart disease (R-to-L shunt), induction agent",
     "right": "Ketamine"
   },
   {
@@ -206,7 +206,7 @@
   },
   {
     "id": "doc-42",
-    "left": "Cardiovascular disease (aneurysm, cardiomyopathy, CHF, CAD, aortic stenosis), induction agent",
+    "left": "Cardiovascular disease (CAD, CHF, AS), induction agent",
     "right": "Etomidate"
   },
   {
@@ -451,7 +451,7 @@
   },
   {
     "id": "doc-91",
-    "left": "Cyanotic congenital heart disease with right-to-left shunt, muscle relaxant",
+    "left": "Cyanotic heart disease (R-to-L shunt), muscle relaxant",
     "right": "Pancuronium"
   },
   {
@@ -1001,7 +1001,7 @@
   },
   {
     "id": "doc-201",
-    "left": "Antifungal prophylaxis in induction chemotherapy of acute leukemia",
+    "left": "Antifungal prophylaxis in acute leukemia chemotherapy",
     "right": "Posaconazole"
   },
   {

@@ -118,3 +118,15 @@
   color: var(--ink-dim);
   margin-bottom: 16px;
 }
+
+.account-link-btn {
+  background: none;
+  border: none;
+  color: var(--teal);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 6px;
+  align-self: center;
+}

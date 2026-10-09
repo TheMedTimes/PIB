@@ -6,7 +6,7 @@ export default function Terms() {
     <>
       <TopBar back title="Terms and Conditions" />
       <div className="legal-wrap">
-        <p className="legal-updated">Last updated: September 2026</p>
+        <p className="legal-updated">Last updated: October 2026</p>
 
         <section>
           <h2>1. What P.I.B. is</h2>
@@ -47,7 +47,18 @@ export default function Terms() {
         </section>
 
         <section>
-          <h2>5. Changes</h2>
+          <h2>5. Accounts and the leaderboard</h2>
+          <p>
+            Creating an account is optional. Nicknames appear publicly, so they must not be offensive,
+            misleading, or impersonate anyone. Leaderboard times must be earned by playing normally:
+            using scripts, tampering with the app, or otherwise faking a time is not allowed. We may
+            remove nicknames, results or accounts that break these rules. See the Privacy Policy for how
+            account data is handled.
+          </p>
+        </section>
+
+        <section>
+          <h2>6. Changes</h2>
           <p>
             These terms may be updated from time to time as the app develops. Continued use of the
             site after a change means you accept the updated terms.
@@ -55,7 +66,7 @@ export default function Terms() {
         </section>
 
         <section>
-          <h2>6. Contact</h2>
+          <h2>7. Contact</h2>
           <p>
             Questions about these terms can be sent to{' '}
             <a href="mailto:themedtimescontactmail@gmail.com">themedtimescontactmail@gmail.com</a>.

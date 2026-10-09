@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Settings, AlertTriangle, Pill, Trophy, User, Flame } from 'lucide-react';
 import TopBar from './TopBar';
 import { useAuth } from '../context/AuthContext';
 import { playTap } from '../utils/sound';
 import { hapticTap } from '../utils/haptics';
-import { fetchTodayStatus, fetchRank, fetchStreak } from '../utils/todayStatus';
+import { useTodayStatus } from '../context/TodayStatusContext';
 import './Home.css';
 
 function tap() {
@@ -21,28 +20,7 @@ const sections = [
 
 export default function Home() {
   const { user } = useAuth();
-  const [status, setStatus] = useState({ moa: null, adr: null, doc: null, allThreeDone: false });
-  const [rank, setRank] = useState(null);
-  const [streak, setStreak] = useState(0);
-
-  useEffect(() => {
-    let cancelled = false;
-    if (!user) {
-      setStatus({ moa: null, adr: null, doc: null, allThreeDone: false });
-      setRank(null);
-      setStreak(0);
-      return undefined;
-    }
-
-    fetchTodayStatus(user.id).then((s) => {
-      if (cancelled) return;
-      setStatus(s);
-      if (s.allThreeDone) fetchRank(user.id).then((r) => !cancelled && setRank(r));
-    });
-    fetchStreak(user.id).then((s) => !cancelled && setStreak(s.current_streak || 0));
-
-    return () => { cancelled = true; };
-  }, [user]);
+  const { status, rank, streak } = useTodayStatus();
 
   return (
     <>

@@ -7,7 +7,7 @@ export default function Copyright() {
     <>
       <TopBar back title="Copyright" />
       <div className="legal-wrap">
-        <p className="legal-updated">Last updated: September 2026</p>
+        <p className="legal-updated">Last updated: October 2026</p>
 
         <section>
           <h2>Ownership</h2>

@@ -27,12 +27,20 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
 
   const [selectedLeft, setSelectedLeft] = useState(null);
   const [selectedRight, setSelectedRight] = useState(null);
-  const [matched, setMatched] = useState(new Set());
+  // Matched cards are tracked per side. A pair counts as correct when the
+  // chosen answer card SAYS the right thing, not only when it is the exact
+  // card that was dealt for that question. Without this, two questions that
+  // happen to share an answer (e.g. two conditions that are both treated with
+  // "Prednisolone") produced two identical-looking cards where only one was
+  // accepted and tapping the other cost a +10s penalty.
+  const [matchedLeft, setMatchedLeft] = useState(new Set());
+  const [matchedRight, setMatchedRight] = useState(new Set());
+  const rightTextById = useMemo(() => Object.fromEntries(items.map((it) => [it.id, it.right])), [items]);
   const [wrongFlash, setWrongFlash] = useState(null);
   const [mistakes, setMistakes] = useState(0);
 
   const total = items.length;
-  const done = matched.size === total;
+  const done = matchedLeft.size === total;
 
   // Timer: starts the instant the set is shown, runs until every pair is
   // matched. Each wrong pick adds a fixed penalty on top of real elapsed time.
@@ -63,11 +71,12 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
 
   useEffect(() => {
     if (selectedLeft && selectedRight) {
-      if (selectedLeft === selectedRight) {
+      if (rightTextById[selectedLeft] === rightTextById[selectedRight]) {
         playCorrect();
         hapticCorrect();
         onProgress && onProgress();
-        setMatched((prev) => new Set(prev).add(selectedLeft));
+        setMatchedLeft((prev) => new Set(prev).add(selectedLeft));
+        setMatchedRight((prev) => new Set(prev).add(selectedRight));
         setSelectedLeft(null);
         setSelectedRight(null);
       } else {
@@ -87,8 +96,10 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
     }
   }, [selectedLeft, selectedRight]);
 
+  const isMatched = (side, id) => (side === 'left' ? matchedLeft : matchedRight).has(id);
+
   function pick(side, id) {
-    if (matched.has(id) || wrongFlash) return;
+    if (isMatched(side, id) || wrongFlash) return;
     playTap();
     hapticTap();
     if (side === 'left') setSelectedLeft((prev) => (prev === id ? null : id));
@@ -96,7 +107,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
   }
 
   function stateClass(side, id) {
-    if (matched.has(id)) return 'matched';
+    if (isMatched(side, id)) return 'matched';
     if (wrongFlash && ((side === 'left' && wrongFlash.left === id) || (side === 'right' && wrongFlash.right === id))) return 'wrong';
     if (side === 'left' && selectedLeft === id) return 'selected';
     if (side === 'right' && selectedRight === id) return 'selected';
@@ -125,8 +136,8 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
         )}
       </div>
       <div className="match-progress">
-        <div className="match-progress-bar" style={{ width: `${(matched.size / total) * 100}%` }} />
-        <span className="match-progress-label">{matched.size}/{total} matched</span>
+        <div className="match-progress-bar" style={{ width: `${(matchedLeft.size / total) * 100}%` }} />
+        <span className="match-progress-label">{matchedLeft.size}/{total} matched</span>
       </div>
       <div className="match-columns">
         <div className="match-col">
@@ -134,7 +145,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
             <button
               key={it.id}
               className={`match-card ${stateClass('left', it.id)}`}
-              disabled={matched.has(it.id)}
+              disabled={isMatched('left', it.id)}
               onClick={() => pick('left', it.id)}
             >
               {it.text}
@@ -146,7 +157,7 @@ export default function MatchGame({ items, accentClass = 'teal', onComplete, onP
             <button
               key={it.id}
               className={`match-card ${stateClass('right', it.id)}`}
-              disabled={matched.has(it.id)}
+              disabled={isMatched('right', it.id)}
               onClick={() => pick('right', it.id)}
             >
               {it.text}

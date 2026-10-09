@@ -6,7 +6,7 @@ import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import { useAuth } from '../context/AuthContext';
 import { supabase, todayIST } from '../utils/supabaseClient';
-import { fetchTodayStatus, bumpStreakIfNeeded } from '../utils/todayStatus';
+import { useTodayStatus } from '../context/TodayStatusContext';
 import './SectionPage.css';
 
 // Each section's ~50KB data file is loaded on demand (dynamic import)
@@ -28,6 +28,8 @@ export default function SectionPage() {
   const { section } = useParams();
   const config = SECTION_META[section];
   const { user, profile } = useAuth();
+  const userId = user?.id || null;
+  const { markCompleted, noteCompleted } = useTodayStatus();
 
   const [data, setData] = useState(null);
   const [checking, setChecking] = useState(!!user);
@@ -75,7 +77,7 @@ export default function SectionPage() {
   useEffect(() => {
     let cancelled = false;
     async function checkExisting() {
-      if (!user || !config) {
+      if (!userId || !config) {
         setChecking(false);
         return;
       }
@@ -83,19 +85,20 @@ export default function SectionPage() {
       const { data: row, error } = await supabase
         .from('results')
         .select('time_seconds')
-        .eq('user_id', user.id)
+        .eq('user_id', userId)
         .eq('section', section)
         .eq('day', todayIST())
         .maybeSingle();
       if (error) console.error('Failed to check today\'s result:', error);
       if (!cancelled) {
         setPriorResult(row || null);
+        if (row) noteCompleted(section, row.time_seconds);
         setChecking(false);
       }
     }
     checkExisting();
     return () => { cancelled = true; };
-  }, [user, section, config]);
+  }, [userId, section, config, noteCompleted]);
 
   async function saveResult(totalSeconds) {
     if (typeof navigator !== 'undefined' && navigator.onLine === false) {
@@ -105,7 +108,7 @@ export default function SectionPage() {
     }
 
     const { error } = await supabase.from('results').insert({
-      user_id: user.id,
+      user_id: userId,
       section,
       time_seconds: totalSeconds,
     });
@@ -132,11 +135,10 @@ export default function SectionPage() {
     setPendingSeconds(null);
     setJustSaved(true);
 
-    // If this save just completed all three sections for today, bump the
-    // streak. Checked fresh from the database rather than assumed, so it
-    // stays correct even with multiple tabs/devices.
-    const status = await fetchTodayStatus(user.id);
-    if (status.allThreeDone) bumpStreakIfNeeded(user.id);
+    // Hand over to the shared store (it outlives this page): turns the Home
+    // tile green right away, then reconciles with the server, updates the
+    // streak and rank. Not awaited, so a slow follow-up never delays the UI.
+    markCompleted(section, totalSeconds).catch((e) => console.error('Status refresh failed:', e));
 
     return true;
   }
@@ -184,8 +186,7 @@ export default function SectionPage() {
 
         {user && !profile && (
           <p className="section-dev-note">
-            Your profile is still finishing setup (this can happen right after signing up). Your time
-            will not be saved until that completes, refresh in a moment if you just signed up.
+            Your time will not be saved until you pick a nickname. <Link to="/account">Choose one here</Link>.
           </p>
         )}
 
