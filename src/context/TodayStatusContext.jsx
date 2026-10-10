@@ -126,9 +126,13 @@ export function TodayStatusProvider({ children }) {
 
   // The profile arrives a moment after login (or after picking a nickname):
   // that's the moment anything waiting on it can finally upload.
+  // (Only the upload: the login effect above already loaded status/streak.)
   useEffect(() => {
-    if (canSave) loadAll();
-  }, [canSave, loadAll]);
+    if (!canSave) return;
+    flushOutbox().then((saved) => {
+      if (saved) loadAll();
+    });
+  }, [canSave, flushOutbox, loadAll]);
 
   // Refresh when the app comes back to the foreground (also handles the
   // IST day rolling over while the app stayed open). Throttled. Regaining
