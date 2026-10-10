@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Settings, AlertTriangle, Pill, Trophy, User, Flame } from 'lucide-react';
 import TopBar from './TopBar';
+import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { playTap } from '../utils/sound';
 import { hapticTap } from '../utils/haptics';
@@ -20,12 +21,34 @@ const sections = [
 
 export default function Home() {
   const { user } = useAuth();
-  const { status, rank, streak } = useTodayStatus();
+  const { status, rank, streak, unsaved, retryUnsaved } = useTodayStatus();
+  const [retrying, setRetrying] = useState(false);
+
+  async function handleRetry() {
+    setRetrying(true);
+    try {
+      await retryUnsaved();
+    } finally {
+      setRetrying(false);
+    }
+  }
 
   return (
     <>
       <TopBar />
       <div className="home-wrap">
+        {user && unsaved.length > 0 && (
+          <div className="home-unsaved">
+            <p>
+              {unsaved.length === 1 ? '1 result is' : `${unsaved.length} results are`} not saved yet. Stored on
+              this device, uploading automatically.
+            </p>
+            <button className="pixel-btn coral" onClick={handleRetry} disabled={retrying}>
+              {retrying ? 'Retrying...' : 'Retry now'}
+            </button>
+          </div>
+        )}
+
         <div className="home-sections">
           {sections.map(({ key, label, sub, accent, Icon }) => (
             <Link

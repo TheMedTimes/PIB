@@ -10,9 +10,11 @@ export default function Footer() {
         <span className="dot">&middot;</span>
         <Link to="/privacy">Privacy</Link>
         <span className="dot">&middot;</span>
-        <Link to="/copyright">Copyright</Link>
-        <span className="dot">&middot;</span>
         <a href="mailto:themedtimescontactmail@gmail.com">Contact</a>
+        <span className="dot">&middot;</span>
+        <a href="https://www.instagram.com/the.med.times/" target="_blank" rel="noopener noreferrer">
+          @the.med.times
+        </a>
       </div>
       <p className="site-footer-credit">TheMedTimes &middot; build {__APP_VERSION__}</p>
     </footer>

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import PixelGridBg from './components/PixelGridBg';
 import Home from './components/Home';
 import SectionPage from './components/SectionPage';
@@ -11,7 +11,6 @@ import { TodayStatusProvider } from './context/TodayStatusContext';
 // those stay in the main bundle. Everything below is visited far less
 // often, so it's only downloaded when someone actually navigates there.
 const Terms = lazy(() => import('./components/Terms'));
-const Copyright = lazy(() => import('./components/Copyright'));
 const Privacy = lazy(() => import('./components/Privacy'));
 const Account = lazy(() => import('./components/Account'));
 const Leaderboard = lazy(() => import('./components/Leaderboard'));
@@ -27,7 +26,8 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/terms" element={<Terms />} />
-              <Route path="/copyright" element={<Copyright />} />
+              {/* The Copyright page was removed; keep old links from landing on "Unknown section". */}
+              <Route path="/copyright" element={<Navigate to="/" replace />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/account" element={<Account />} />
               <Route path="/leaderboard" element={<Leaderboard />} />

@@ -34,7 +34,7 @@ function PasswordField({ label, value, onChange, show, onToggle }) {
 export default function Account() {
   const {
     user, profile, loading, recovering,
-    signUp, signIn, signOut, createProfile, requestPasswordReset, updatePassword,
+    signUp, signIn, signOut, createProfile, changeNickname, requestPasswordReset, updatePassword,
   } = useAuth();
 
   const [mode, setMode] = useState('signin'); // 'signin' | 'signup' | 'forgot'
@@ -42,6 +42,7 @@ export default function Account() {
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [editingNickname, setEditingNickname] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -89,6 +90,33 @@ export default function Account() {
     run(async () => {
       const result = await createProfile(nickname);
       if (result.error) setErrorMsg(result.error.message);
+    });
+  };
+
+  function startEditingNickname() {
+    setNickname(profile.nickname);
+    setErrorMsg(null);
+    setMessage(null);
+    setEditingNickname(true);
+  }
+
+  function cancelEditingNickname() {
+    setEditingNickname(false);
+    setNickname('');
+    setErrorMsg(null);
+  }
+
+  const handleChangeNickname = (e) => {
+    e.preventDefault();
+    run(async () => {
+      const result = await changeNickname(nickname);
+      if (result.error) {
+        setErrorMsg(result.error.message);
+      } else {
+        setEditingNickname(false);
+        setNickname('');
+        setMessage('Nickname updated. It shows on the leaderboard straight away.');
+      }
     });
   };
 
@@ -155,8 +183,34 @@ export default function Account() {
         <div className="pixel-panel account-signed-in">
           <p className="account-nickname pixel-text">{profile.nickname}</p>
           <p className="account-email">{user.email}</p>
-          <button className="pixel-btn coral" onClick={signOut}>Sign out</button>
+          {!editingNickname && (
+            <div className="account-actions">
+              <button className="pixel-btn" onClick={startEditingNickname}>Change nickname</button>
+              <button className="pixel-btn coral" onClick={signOut}>Sign out</button>
+            </div>
+          )}
         </div>
+
+        {editingNickname && (
+          <form className="account-form account-edit-nickname" onSubmit={handleChangeNickname}>
+            <label className="account-field">
+              New nickname
+              <input
+                type="text"
+                value={nickname}
+                onChange={(e) => setNickname(e.target.value)}
+                maxLength={24}
+                autoFocus
+                required
+              />
+            </label>
+            <p className="account-note account-note-tight">{NICKNAME_RULES}</p>
+            {errorMsg && <p className="account-error">{errorMsg}</p>}
+            <button type="submit" className="pixel-btn" disabled={busy}>{busy ? 'Working...' : 'Save nickname'}</button>
+            <button type="button" className="account-link-btn" onClick={cancelEditingNickname}>Cancel</button>
+          </form>
+        )}
+        {!editingNickname && message && <p className="account-message account-message-center">{message}</p>}
         <p className="account-note">
           Your times are being saved to the <Link to="/leaderboard">leaderboard</Link>. One attempt per
           section per day counts.

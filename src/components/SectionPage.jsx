@@ -5,7 +5,7 @@ import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
 import { useAuth } from '../context/AuthContext';
-import { supabase, todayIST } from '../utils/supabaseClient';
+import { supabase, todayIST, withTimeout } from '../utils/supabaseClient';
 import { useTodayStatus } from '../context/TodayStatusContext';
 import './SectionPage.css';
 
@@ -24,30 +24,41 @@ function formatTime(totalSeconds) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+// Keyed by section so moving between sections (e.g. via browser history)
+// always starts a fresh page instead of reusing the previous one's state.
 export default function SectionPage() {
   const { section } = useParams();
+  return <SectionContent key={section} section={section} />;
+}
+
+function SectionContent({ section }) {
   const config = SECTION_META[section];
-  const { user, profile } = useAuth();
+  const { user, profile, loading: authLoading } = useAuth();
   const userId = user?.id || null;
-  const { markCompleted, noteCompleted } = useTodayStatus();
+  const { noteCompleted, submitResult, retryUnsaved, unsaved } = useTodayStatus();
 
   const [data, setData] = useState(null);
-  const [checking, setChecking] = useState(!!user);
   // priorResult: a result that already existed in the database BEFORE this
   // page even loaded, this is what triggers the cold "already done for
   // today" lock screen in place of the game itself. It deliberately does
   // NOT get set when you finish a set in this session, finishing should
   // show the match game's own celebration screen, not this lock screen.
-  // The lock screen is only for someone who already played earlier and
-  // comes back later the same day.
   const [priorResult, setPriorResult] = useState(null);
-  const [saveError, setSaveError] = useState(null);
-  const [pendingSeconds, setPendingSeconds] = useState(null);
+  const [checkedKey, setCheckedKey] = useState(null);
+  const [checkFailed, setCheckFailed] = useState(false);
+  const [submitted, setSubmitted] = useState(false); // finished a set this visit while signed in
+  const [submitting, setSubmitting] = useState(false);
+  const [finishedAsGuest, setFinishedAsGuest] = useState(false);
   const [retrying, setRetrying] = useState(false);
-  const [justSaved, setJustSaved] = useState(false);
   const [hasProgress, setHasProgress] = useState(false); // at least one match made this visit
   const [gameFinished, setGameFinished] = useState(false);
   const leaveWarningActive = hasProgress && !gameFinished;
+
+  // True until we know whether this person already played today. Derived
+  // from a key (not a flag set in an effect) so there is never a frame where
+  // the game shows before the check has even started.
+  const checkKey = userId ? `${userId}|${section}` : null;
+  const checking = !!checkKey && checkedKey !== checkKey;
 
   // Warn before closing the tab/app or hitting browser back/refresh while
   // a set is genuinely in progress (at least one match made, not finished).
@@ -62,8 +73,7 @@ export default function SectionPage() {
   }, [leaveWarningActive]);
 
   useEffect(() => {
-    setData(null);
-    if (!config) return;
+    if (!config) return undefined;
     let cancelled = false;
     config.loadData().then((mod) => {
       if (!cancelled) setData(mod.default);
@@ -75,85 +85,77 @@ export default function SectionPage() {
   const warning = data ? poolSizeWarning(data) : null;
 
   useEffect(() => {
+    if (!userId || !config) return undefined;
     let cancelled = false;
     async function checkExisting() {
-      if (!userId || !config) {
-        setChecking(false);
-        return;
+      const { signal, clear } = withTimeout(10000);
+      let row = null;
+      let failed = false;
+      try {
+        const res = await supabase
+          .from('results')
+          .select('time_seconds')
+          .eq('user_id', userId)
+          .eq('section', section)
+          .eq('day', todayIST())
+          .abortSignal(signal)
+          .maybeSingle();
+        if (res.error) throw res.error;
+        row = res.data;
+      } catch (e) {
+        console.error("Failed to check today's result:", e);
+        failed = true;
+      } finally {
+        clear();
       }
-      setChecking(true);
-      const { data: row, error } = await supabase
-        .from('results')
-        .select('time_seconds')
-        .eq('user_id', userId)
-        .eq('section', section)
-        .eq('day', todayIST())
-        .maybeSingle();
-      if (error) console.error('Failed to check today\'s result:', error);
-      if (!cancelled) {
-        setPriorResult(row || null);
-        if (row) noteCompleted(section, row.time_seconds);
-        setChecking(false);
-      }
+      if (cancelled) return;
+      setCheckFailed(failed);
+      setPriorResult(row || null);
+      if (row) noteCompleted(section, row.time_seconds);
+      setCheckedKey(checkKey);
     }
     checkExisting();
     return () => { cancelled = true; };
-  }, [userId, section, config, noteCompleted]);
-
-  async function saveResult(totalSeconds) {
-    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
-      setSaveError('You appear to be offline. Reconnect, then tap retry, your set is already cleared, this just saves the time.');
-      setPendingSeconds(totalSeconds);
-      return false;
-    }
-
-    const { error } = await supabase.from('results').insert({
-      user_id: userId,
-      section,
-      time_seconds: totalSeconds,
-    });
-
-    if (error && error.code !== '23505') {
-      // Genuine failure (not just "already saved elsewhere"): do NOT lock
-      // the screen, since nothing actually made it into the database.
-      console.error('Failed to save result:', error);
-      setSaveError(
-        `Could not save your time (${error.message || error.code || 'unknown error'}). Tap retry, your set is already cleared, this just saves the time.`
-      );
-      setPendingSeconds(totalSeconds);
-      return false;
-    }
-
-    // Either the insert succeeded, or it failed with 23505 (unique
-    // violation) meaning a row for today already exists, both cases mean
-    // the database genuinely has today's result. Deliberately NOT setting
-    // priorResult here, MatchGame is already showing its own "Set
-    // cleared!" screen with this exact time, that should stay visible for
-    // the rest of this session. The colder "already done" lock screen is
-    // reserved for a fresh page load on a later visit.
-    setSaveError(null);
-    setPendingSeconds(null);
-    setJustSaved(true);
-
-    // Hand over to the shared store (it outlives this page): turns the Home
-    // tile green right away, then reconciles with the server, updates the
-    // streak and rank. Not awaited, so a slow follow-up never delays the UI.
-    markCompleted(section, totalSeconds).catch((e) => console.error('Status refresh failed:', e));
-
-    return true;
-  }
+  }, [userId, section, config, noteCompleted, checkKey]);
 
   async function handleComplete({ totalSeconds }) {
     setGameFinished(true); // the match itself is done, nothing left to lose by leaving now
-    if (!user) return; // guests play freely, nothing to save
-    await saveResult(totalSeconds);
+    if (!userId) {
+      setFinishedAsGuest(true); // nothing to save without an account
+      return;
+    }
+    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      // Stores the time on this device first, then uploads with retries.
+      await submitResult(section, totalSeconds);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   async function handleRetry() {
-    if (pendingSeconds == null) return;
     setRetrying(true);
-    await saveResult(pendingSeconds);
-    setRetrying(false);
+    try {
+      await retryUnsaved();
+    } finally {
+      setRetrying(false);
+    }
+  }
+
+  const pendingEntry = unsaved.find((e) => e.section === section);
+
+  let statusNote;
+  if (finishedAsGuest) {
+    statusNote = (
+      <>
+        Not saved: you are not signed in. <Link to="/account">Sign in</Link> to record your times.
+      </>
+    );
+  } else if (submitted) {
+    if (!pendingEntry) statusNote = 'Saved to the leaderboard.';
+    else if (submitting) statusNote = 'Saving your time...';
+    else statusNote = 'Not saved yet. Your time is kept on this device and uploads automatically.';
   }
 
   if (!config) {
@@ -175,24 +177,44 @@ export default function SectionPage() {
         <p className="section-sub">{config.sub}</p>
 
         {warning && <p className="section-dev-note">{warning}</p>}
-        {saveError && (
+        {submitted && pendingEntry && !submitting && (
           <div className="section-dev-note">
-            <p>{saveError}</p>
-            <button className="pixel-btn coral" onClick={handleRetry} disabled={retrying}>
-              {retrying ? 'Retrying...' : 'Retry save'}
-            </button>
+            <p>
+              {profile
+                ? `Could not save your time yet (${pendingEntry.lastError || 'no connection'}). It is stored on this device and will keep retrying, or tap retry.`
+                : 'Your time is stored on this device and will upload as soon as you pick a nickname.'}
+            </p>
+            {profile ? (
+              <button className="pixel-btn coral" onClick={handleRetry} disabled={retrying}>
+                {retrying ? 'Retrying...' : 'Retry save'}
+              </button>
+            ) : (
+              <Link to="/account">Choose a nickname</Link>
+            )}
           </div>
         )}
 
-        {user && !profile && (
+        {!user && !authLoading && !finishedAsGuest && (
+          <p className="section-dev-note">
+            You are playing as a guest, so your time will not be saved. <Link to="/account">Sign in</Link>
+          </p>
+        )}
+
+        {user && !profile && !submitted && (
           <p className="section-dev-note">
             Your time will not be saved until you pick a nickname. <Link to="/account">Choose one here</Link>.
           </p>
         )}
 
+        {user && checkFailed && !submitted && !priorResult && (
+          <p className="section-dev-note">
+            Could not check whether you already played today. If you did, your first time is the one that counts.
+          </p>
+        )}
+
         <div className="arcade-frame section-frame">
-          {!data || checking ? (
-            <p className="section-checking">Loading today's set...</p>
+          {!data || authLoading || checking ? (
+            <p className="section-checking">{authLoading ? 'Signing you in...' : "Loading today's set..."}</p>
           ) : priorResult ? (
             <div className="match-complete">
               <CheckCircle2 className="match-complete-icon" strokeWidth={2} />
@@ -206,7 +228,7 @@ export default function SectionPage() {
               accentClass={config.accent}
               onComplete={handleComplete}
               onProgress={() => setHasProgress(true)}
-              statusNote={user ? (justSaved ? 'Saved to the leaderboard.' : undefined) : undefined}
+              statusNote={statusNote}
             />
           )}
         </div>

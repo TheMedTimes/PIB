@@ -130,3 +130,22 @@
   padding: 6px;
   align-self: center;
 }
+
+.account-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-edit-nickname {
+  margin-top: 18px;
+}
+
+.account-note-tight {
+  margin-top: 0;
+}
+
+.account-message-center {
+  text-align: center;
+  margin-top: 14px;
+}

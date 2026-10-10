@@ -98,3 +98,21 @@
   color: var(--ink-dim);
   text-align: center;
 }
+
+.home-unsaved {
+  font-size: 0.65rem;
+  color: var(--gold);
+  background: rgba(244, 185, 66, 0.1);
+  border: 1px dashed var(--gold);
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+}
+.home-unsaved p {
+  margin: 0;
+}
+.home-unsaved .pixel-btn {
+  margin-top: 10px;
+  font-size: 0.65rem;
+  padding: 10px 14px;
+}

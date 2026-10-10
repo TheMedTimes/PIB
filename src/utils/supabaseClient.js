@@ -19,3 +19,12 @@ export function todayIST() {
 export function yesterdayIST() {
   return new Date(Date.now() + IST_OFFSET_MS - 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
 }
+
+// Abort signal that fires after `ms`. Without a timeout a request on a bad
+// mobile connection (or one stuck behind a session refresh) can hang forever
+// and the UI never learns it failed. Call clear() once the request settles.
+export function withTimeout(ms) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), ms);
+  return { signal: controller.signal, clear: () => clearTimeout(timer) };
+}

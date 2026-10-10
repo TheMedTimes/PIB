@@ -14,9 +14,11 @@ export function validateNickname(raw) {
 
 // Case-insensitive, so "Ravi" is taken if "ravi" exists (the database's own
 // uniqueness rule is case-sensitive, which would allow look-alikes).
-async function nicknameIsFree(nickname) {
+async function nicknameIsFree(nickname, excludeId) {
   const escaped = nickname.replace(/[\\%_]/g, '\\$&');
-  const { data, error } = await supabase.from('profiles').select('id').ilike('nickname', escaped).limit(1);
+  let query = supabase.from('profiles').select('id').ilike('nickname', escaped);
+  if (excludeId) query = query.neq('id', excludeId); // your own current nickname doesn't count as taken
+  const { data, error } = await query.limit(1);
   if (error) return { error };
   return { free: data.length === 0 };
 }
@@ -80,10 +82,21 @@ export function AuthProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      applySession(s);
-      loadProfile(s?.user).finally(() => setLoading(false));
-    });
+    // If reading the stored session hangs (bad connection while it refreshes),
+    // stop waiting after 8s so the app never sits on "loading" forever. The
+    // real session still applies the moment it resolves.
+    const giveUp = setTimeout(() => setLoading(false), 8000);
+    supabase.auth
+      .getSession()
+      .then(({ data: { session: s } }) => {
+        applySession(s);
+        return loadProfile(s?.user);
+      })
+      .catch((e) => console.error('Session load failed:', e))
+      .finally(() => {
+        clearTimeout(giveUp);
+        setLoading(false);
+      });
 
     const { data: listener } = supabase.auth.onAuthStateChange((event, s) => {
       if (event === 'PASSWORD_RECOVERY') setRecovering(true);
@@ -96,7 +109,10 @@ export function AuthProvider({ children }) {
       setTimeout(() => loadProfile(s?.user), 0);
     });
 
-    return () => listener.subscription.unsubscribe();
+    return () => {
+      clearTimeout(giveUp);
+      listener.subscription.unsubscribe();
+    };
   }, [loadProfile, applySession]);
 
   async function signUp(email, password, rawNickname) {
@@ -153,6 +169,33 @@ export function AuthProvider({ children }) {
     return {};
   }
 
+  // For someone who already has a profile. Same rules as signup.
+  async function changeNickname(rawNickname) {
+    if (!user || !profile) return { error: { message: 'Not signed in.' } };
+    const valid = validateNickname(rawNickname);
+    if (valid.error) return { error: { message: valid.error } };
+    if (valid.nickname === profile.nickname) return { error: { message: 'That is already your nickname.' } };
+
+    const check = await nicknameIsFree(valid.nickname, user.id);
+    if (check.error) return { error: { message: 'Could not check that nickname right now. Try again.' } };
+    if (!check.free) return { error: { message: 'That nickname is already taken, try another.' } };
+
+    const { data, error } = await supabase
+      .from('profiles')
+      .update({ nickname: valid.nickname })
+      .eq('id', user.id)
+      .select('id, nickname')
+      .maybeSingle();
+    if (error) {
+      return {
+        error: { message: error.code === '23505' ? 'That nickname is already taken, try another.' : error.message },
+      };
+    }
+    if (!data) return { error: { message: 'Could not update your nickname. Try again.' } };
+    setProfile(data);
+    return {};
+  }
+
   async function requestPasswordReset(email) {
     const redirectTo = `${window.location.origin}${import.meta.env.BASE_URL}account`;
     const { error } = await supabase.auth.resetPasswordForEmail(email, { redirectTo });
@@ -181,6 +224,7 @@ export function AuthProvider({ children }) {
     signIn,
     signOut,
     createProfile,
+    changeNickname,
     requestPasswordReset,
     updatePassword,
   };
