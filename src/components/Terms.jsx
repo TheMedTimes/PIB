@@ -40,9 +40,9 @@ export default function Terms() {
         <section>
           <h2>4. Use of the site</h2>
           <p>
-            The site is free to use. You may not copy, redistribute, or repackage the question sets
-            or app content for commercial purposes without written permission. You agree not to
-            attempt to disrupt, scrape at scale, or interfere with the normal operation of the site.
+            The site is free to use. You agree not to attempt to disrupt, scrape at scale, or
+            interfere with the normal operation of the site. If you believe anything on the site
+            infringes your rights, contact us (see section 7) and we will look into it.
           </p>
         </section>
 
