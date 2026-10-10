@@ -19,7 +19,9 @@ Live site: https://themedtimes.github.io/PIB/
   players get one saved attempt per section per day, a place on the
   leaderboard (needs all three sections), and a streak.
 - **Leaderboard**: top 10 by lowest cumulative time across MOA + ADR + DOC for
-  the current IST day. Old rows are removed so no daily result data is kept.
+  the current IST day (ties go to whoever finished first). Calculated inside
+  the database (`supabase/leaderboard_functions.sql`), so the app only
+  downloads the 10 rows shown plus your own rank. Old rows are removed so no daily result data is kept.
 - **Streak**: a separate tiny table (`streaks`) holding only a count and the
   last completed day, so streaks work without keeping history.
 
@@ -52,6 +54,8 @@ Run in the Supabase SQL Editor:
 2. `supabase/add_streaks.sql`
 3. `supabase/switch_to_ist.sql`
 4. `supabase/launch_hardening.sql`
+5. `supabase/leaderboard_functions.sql` (safe to re-run; until it is run the app
+   falls back to the old, heavier method, so run it any time)
 
 Dashboard settings to check (Authentication):
 

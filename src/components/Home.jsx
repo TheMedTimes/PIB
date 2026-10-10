@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Settings, AlertTriangle, Pill, Trophy, User, Flame } from 'lucide-react';
+import { Settings, AlertTriangle, Pill, Trophy, User } from 'lucide-react';
 import TopBar from './TopBar';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
@@ -21,7 +21,7 @@ const sections = [
 
 export default function Home() {
   const { user } = useAuth();
-  const { status, rank, streak, unsaved, retryUnsaved } = useTodayStatus();
+  const { status, rank, unsaved, retryUnsaved } = useTodayStatus();
   const [retrying, setRetrying] = useState(false);
 
   async function handleRetry() {
@@ -63,13 +63,6 @@ export default function Home() {
             </Link>
           ))}
         </div>
-
-        {user && streak > 0 && (
-          <div className="home-streak">
-            <Flame className="home-streak-icon" strokeWidth={2.25} />
-            <span className="pixel-text home-streak-count">{streak}</span>
-          </div>
-        )}
 
         <div className="home-sections home-sections-utility">
           <Link to="/leaderboard" className="home-card accent-purple" onClick={tap}>

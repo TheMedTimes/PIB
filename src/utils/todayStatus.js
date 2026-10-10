@@ -31,9 +31,23 @@ export async function fetchTodayStatus(userId) {
 
 // Current rank (1-based) on today's cumulative leaderboard. null = not
 // ranked (hasn't completed all three sections), undefined = request failed.
+// The database works it out (supabase/leaderboard_functions.sql) so the app
+// never downloads everyone's rows. Until that file has been run, the
+// "function not found" error (PGRST202) falls back to the old method.
 export async function fetchRank(userId) {
   if (!userId) return null;
 
+  const { data: rank, error: rpcError } = await supabase.rpc('get_my_rank');
+  if (!rpcError) return rank ?? null;
+  if (rpcError.code !== 'PGRST202') {
+    console.error('Failed to fetch rank:', rpcError);
+    return undefined;
+  }
+
+  return fetchRankFallback(userId);
+}
+
+async function fetchRankFallback(userId) {
   const { data, error } = await supabase
     .from('results')
     .select('user_id, section, time_seconds')
