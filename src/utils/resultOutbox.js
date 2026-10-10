@@ -96,17 +96,24 @@ async function trySave(entry) {
 
 async function run(userId, { force }) {
   const saved = [];
-  for (const entry of getPending(userId)) {
-    if (entry.permanent && !force) continue;
-    const error = await trySave(entry);
+  const tried = new Set();
+  // Keep going until nothing new is waiting: a result queued while this run
+  // was already uploading (finish MOA, instantly finish ADR) is picked up by
+  // the same run instead of waiting for the next retry tick. Each entry is
+  // attempted at most once per run, so failures never loop.
+  for (;;) {
+    const next = getPending(userId).find((e) => !tried.has(e.section) && (force || !e.permanent));
+    if (!next) break;
+    tried.add(next.section);
+    const error = await trySave(next);
     // 23505 = a row for today already exists, so the database has it.
     if (!error || error.code === '23505') {
-      remove(entry);
-      saved.push(entry);
+      remove(next);
+      saved.push(next);
     } else {
       console.error('Saving result failed:', error);
-      patch(entry, {
-        attempts: (entry.attempts || 0) + 1,
+      patch(next, {
+        attempts: (next.attempts || 0) + 1,
         lastError: error.message || error.code || 'Unknown error',
         permanent: PERMANENT_CODES.has(error.code),
       });
