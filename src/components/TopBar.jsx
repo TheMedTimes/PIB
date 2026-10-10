@@ -1,11 +1,15 @@
 import { Link } from 'react-router-dom';
-import { Volume2, VolumeX, ChevronLeft } from 'lucide-react';
+import { Volume2, VolumeX, ChevronLeft, Flame } from 'lucide-react';
 import { isMuted, setMuted } from '../utils/sound';
 import { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useTodayStatus } from '../context/TodayStatusContext';
 import './TopBar.css';
 
 export default function TopBar({ back, title, accent, confirmLeave }) {
   const [muted, setMutedState] = useState(isMuted());
+  const { user } = useAuth();
+  const { streak } = useTodayStatus();
 
   function toggleMute() {
     const next = !muted;
@@ -34,6 +38,12 @@ export default function TopBar({ back, title, accent, confirmLeave }) {
           <Link to="/" className="topbar-back pixel-text" onClick={handleNavClick}>
             <ChevronLeft size={14} strokeWidth={3} /> Back
           </Link>
+        )}
+        {user && streak > 0 && (
+          <div className="topbar-streak" title={`${streak}-day streak`} aria-label={`${streak}-day streak`}>
+            <Flame className="topbar-streak-icon" strokeWidth={2.25} />
+            <span className="pixel-text topbar-streak-count">{streak}</span>
+          </div>
         )}
         <button
           className="topbar-mute"

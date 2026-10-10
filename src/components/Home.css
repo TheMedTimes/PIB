@@ -49,25 +49,6 @@
   color: var(--gold);
 }
 
-.home-streak {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 16px;
-}
-
-.home-streak-icon {
-  width: 20px;
-  height: 20px;
-  color: var(--coral);
-}
-
-.home-streak-count {
-  font-size: 0.85rem;
-  color: var(--ink);
-}
-
 .home-sections-utility {
   margin-top: 22px;
   padding-top: 22px;

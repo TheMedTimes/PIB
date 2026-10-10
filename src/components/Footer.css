@@ -13,15 +13,26 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 4px 8px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.site-footer-links a {
+.site-footer-links a,
+.site-footer-btn {
   color: var(--ink-dim);
   text-decoration: none;
 }
-.site-footer-links a:hover {
+.site-footer-links a:hover,
+.site-footer-btn:hover {
   color: var(--teal);
+}
+
+/* "Share" is a button but should look exactly like the links beside it. */
+.site-footer-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
 }
 
 .site-footer-links .dot {
