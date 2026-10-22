@@ -28,6 +28,9 @@ export function TodayStatusProvider({ children }) {
   const [rank, setRank] = useState(null);
   const [streak, setStreak] = useState(0);
   const [unsaved, setUnsaved] = useState([]);
+  // True once the server has told us today's progress at least once, so a
+  // page can tell "nothing finished yet" apart from "haven't heard back yet".
+  const [statusLoaded, setStatusLoaded] = useState(false);
 
   const statusRef = useRef(EMPTY);
   const keyRef = useRef(null);
@@ -46,6 +49,7 @@ export function TodayStatusProvider({ children }) {
       statusRef.current = EMPTY;
       setStatus(EMPTY);
       setRank(null);
+      setStatusLoaded(false);
     }
   }, [userId]);
 
@@ -90,7 +94,10 @@ export function TodayStatusProvider({ children }) {
     await flushOutbox();
 
     const server = await fetchTodayStatus(userId);
-    if (server) addCompleted(server);
+    if (server) {
+      addCompleted(server);
+      setStatusLoaded(true);
+    }
 
     const complete = allDone(statusRef.current);
 
@@ -116,6 +123,7 @@ export function TodayStatusProvider({ children }) {
       setRank(null);
       setStreak(0);
       setUnsaved([]);
+      setStatusLoaded(false);
       return undefined;
     }
     setStreak(0);
@@ -201,7 +209,7 @@ export function TodayStatusProvider({ children }) {
     [userId, ensureKey, addCompleted]
   );
 
-  const value = { status, rank, streak, unsaved, submitResult, retryUnsaved, noteCompleted, refresh: loadAll };
+  const value = { status, statusLoaded, rank, streak, unsaved, submitResult, retryUnsaved, noteCompleted, refresh: loadAll };
   return <TodayStatusContext.Provider value={value}>{children}</TodayStatusContext.Provider>;
 }
 

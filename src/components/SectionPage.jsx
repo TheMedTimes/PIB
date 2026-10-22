@@ -4,19 +4,11 @@ import { CheckCircle2 } from 'lucide-react';
 import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
+import { SECTION_META } from '../utils/sections';
 import { useAuth } from '../context/AuthContext';
 import { supabase, todayIST, withTimeout } from '../utils/supabaseClient';
 import { useTodayStatus } from '../context/TodayStatusContext';
 import './SectionPage.css';
-
-// Each section's ~50KB data file is loaded on demand (dynamic import)
-// instead of all three being bundled into every page load, a visit to
-// /moa never has to download ADR's or DOC's data.
-const SECTION_META = {
-  moa: { title: 'MOA', sub: 'Mechanism of Action', accent: 'teal', loadData: () => import('../data/moa.json') },
-  adr: { title: 'ADR', sub: 'Adverse Drug Reactions', accent: 'pink', loadData: () => import('../data/adr.json') },
-  doc: { title: 'DOC', sub: 'Drugs of Choice', accent: 'gold', loadData: () => import('../data/doc.json') },
-};
 
 function formatTime(totalSeconds) {
   const m = Math.floor(totalSeconds / 60);

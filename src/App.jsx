@@ -14,6 +14,7 @@ const Terms = lazy(() => import('./components/Terms'));
 const Privacy = lazy(() => import('./components/Privacy'));
 const Account = lazy(() => import('./components/Account'));
 const Leaderboard = lazy(() => import('./components/Leaderboard'));
+const Review = lazy(() => import('./components/Review'));
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/account" element={<Account />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/review" element={<Review />} />
               <Route path="/:section" element={<SectionPage />} />
             </Routes>
           </Suspense>

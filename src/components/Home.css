@@ -35,6 +35,7 @@
 .home-card.accent-pink { border-left-color: var(--pink); }
 .home-card.accent-gold { border-left-color: var(--gold); }
 .home-card.accent-purple { border-left-color: var(--purple-accent); }
+.home-card.accent-green { border-left-color: var(--success-green); }
 .home-card.accent-muted { border-left-color: var(--navy-700); }
 
 /* Completed-today tinge: a light green wash over the card, the section's

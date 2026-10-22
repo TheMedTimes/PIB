@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Settings, AlertTriangle, Pill, Trophy, User } from 'lucide-react';
+import { Settings, AlertTriangle, Pill, Trophy, User, BookOpenCheck } from 'lucide-react';
 import TopBar from './TopBar';
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { playTap } from '../utils/sound';
 import { hapticTap } from '../utils/haptics';
 import { useTodayStatus } from '../context/TodayStatusContext';
+import { SECTIONS } from '../utils/todayStatus';
 import './Home.css';
 
 function tap() {
@@ -23,6 +24,8 @@ export default function Home() {
   const { user } = useAuth();
   const { status, rank, unsaved, retryUnsaved } = useTodayStatus();
   const [retrying, setRetrying] = useState(false);
+  // Review (today's answers) unlocks once all three sections are done, and only for signed-in players.
+  const canReview = !!user && SECTIONS.every((s) => status[s] !== null);
 
   async function handleRetry() {
     setRetrying(true);
@@ -65,6 +68,13 @@ export default function Home() {
         </div>
 
         <div className="home-sections home-sections-utility">
+          {canReview && (
+            <Link to="/review" className="home-card accent-green" onClick={tap}>
+              <BookOpenCheck className="home-card-icon" strokeWidth={2.25} />
+              <span className="home-card-label pixel-text">REVIEW</span>
+              <span className="home-card-sub">Today's answers</span>
+            </Link>
+          )}
           <Link to="/leaderboard" className="home-card accent-purple" onClick={tap}>
             <Trophy className="home-card-icon" strokeWidth={2.25} />
             <span className="home-card-label pixel-text">
