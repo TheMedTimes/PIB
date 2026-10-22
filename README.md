@@ -18,6 +18,10 @@ Live site: https://themedtimes.github.io/PIB/
 - **Login is optional.** Guests play freely and nothing is stored. Logged-in
   players get one saved attempt per section per day, a place on the
   leaderboard (needs all three sections), and a streak.
+- **Review**: once a signed-in player has finished all three sections for the
+  day, a Review tile appears on Home showing that day's correct pairs. It is
+  hidden for guests and until all three are done. (The question data ships to
+  the browser so the games can run, so this is a feature gate, not a secret.)
 - **Leaderboard**: top 10 by lowest cumulative time across MOA + ADR + DOC for
   the current IST day (ties go to whoever finished first). Calculated inside
   the database (`supabase/leaderboard_functions.sql`), so the app only
