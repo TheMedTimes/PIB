@@ -8,14 +8,15 @@ export const SECTIONS = ['moa', 'adr', 'doc'];
 // as "you haven't solved anything today", that is what used to wipe the
 // green tinge from Home whenever a request failed.
 
-// Today's (IST) completed sections for this user, as { moa, adr, doc }
-// with seconds or null. Returns null on failure.
+// Today's (IST) completed sections for this user in EACH mode, as
+// { exam: { moa, adr, doc }, hard: { moa, adr, doc } } with seconds or null.
+// Returns null on failure.
 export async function fetchTodayStatus(userId) {
   if (!userId) return null;
 
   const { data, error } = await supabase
     .from('results')
-    .select('section, time_seconds')
+    .select('section, mode, time_seconds')
     .eq('user_id', userId)
     .eq('day', todayIST());
 
@@ -24,56 +25,31 @@ export async function fetchTodayStatus(userId) {
     return null;
   }
 
-  const status = { moa: null, adr: null, doc: null };
-  for (const row of data) status[row.section] = row.time_seconds;
+  const status = {
+    exam: { moa: null, adr: null, doc: null },
+    hard: { moa: null, adr: null, doc: null },
+  };
+  for (const row of data) {
+    if (status[row.mode]) status[row.mode][row.section] = row.time_seconds;
+  }
   return status;
 }
 
-// Current rank (1-based) on today's cumulative leaderboard. null = not
-// ranked (hasn't completed all three sections), undefined = request failed.
-// The database works it out (supabase/leaderboard_functions.sql) so the app
-// never downloads everyone's rows. Until that file has been run, the
-// "function not found" error (PGRST202) falls back to the old method.
-export async function fetchRank(userId) {
+// Current rank (1-based) in this mode on today's cumulative leaderboard.
+// null = not ranked (hasn't completed all three sections in this mode),
+// undefined = request failed. The database works it out
+// (supabase/exam_mode.sql), so the app never downloads everyone's rows.
+export async function fetchRank(userId, mode) {
   if (!userId) return null;
 
-  const { data: rank, error: rpcError } = await supabase.rpc('get_my_rank');
-  if (!rpcError) return rank ?? null;
-  if (rpcError.code !== 'PGRST202') {
-    console.error('Failed to fetch rank:', rpcError);
-    return undefined;
-  }
-
-  return fetchRankFallback(userId);
-}
-
-async function fetchRankFallback(userId) {
-  const { data, error } = await supabase
-    .from('results')
-    .select('user_id, section, time_seconds')
-    .eq('day', todayIST());
+  const { data: rank, error } = await supabase.rpc('get_my_rank', { p_mode: mode });
   if (error) {
     console.error('Failed to fetch rank:', error);
     return undefined;
   }
-
-  const byUser = new Map();
-  for (const row of data) {
-    const entry = byUser.get(row.user_id) || {};
-    entry[row.section] = row.time_seconds;
-    byUser.set(row.user_id, entry);
-  }
-
-  const totals = [...byUser.entries()]
-    .filter(([, sections]) => SECTIONS.every((s) => sections[s] !== undefined))
-    .map(([uid, sections]) => ({ uid, total: SECTIONS.reduce((sum, s) => sum + sections[s], 0) }))
-    .sort((a, b) => a.total - b.total);
-
-  const index = totals.findIndex((t) => t.uid === userId);
-  return index === -1 ? null : index + 1;
+  return rank ?? null;
 }
 
-// { current_streak, last_completed_day }, or null on failure.
 export async function fetchStreak(userId) {
   if (!userId) return null;
   const { data, error } = await supabase

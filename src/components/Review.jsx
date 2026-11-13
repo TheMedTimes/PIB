@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import TopBar from './TopBar';
+import ModeToggle from './ModeToggle';
+import { useMode, MODE_META } from '../context/ModeContext';
 import { useAuth } from '../context/AuthContext';
 import { useTodayStatus } from '../context/TodayStatusContext';
 import { getTodaysSet } from '../utils/dailyRotation';
 import { SECTIONS } from '../utils/todayStatus';
-import { SECTION_META } from '../utils/sections';
+import { SECTION_META, loadSectionData } from '../utils/sections';
 import './Review.css';
 
 // Today's correct pairs for MOA, ADR and DOC. Only for signed-in players who
@@ -13,29 +15,34 @@ import './Review.css';
 // the games, so it is always exactly the set people just played.
 export default function Review() {
   const { user, loading: authLoading } = useAuth();
+  const { mode } = useMode();
   const { status, statusLoaded, refresh } = useTodayStatus();
   const allDone = SECTIONS.every((s) => status[s] !== null);
 
-  const [sets, setSets] = useState(null);
+  // Stored with its mode so switching mode never flashes the other mode's answers.
+  const [loaded, setLoaded] = useState({ mode: null, sets: null });
+  const sets = loaded.mode === mode ? loaded.sets : null;
   const [loadFailed, setLoadFailed] = useState(false);
   const [slow, setSlow] = useState(false);
 
   useEffect(() => {
     if (!user || !allDone) return undefined;
     let cancelled = false;
-    Promise.all(SECTIONS.map((s) => SECTION_META[s].loadData()))
+    setLoadFailed(false);
+    Promise.all(SECTIONS.map((s) => loadSectionData(s, mode)))
       .then((mods) => {
         if (cancelled) return;
-        setSets(
-          SECTIONS.map((key, i) => ({ key, ...SECTION_META[key], items: getTodaysSet(mods[i].default).items }))
-        );
+        setLoaded({
+          mode,
+          sets: SECTIONS.map((key, i) => ({ key, ...SECTION_META[key], items: getTodaysSet(mods[i].default).items })),
+        });
       })
       .catch((e) => {
         console.error('Failed to load review data:', e);
         if (!cancelled) setLoadFailed(true);
       });
     return () => { cancelled = true; };
-  }, [user, allDone]);
+  }, [user, allDone, mode]);
 
   // If we can't hear back about today's progress, say so instead of
   // wrongly claiming the sections aren't finished.
@@ -66,7 +73,7 @@ export default function Review() {
   } else if (!allDone) {
     body = (
       <div className="review-message">
-        <p>Finish MOA, ADR and DOC today to unlock the answers.</p>
+        <p>Finish MOA, ADR and DOC in {MODE_META[mode].label} mode today to unlock the answers.</p>
         <Link to="/" className="pixel-btn">Back to games</Link>
       </div>
     );
@@ -77,7 +84,9 @@ export default function Review() {
   } else {
     body = (
       <>
-        <p className="review-sub">Today's correct pairs. A new set (and a new review) arrives tomorrow.</p>
+        <p className="review-sub">
+          Today's correct pairs in {MODE_META[mode].label} mode. A new set (and a new review) arrives tomorrow.
+        </p>
         {sets.map(({ key, title, sub, accent, items }) => (
           <section key={key} className={`review-section accent-${accent}`}>
             <h2 className="review-heading">
@@ -95,6 +104,10 @@ export default function Review() {
             </div>
           </section>
         ))}
+        <p className="review-disclaimer">
+          Just a fun learning game, not a study guide. Please don't rely on it for exams or patient care. Spotted a
+          mistake or something missing? Email us (see the Report Question link below). See our <Link to="/terms">Terms</Link>.
+        </p>
       </>
     );
   }
@@ -102,7 +115,10 @@ export default function Review() {
   return (
     <>
       <TopBar back title="Review" accent="green" />
-      <div className="review-wrap">{body}</div>
+      <div className="review-wrap">
+        <ModeToggle />
+        {body}
+      </div>
     </>
   );
 }

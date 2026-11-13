@@ -1,0 +1,387 @@
+[
+ {
+  "id": "doc-10",
+  "left": "Acute colonic pseudo-obstruction (Ogilvie syndrome)",
+  "right": "Neostigmine"
+ },
+ {
+  "id": "doc-12",
+  "left": "Chemotherapy-induced nausea and vomiting, early onset",
+  "right": "Ondansetron"
+ },
+ {
+  "id": "doc-13",
+  "left": "Chemotherapy-induced nausea and vomiting, late onset",
+  "right": "Aprepitant"
+ },
+ {
+  "id": "doc-438",
+  "left": "Iron poisoning",
+  "right": "Deferoxamine"
+ },
+ {
+  "id": "doc-31",
+  "left": "Day-care surgery, IV induction agent of choice",
+  "right": "Propofol"
+ },
+ {
+  "id": "doc-35",
+  "left": "Bronchial asthma, anesthesia induction agent of choice",
+  "right": "Ketamine"
+ },
+ {
+  "id": "doc-78",
+  "left": "Intubation, depolarizing muscle relaxant of choice",
+  "right": "Succinylcholine"
+ },
+ {
+  "id": "doc-84",
+  "left": "Renal failure, muscle relaxant of choice",
+  "right": "Atracurium"
+ },
+ {
+  "id": "doc-51",
+  "left": "Heparin toxicity",
+  "right": "Protamine sulfate"
+ },
+ {
+  "id": "doc-52",
+  "left": "Heparin-induced thrombocytopenia",
+  "right": "Argatroban"
+ },
+ {
+  "id": "doc-60",
+  "left": "Sickle cell anemia",
+  "right": "Hydroxyurea"
+ },
+ {
+  "id": "doc-103",
+  "left": "Diabetes insipidus",
+  "right": "Desmopressin"
+ },
+ {
+  "id": "doc-107",
+  "left": "Diabetes mellitus type 2, first-line treatment",
+  "right": "Metformin"
+ },
+ {
+  "id": "doc-109",
+  "left": "Hyperprolactinemia",
+  "right": "Cabergoline"
+ },
+ {
+  "id": "doc-111",
+  "left": "Hyperthyroidism in pregnancy, 1st trimester",
+  "right": "Propylthiouracil"
+ },
+ {
+  "id": "doc-112",
+  "left": "Hyperthyroidism in pregnancy, 2nd and 3rd trimester",
+  "right": "Methimazole"
+ },
+ {
+  "id": "doc-129",
+  "left": "Acute mountain sickness",
+  "right": "Acetazolamide"
+ },
+ {
+  "id": "doc-130",
+  "left": "Acetaminophen (paracetamol) toxicity",
+  "right": "N-acetylcysteine"
+ },
+ {
+  "id": "doc-137",
+  "left": "Chronic gout",
+  "right": "Allopurinol"
+ },
+ {
+  "id": "doc-139",
+  "left": "Hypersensitivity reaction (anaphylaxis)",
+  "right": "Epinephrine"
+ },
+ {
+  "id": "doc-141",
+  "left": "Migraine, prophylaxis",
+  "right": "Propranolol"
+ },
+ {
+  "id": "doc-142",
+  "left": "Migraine, acute attack",
+  "right": "Triptans (e.g. Sumatriptan)"
+ },
+ {
+  "id": "doc-144",
+  "left": "Patent ductus arteriosus, closure",
+  "right": "Indomethacin"
+ },
+ {
+  "id": "doc-145",
+  "left": "Patent ductus arteriosus, maintain patency",
+  "right": "Alprostadil (PGE1)"
+ },
+ {
+  "id": "doc-152",
+  "left": "Rheumatoid arthritis",
+  "right": "Methotrexate"
+ },
+ {
+  "id": "doc-162",
+  "left": "Bronchial asthma, acute attack",
+  "right": "Short-acting beta-2 agonists"
+ },
+ {
+  "id": "doc-181",
+  "left": "HSV and VZV infection",
+  "right": "Acyclovir"
+ },
+ {
+  "id": "doc-193",
+  "left": "Scabies",
+  "right": "Permethrin cream (5%)"
+ },
+ {
+  "id": "doc-195",
+  "left": "MRSA",
+  "right": "Vancomycin"
+ },
+ {
+  "id": "doc-197",
+  "left": "Syphilis, all stages except CNS involvement",
+  "right": "Benzathine penicillin G"
+ },
+ {
+  "id": "doc-208",
+  "left": "Malaria, treatment and prophylaxis (non-falciparum)",
+  "right": "Chloroquine"
+ },
+ {
+  "id": "doc-212",
+  "left": "Severe falciparum malaria",
+  "right": "IV Artesunate"
+ },
+ {
+  "id": "doc-216",
+  "left": "Mycobacterium tuberculosis, first-line regimen",
+  "right": "Isoniazid + Rifampicin + Pyrazinamide + Ethambutol"
+ },
+ {
+  "id": "doc-218",
+  "left": "Pneumocystis jirovecii pneumonia",
+  "right": "Cotrimoxazole"
+ },
+ {
+  "id": "doc-246",
+  "left": "CML",
+  "right": "Imatinib"
+ },
+ {
+  "id": "doc-270",
+  "left": "Mania, prophylaxis",
+  "right": "Lithium"
+ },
+ {
+  "id": "doc-277",
+  "left": "Trigeminal neuralgia",
+  "right": "Carbamazepine"
+ },
+ {
+  "id": "doc-278",
+  "left": "Parkinson's disease",
+  "right": "Levodopa"
+ },
+ {
+  "id": "doc-287",
+  "left": "Treatment-resistant schizophrenia",
+  "right": "Clozapine"
+ },
+ {
+  "id": "doc-291",
+  "left": "Alzheimer's disease, mild to moderate",
+  "right": "Donepezil"
+ },
+ {
+  "id": "doc-292",
+  "left": "Alzheimer's disease, severe",
+  "right": "Memantine"
+ },
+ {
+  "id": "doc-296",
+  "left": "Generalized tonic-clonic seizure",
+  "right": "Valproate"
+ },
+ {
+  "id": "doc-301",
+  "left": "Infantile spasm",
+  "right": "ACTH"
+ },
+ {
+  "id": "doc-302",
+  "left": "Infantile spasm with tuberous sclerosis",
+  "right": "Vigabatrin"
+ },
+ {
+  "id": "doc-304",
+  "left": "Eclamptic seizures",
+  "right": "Magnesium sulfate"
+ },
+ {
+  "id": "doc-308",
+  "left": "Status epilepticus, first-line treatment",
+  "right": "Lorazepam"
+ },
+ {
+  "id": "doc-318",
+  "left": "Amoebiasis, extraintestinal or intestinal symptomatic",
+  "right": "Metronidazole"
+ },
+ {
+  "id": "doc-336",
+  "left": "Rickettsial infection",
+  "right": "Doxycycline"
+ },
+ {
+  "id": "doc-366",
+  "left": "Atropine or Belladonna poisoning",
+  "right": "Physostigmine"
+ },
+ {
+  "id": "doc-370",
+  "left": "Cheese reaction (MAOI + tyramine)",
+  "right": "Phentolamine"
+ },
+ {
+  "id": "doc-383",
+  "left": "Myasthenia gravis, diagnosis",
+  "right": "Edrophonium"
+ },
+ {
+  "id": "doc-384",
+  "left": "Myasthenia gravis, treatment",
+  "right": "Pyridostigmine"
+ },
+ {
+  "id": "doc-404",
+  "left": "PSVT, acute treatment",
+  "right": "IV Adenosine"
+ },
+ {
+  "id": "doc-408",
+  "left": "Septic shock",
+  "right": "Norepinephrine"
+ },
+ {
+  "id": "doc-419",
+  "left": "Edema caused by liver cirrhosis",
+  "right": "Spironolactone"
+ },
+ {
+  "id": "doc-432",
+  "left": "Methanol or ethylene glycol poisoning",
+  "right": "Fomepizole"
+ },
+ {
+  "id": "doc-433",
+  "left": "Cyanide poisoning",
+  "right": "Hydroxocobalamin"
+ },
+ {
+  "id": "doc-436",
+  "left": "Beta-blocker overdose",
+  "right": "Glucagon"
+ },
+ {
+  "id": "doc-439",
+  "left": "Carbon monoxide poisoning",
+  "right": "100% Oxygen (Hyperbaric O2 if severe)"
+ },
+ {
+  "id": "doc-440",
+  "left": "Methemoglobinemia",
+  "right": "Methylene blue"
+ },
+ {
+  "id": "doc-443",
+  "left": "Wilson's disease (copper toxicity)",
+  "right": "Penicillamine"
+ },
+ {
+  "id": "doc-444",
+  "left": "Isoniazid overdose (seizures)",
+  "right": "Pyridoxine (Vitamin B6)"
+ },
+ {
+  "id": "doc-445",
+  "left": "Digoxin toxicity, severe",
+  "right": "Digoxin immune Fab"
+ },
+ {
+  "id": "doc-446",
+  "left": "Benzodiazepine overdose",
+  "right": "Flumazenil"
+ },
+ {
+  "id": "doc-447",
+  "left": "Opioid overdose",
+  "right": "Naloxone"
+ },
+ {
+  "id": "doc-448",
+  "left": "Organophosphate poisoning",
+  "right": "Atropine + Pralidoxime"
+ },
+ {
+  "id": "doc-450",
+  "left": "Fetal lung maturation, antenatal steroid of choice",
+  "right": "Betamethasone"
+ },
+ {
+  "id": "doc-453",
+  "left": "Magnesium sulfate toxicity",
+  "right": "Calcium gluconate"
+ },
+ {
+  "id": "doc-458",
+  "left": "Rh isoimmunization, prevention",
+  "right": "Anti-D immunoglobulin"
+ },
+ {
+  "id": "doc-x1",
+  "left": "Absence seizure (pure)",
+  "right": "Ethosuximide"
+ },
+ {
+  "id": "doc-x2",
+  "left": "Alcohol withdrawal",
+  "right": "Benzodiazepines (e.g. chlordiazepoxide, lorazepam)"
+ },
+ {
+  "id": "doc-x3",
+  "left": "Hepatic encephalopathy",
+  "right": "Lactulose"
+ },
+ {
+  "id": "doc-x4",
+  "left": "Pheochromocytoma, pre-operative preparation",
+  "right": "Phenoxybenzamine"
+ },
+ {
+  "id": "doc-x5",
+  "left": "Symptomatic sinus bradycardia",
+  "right": "Atropine"
+ },
+ {
+  "id": "doc-x6",
+  "left": "Salicylate poisoning",
+  "right": "Sodium bicarbonate (urinary alkalinisation)"
+ },
+ {
+  "id": "doc-x7",
+  "left": "Dabigatran reversal",
+  "right": "Idarucizumab"
+ },
+ {
+  "id": "doc-x8",
+  "left": "Wernicke encephalopathy",
+  "right": "Thiamine"
+ }
+]

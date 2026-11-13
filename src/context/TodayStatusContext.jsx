@@ -1,11 +1,13 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { useAuth } from './AuthContext';
+import { useMode, MODES } from './ModeContext';
 import { todayIST } from '../utils/supabaseClient';
 import { SECTIONS, fetchTodayStatus, fetchRank, fetchStreak, bumpStreakIfNeeded } from '../utils/todayStatus';
 import { getPending, queueResult, flushPending } from '../utils/resultOutbox';
 
-// One place that knows which sections you've finished today (IST), your
-// leaderboard rank, your streak, and any results still waiting to upload.
+// One place that knows, for each mode (Exam / Hard), which sections you've
+// finished today (IST), your leaderboard rank, plus your streak (shared
+// across modes) and any results still waiting to upload.
 // It sits above the router, so:
 //   - it survives navigating between Home and the section pages
 //   - an upload that finishes AFTER you've pressed Back still updates Home
@@ -13,7 +15,9 @@ import { getPending, queueResult, flushPending } from '../utils/resultOutbox';
 //     refresh can never remove a section you've already finished
 //   - a finished set is stored on this device first (see resultOutbox.js)
 //     and uploaded with retries, so a failed request never loses it
-const EMPTY = { moa: null, adr: null, doc: null };
+const EMPTY_MODE = { moa: null, adr: null, doc: null };
+const EMPTY = { exam: EMPTY_MODE, hard: EMPTY_MODE };
+const NO_RANKS = { exam: null, hard: null };
 const RETRY_EVERY_MS = 10000;
 const TodayStatusContext = createContext(null);
 
@@ -21,11 +25,12 @@ const allDone = (s) => SECTIONS.every((k) => s[k] !== null);
 
 export function TodayStatusProvider({ children }) {
   const { user, profile } = useAuth();
+  const { mode } = useMode();
   const userId = user?.id || null;
   const canSave = !!userId && !!profile; // results need a profile row (foreign key)
 
-  const [status, setStatus] = useState(EMPTY);
-  const [rank, setRank] = useState(null);
+  const [statusByMode, setStatusByMode] = useState(EMPTY);
+  const [ranks, setRanks] = useState(NO_RANKS);
   const [streak, setStreak] = useState(0);
   const [unsaved, setUnsaved] = useState([]);
   // True once the server has told us today's progress at least once, so a
@@ -47,14 +52,16 @@ export function TodayStatusProvider({ children }) {
     if (keyRef.current !== key) {
       keyRef.current = key;
       statusRef.current = EMPTY;
-      setStatus(EMPTY);
-      setRank(null);
+      setStatusByMode(EMPTY);
+      setRanks(NO_RANKS);
       setStatusLoaded(false);
     }
   }, [userId]);
 
-  const addCompleted = useCallback((incoming) => {
-    const next = { ...statusRef.current };
+  // incoming: { moa, adr, doc } seconds for one mode. Only ever adds.
+  const addCompleted = useCallback((forMode, incoming) => {
+    const current = statusRef.current[forMode];
+    const next = { ...current };
     let changed = false;
     for (const s of SECTIONS) {
       if (incoming[s] !== null && incoming[s] !== undefined && next[s] !== incoming[s]) {
@@ -63,8 +70,8 @@ export function TodayStatusProvider({ children }) {
       }
     }
     if (changed) {
-      statusRef.current = next;
-      setStatus(next);
+      statusRef.current = { ...statusRef.current, [forMode]: next };
+      setStatusByMode(statusRef.current);
     }
   }, []);
 
@@ -77,9 +84,7 @@ export function TodayStatusProvider({ children }) {
       setUnsaved(getPending(userId));
       if (saved.length) {
         ensureKey();
-        const incoming = {};
-        for (const e of saved) incoming[e.section] = e.seconds;
-        addCompleted(incoming);
+        for (const e of saved) addCompleted(e.mode, { [e.section]: e.seconds });
       }
       return saved.length;
     },
@@ -95,11 +100,13 @@ export function TodayStatusProvider({ children }) {
 
     const server = await fetchTodayStatus(userId);
     if (server) {
-      addCompleted(server);
+      for (const m of MODES) addCompleted(m, server[m]);
       setStatusLoaded(true);
     }
 
-    const complete = allDone(statusRef.current);
+    // The streak is shared: a day counts if all three sections are done in
+    // EITHER mode.
+    const complete = MODES.some((m) => allDone(statusRef.current[m]));
 
     // Idempotent and cheap, so it's safe on every refresh: also repairs a
     // streak update that failed earlier (e.g. dropped connection).
@@ -108,9 +115,17 @@ export function TodayStatusProvider({ children }) {
     const s = await fetchStreak(userId);
     if (s) setStreak(s.current_streak || 0);
 
-    if (complete) {
-      const r = await fetchRank(userId);
-      if (r !== undefined) setRank(r);
+    // Ranks are per mode, and only exist once that mode's three are done.
+    const doneModes = MODES.filter((m) => allDone(statusRef.current[m]));
+    if (doneModes.length) {
+      const results = await Promise.all(doneModes.map((m) => fetchRank(userId, m)));
+      setRanks((prev) => {
+        const next = { ...prev };
+        doneModes.forEach((m, i) => {
+          if (results[i] !== undefined) next[m] = results[i];
+        });
+        return next;
+      });
     }
   }, [userId, ensureKey, addCompleted, flushOutbox]);
 
@@ -119,8 +134,8 @@ export function TodayStatusProvider({ children }) {
     if (!userId) {
       keyRef.current = null;
       statusRef.current = EMPTY;
-      setStatus(EMPTY);
-      setRank(null);
+      setStatusByMode(EMPTY);
+      setRanks(NO_RANKS);
       setStreak(0);
       setUnsaved([]);
       setStatusLoaded(false);
@@ -180,15 +195,15 @@ export function TodayStatusProvider({ children }) {
   // this device immediately, the tile turns green, then it's uploaded.
   // Resolves true once the server has it.
   const submitResult = useCallback(
-    async (section, seconds) => {
+    async (forMode, section, seconds) => {
       if (!userId) return false;
       ensureKey();
-      queueResult(userId, section, seconds);
+      queueResult(userId, forMode, section, seconds);
       setUnsaved(getPending(userId));
-      addCompleted({ [section]: seconds });
+      addCompleted(forMode, { [section]: seconds });
       const saved = await flushOutbox(true);
       if (saved) await loadAll();
-      return !getPending(userId).some((e) => e.section === section);
+      return !getPending(userId).some((e) => e.mode === forMode && e.section === section);
     },
     [userId, ensureKey, addCompleted, flushOutbox, loadAll]
   );
@@ -201,15 +216,26 @@ export function TodayStatusProvider({ children }) {
 
   // Called when a section page discovers an already-saved result.
   const noteCompleted = useCallback(
-    (section, seconds) => {
+    (forMode, section, seconds) => {
       if (!userId) return;
       ensureKey();
-      addCompleted({ [section]: seconds });
+      addCompleted(forMode, { [section]: seconds });
     },
     [userId, ensureKey, addCompleted]
   );
 
-  const value = { status, statusLoaded, rank, streak, unsaved, submitResult, retryUnsaved, noteCompleted, refresh: loadAll };
+  const value = {
+    // Everything below `status` / `rank` follows the currently chosen mode.
+    status: statusByMode[mode],
+    rank: ranks[mode],
+    statusLoaded,
+    streak,
+    unsaved,
+    submitResult,
+    retryUnsaved,
+    noteCompleted,
+    refresh: loadAll,
+  };
   return <TodayStatusContext.Provider value={value}>{children}</TodayStatusContext.Provider>;
 }
 

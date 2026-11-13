@@ -4,7 +4,8 @@ import { CheckCircle2 } from 'lucide-react';
 import TopBar from './TopBar';
 import MatchGame from './MatchGame';
 import { getTodaysSet, poolSizeWarning } from '../utils/dailyRotation';
-import { SECTION_META } from '../utils/sections';
+import { SECTION_META, loadSectionData } from '../utils/sections';
+import { useMode, MODE_META } from '../context/ModeContext';
 import { useAuth } from '../context/AuthContext';
 import { supabase, todayIST, withTimeout } from '../utils/supabaseClient';
 import { useTodayStatus } from '../context/TodayStatusContext';
@@ -20,10 +21,11 @@ function formatTime(totalSeconds) {
 // always starts a fresh page instead of reusing the previous one's state.
 export default function SectionPage() {
   const { section } = useParams();
-  return <SectionContent key={section} section={section} />;
+  const { mode } = useMode();
+  return <SectionContent key={`${section}-${mode}`} section={section} mode={mode} />;
 }
 
-function SectionContent({ section }) {
+function SectionContent({ section, mode }) {
   const config = SECTION_META[section];
   const { user, profile, loading: authLoading } = useAuth();
   const userId = user?.id || null;
@@ -49,7 +51,7 @@ function SectionContent({ section }) {
   // True until we know whether this person already played today. Derived
   // from a key (not a flag set in an effect) so there is never a frame where
   // the game shows before the check has even started.
-  const checkKey = userId ? `${userId}|${section}` : null;
+  const checkKey = userId ? `${userId}|${mode}|${section}` : null;
   const checking = !!checkKey && checkedKey !== checkKey;
 
   // Warn before closing the tab/app or hitting browser back/refresh while
@@ -67,11 +69,11 @@ function SectionContent({ section }) {
   useEffect(() => {
     if (!config) return undefined;
     let cancelled = false;
-    config.loadData().then((mod) => {
+    loadSectionData(section, mode).then((mod) => {
       if (!cancelled) setData(mod.default);
     });
     return () => { cancelled = true; };
-  }, [config]);
+  }, [config, section, mode]);
 
   const { items } = useMemo(() => (data ? getTodaysSet(data) : { items: [] }), [data]);
   const warning = data ? poolSizeWarning(data) : null;
@@ -89,6 +91,7 @@ function SectionContent({ section }) {
           .select('time_seconds')
           .eq('user_id', userId)
           .eq('section', section)
+          .eq('mode', mode)
           .eq('day', todayIST())
           .abortSignal(signal)
           .maybeSingle();
@@ -103,12 +106,12 @@ function SectionContent({ section }) {
       if (cancelled) return;
       setCheckFailed(failed);
       setPriorResult(row || null);
-      if (row) noteCompleted(section, row.time_seconds);
+      if (row) noteCompleted(mode, section, row.time_seconds);
       setCheckedKey(checkKey);
     }
     checkExisting();
     return () => { cancelled = true; };
-  }, [userId, section, config, noteCompleted, checkKey]);
+  }, [userId, section, mode, config, noteCompleted, checkKey]);
 
   async function handleComplete({ totalSeconds }) {
     setGameFinished(true); // the match itself is done, nothing left to lose by leaving now
@@ -120,7 +123,7 @@ function SectionContent({ section }) {
     setSubmitting(true);
     try {
       // Stores the time on this device first, then uploads with retries.
-      await submitResult(section, totalSeconds);
+      await submitResult(mode, section, totalSeconds);
     } finally {
       setSubmitting(false);
     }
@@ -135,7 +138,7 @@ function SectionContent({ section }) {
     }
   }
 
-  const pendingEntry = unsaved.find((e) => e.section === section);
+  const pendingEntry = unsaved.find((e) => e.section === section && e.mode === mode);
 
   let statusNote;
   if (finishedAsGuest) {
@@ -164,7 +167,7 @@ function SectionContent({ section }) {
 
   return (
     <>
-      <TopBar back title={config.title} accent={config.accent} confirmLeave={leaveWarningActive} />
+      <TopBar back title={`${config.title} · ${MODE_META[mode].label}`} accent={config.accent} confirmLeave={leaveWarningActive} />
       <div className="section-wrap">
         <p className="section-sub">{config.sub}</p>
 

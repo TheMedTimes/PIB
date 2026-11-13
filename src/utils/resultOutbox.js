@@ -6,8 +6,9 @@ import { supabase, todayIST, withTimeout } from './supabaseClient';
 // back to the foreground, when the connection returns, and after login or
 // picking a nickname). Nothing is ever lost just because one request failed.
 //
-// Entries are keyed by user + section + IST day. Only the first completed
-// time per key is kept, matching the database's one-attempt-per-day rule.
+// Entries are keyed by user + mode + section + IST day. Only the first
+// completed time per key is kept, matching the database's one-attempt-per-day
+// rule (which applies separately to each mode).
 
 const KEY = 'pib.unsaved-results.v1';
 const SEND_TIMEOUT_MS = 15000;
@@ -21,7 +22,8 @@ let inFlight = null;
 function load() {
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY) || '[]');
-    return Array.isArray(parsed) ? parsed : [];
+    // Entries saved before modes existed were full-question-bank results.
+    return Array.isArray(parsed) ? parsed.map((e) => ({ ...e, mode: e.mode || 'hard' })) : [];
   } catch {
     return [];
   }
@@ -35,7 +37,8 @@ function persist(list) {
   }
 }
 
-const same = (a, b) => a.userId === b.userId && a.section === b.section && a.day === b.day;
+const same = (a, b) =>
+  a.userId === b.userId && a.mode === b.mode && a.section === b.section && a.day === b.day;
 
 // Unsaved results for this person for the current IST day. Anything from a
 // past day is dropped: the database only accepts today's date.
@@ -44,10 +47,10 @@ export function getPending(userId) {
   return load().filter((e) => e.userId === userId && e.day === today);
 }
 
-export function queueResult(userId, section, seconds) {
+export function queueResult(userId, mode, section, seconds) {
   const day = todayIST();
   const list = load().filter((e) => e.day === day);
-  const entry = { userId, section, seconds, day, attempts: 0, lastError: null, permanent: false };
+  const entry = { userId, mode, section, seconds, day, attempts: 0, lastError: null, permanent: false };
   if (!list.some((e) => same(e, entry))) list.push(entry);
   persist(list);
 }
@@ -65,7 +68,7 @@ async function insertOnce(entry) {
   try {
     const { error } = await supabase
       .from('results')
-      .insert({ user_id: entry.userId, section: entry.section, time_seconds: entry.seconds })
+      .insert({ user_id: entry.userId, mode: entry.mode, section: entry.section, time_seconds: entry.seconds })
       .abortSignal(signal);
     return error || null;
   } catch (e) {
@@ -102,9 +105,9 @@ async function run(userId, { force }) {
   // the same run instead of waiting for the next retry tick. Each entry is
   // attempted at most once per run, so failures never loop.
   for (;;) {
-    const next = getPending(userId).find((e) => !tried.has(e.section) && (force || !e.permanent));
+    const next = getPending(userId).find((e) => !tried.has(`${e.mode}:${e.section}`) && (force || !e.permanent));
     if (!next) break;
-    tried.add(next.section);
+    tried.add(`${next.mode}:${next.section}`);
     const error = await trySave(next);
     // 23505 = a row for today already exists, so the database has it.
     if (!error || error.code === '23505') {

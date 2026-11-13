@@ -82,3 +82,14 @@
   color: var(--ink-dim);
   opacity: 0.8;
 }
+
+.review-disclaimer {
+  font-size: 0.62rem;
+  color: var(--ink-dim);
+  line-height: 1.6;
+  text-align: center;
+  margin: 6px 0 0;
+}
+.review-disclaimer a {
+  color: var(--teal);
+}

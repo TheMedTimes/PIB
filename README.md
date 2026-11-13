@@ -58,8 +58,10 @@ Run in the Supabase SQL Editor:
 2. `supabase/add_streaks.sql`
 3. `supabase/switch_to_ist.sql`
 4. `supabase/launch_hardening.sql`
-5. `supabase/leaderboard_functions.sql` (safe to re-run; until it is run the app
-   falls back to the old, heavier method, so run it any time)
+5. `supabase/leaderboard_functions.sql`
+6. `supabase/exam_mode.sql` (adds the Exam/Hard mode column and per-mode leaderboard
+   functions; **run it BEFORE deploying the app version that uses modes**; existing
+   results become Hard; safe to re-run)
 
 Dashboard settings to check (Authentication):
 

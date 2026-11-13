@@ -1,0 +1,392 @@
+[
+ {
+  "id": "moa-13",
+  "left": "Varenicline",
+  "right": "Partial agonist at α4β2 nicotinic receptors",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "moa-22",
+  "left": "Phenoxybenzamine",
+  "right": "Irreversible (covalent) α1 and α2 blockade",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "moa-25",
+  "left": "Tamsulosin",
+  "right": "α1A-selective blockade, relaxes prostate/bladder neck",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "moa-34",
+  "left": "Latanoprost",
+  "right": "FP receptor agonist, ↑uveoscleral outflow",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "moa-44",
+  "left": "Ondansetron",
+  "right": "Blocks 5-HT3 receptors on vagal afferents and CTZ",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-45",
+  "left": "Sumatriptan",
+  "right": "Agonises 5-HT1B/1D, constricts cranial vessels",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-50",
+  "left": "Aspirin",
+  "right": "Irreversibly acetylates COX-1 and COX-2",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-52",
+  "left": "Celecoxib",
+  "right": "Selective COX-2 inhibition, spares gastric COX-1",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-54",
+  "left": "Methotrexate",
+  "right": "Inhibits dihydrofolate reductase (DHFR)",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-55",
+  "left": "Cyclosporine",
+  "right": "Calcineurin inhibitor, blocks T-cell IL-2 production",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-58",
+  "left": "Etanercept",
+  "right": "Neutralises TNF-α",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-60",
+  "left": "Colchicine",
+  "right": "Binds tubulin, inhibits neutrophil migration/phagocytosis",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-62",
+  "left": "Allopurinol",
+  "right": "Inhibits xanthine oxidase, ↓uric acid formation",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-66",
+  "left": "Montelukast",
+  "right": "Blocks CysLT1 (leukotriene) receptors",
+  "chapter": "Respiratory Disorders"
+ },
+ {
+  "id": "moa-69",
+  "left": "Omalizumab",
+  "right": "Monoclonal antibody binding free IgE",
+  "chapter": "Respiratory Disorders"
+ },
+ {
+  "id": "moa-72",
+  "left": "Leuprolide",
+  "right": "Continuous GnRH receptor stimulation → desensitisation",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-76",
+  "left": "Propylthiouracil",
+  "right": "Inhibits thyroid peroxidase + peripheral T4→T3 conversion",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-79",
+  "left": "Glibenclamide",
+  "right": "Closes pancreatic β-cell K-ATP channels, ↑insulin release",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-81",
+  "left": "Sitagliptin",
+  "right": "Inhibits DPP-4, prolongs incretin (GLP-1) action",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-82",
+  "left": "Metformin",
+  "right": "Activates AMP kinase, ↓hepatic gluconeogenesis",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-83",
+  "left": "Pioglitazone",
+  "right": "PPAR-γ agonist, improves insulin sensitivity",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-85",
+  "left": "Dapagliflozin",
+  "right": "Inhibits renal SGLT-2, causes glycosuria",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-91",
+  "left": "Finasteride",
+  "right": "Blocks 5α-reductase, ↓conversion of testosterone to DHT",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-92",
+  "left": "Sildenafil",
+  "right": "Inhibits PDE-5, preserves cGMP, prolongs NO-mediated relaxation",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-96",
+  "left": "Tamoxifen",
+  "right": "Tissue-selective ER partial agonist/antagonist (SERM)",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-110",
+  "left": "Succinylcholine",
+  "right": "Persistently depolarises NM receptors, flaccid paralysis",
+  "chapter": "Peripheral/Somatic Nervous System"
+ },
+ {
+  "id": "moa-111",
+  "left": "Dantrolene",
+  "right": "Blocks ryanodine receptor Ca2+ release (SR)",
+  "chapter": "Peripheral/Somatic Nervous System"
+ },
+ {
+  "id": "moa-120",
+  "left": "Ketamine",
+  "right": "NMDA receptor antagonist (dissociative anaesthesia)",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-124",
+  "left": "Phenytoin",
+  "right": "Blocks voltage-gated Na+ channels (use-dependent)",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-126",
+  "left": "Ethosuximide",
+  "right": "Blocks T-type Ca2+ channels in the thalamus",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-129",
+  "left": "Gabapentin",
+  "right": "Binds α2δ subunit of voltage-gated Ca2+ channels",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-131",
+  "left": "Vigabatrin",
+  "right": "Irreversibly inhibits GABA transaminase",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-135",
+  "left": "Selegiline",
+  "right": "Inhibits MAO-B, ↓dopamine breakdown",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-142",
+  "left": "Lithium carbonate",
+  "right": "Inhibits inositol monophosphatase/GSK-3",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-166",
+  "left": "Furosemide",
+  "right": "Inhibits Na+-K+-2Cl- cotransport in thick ascending limb",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-167",
+  "left": "Spironolactone",
+  "right": "Aldosterone (mineralocorticoid receptor) antagonist",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-169",
+  "left": "Captopril",
+  "right": "Inhibits angiotensin-converting enzyme (ACE)",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-183",
+  "left": "Ivabradine",
+  "right": "Blocks the cardiac pacemaker If current",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-186",
+  "left": "Clopidogrel",
+  "right": "Irreversibly blocks platelet P2Y12 ADP receptors",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-187",
+  "left": "Digoxin",
+  "right": "Inhibits Na+-K+-ATPase, raises intracellular Ca2+ (inotropy)",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-194",
+  "left": "Lovastatin",
+  "right": "Competitively inhibits HMG-CoA reductase",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-205",
+  "left": "Heparin",
+  "right": "Binds antithrombin III, inactivates thrombin and factor Xa",
+  "chapter": "Drugs Affecting Blood"
+ },
+ {
+  "id": "moa-207",
+  "left": "Warfarin sodium",
+  "right": "Inhibits vitamin K epoxide reductase",
+  "chapter": "Drugs Affecting Blood"
+ },
+ {
+  "id": "moa-215",
+  "left": "Omeprazole",
+  "right": "Irreversibly inhibits H+/K+-ATPase (proton pump)",
+  "chapter": "Gastrointestinal Drugs"
+ },
+ {
+  "id": "moa-218",
+  "left": "Aprepitant",
+  "right": "Blocks substance P (NK1) receptors",
+  "chapter": "Gastrointestinal Drugs"
+ },
+ {
+  "id": "moa-229",
+  "left": "Vancomycin",
+  "right": "Binds D-Ala-D-Ala, blocks peptidoglycan cross-linking",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-232",
+  "left": "Chloramphenicol",
+  "right": "Binds 50S subunit, inhibits protein synthesis",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-235",
+  "left": "Gentamicin",
+  "right": "Binds 30S subunit, causes mRNA misreading (bactericidal)",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-236",
+  "left": "Ciprofloxacin",
+  "right": "Inhibits DNA gyrase and topoisomerase IV",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-237",
+  "left": "Rifampicin",
+  "right": "Binds β subunit of bacterial RNA polymerase",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-243",
+  "left": "Isoniazid",
+  "right": "Inhibits mycolic acid synthesis (InhA)",
+  "chapter": "Antibacterial Drugs"
+ },
+ {
+  "id": "moa-247",
+  "left": "Amphotericin B",
+  "right": "Binds ergosterol, forms membrane pores (fungal)",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "moa-262",
+  "left": "Chloroquine",
+  "right": "Inhibits haem polymerisation in the parasite food vacuole",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "moa-278",
+  "left": "5-Fluorouracil",
+  "right": "Inhibits thymidylate synthase",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "moa-280",
+  "left": "Vincristine",
+  "right": "Binds tubulin, inhibits polymerisation (mitotic arrest)",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "moa-288",
+  "left": "Imatinib",
+  "right": "Inhibits BCR-ABL tyrosine kinase",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "moa-292",
+  "left": "Rituximab",
+  "right": "Anti-CD20 monoclonal antibody",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "moa-x1",
+  "left": "Pegloticase",
+  "right": "Recombinant uricase, converts uric acid to allantoin (refractory gout)",
+  "chapter": "Autacoids and Related Drugs"
+ },
+ {
+  "id": "moa-x2",
+  "left": "Benralizumab",
+  "right": "Monoclonal antibody against the IL-5 receptor α (depletes eosinophils)",
+  "chapter": "Respiratory Disorders"
+ },
+ {
+  "id": "moa-x3",
+  "left": "Sacubitril",
+  "right": "Neprilysin inhibitor, ↑natriuretic peptides (given with valsartan in heart failure)",
+  "chapter": "Cardiovascular Drugs"
+ },
+ {
+  "id": "moa-x4",
+  "left": "Liraglutide",
+  "right": "GLP-1 receptor agonist, ↑glucose-dependent insulin release",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-x5",
+  "left": "Alendronate",
+  "right": "Inhibits osteoclast farnesyl pyrophosphate synthase, ↓bone resorption",
+  "chapter": "Hormones and Related Drugs"
+ },
+ {
+  "id": "moa-x6",
+  "left": "Disulfiram",
+  "right": "Inhibits aldehyde dehydrogenase, acetaldehyde accumulates",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "moa-x7",
+  "left": "Fomepizole",
+  "right": "Inhibits alcohol dehydrogenase (methanol/ethylene glycol poisoning)",
+  "chapter": "Miscellaneous Drugs"
+ },
+ {
+  "id": "moa-x8",
+  "left": "Flumazenil",
+  "right": "Competitive antagonist at the benzodiazepine site of GABA-A",
+  "chapter": "Central Nervous System"
+ }
+]

@@ -7,6 +7,7 @@ import { playTap } from '../utils/sound';
 import { hapticTap } from '../utils/haptics';
 import { useTodayStatus } from '../context/TodayStatusContext';
 import { SECTIONS } from '../utils/todayStatus';
+import ModeToggle from './ModeToggle';
 import './Home.css';
 
 function tap() {
@@ -40,6 +41,8 @@ export default function Home() {
     <>
       <TopBar />
       <div className="home-wrap">
+        <ModeToggle showBlurb />
+
         {user && unsaved.length > 0 && (
           <div className="home-unsaved">
             <p>
@@ -87,7 +90,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <p className="home-footnote">New set every day. 6 pairs per section.</p>
+        <p className="home-footnote">New set every day. 6 pairs per section. Just a fun learning game, not a study guide.</p>
       </div>
     </>
   );
