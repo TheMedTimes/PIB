@@ -1,0 +1,410 @@
+[
+ {
+  "id": "adr-7",
+  "left": "Atropine",
+  "right": "Hot, dry, red, blind, mad; urinary retention, tachycardia",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "adr-29",
+  "left": "Tamsulosin",
+  "right": "Intraoperative floppy iris syndrome",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "adr-37",
+  "left": "Latanoprost",
+  "right": "Eyelash growth, brown iris pigmentation",
+  "chapter": "Autonomic Nervous System"
+ },
+ {
+  "id": "adr-45",
+  "left": "Sumatriptan",
+  "right": "Coronary vasospasm (avoid in CAD), chest tightness",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-52",
+  "left": "Aspirin",
+  "right": "GI bleed, tinnitus, Reye syndrome in children",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-58",
+  "left": "Acetaminophen",
+  "right": "Hepatic necrosis in overdose (NAPQI)",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-60",
+  "left": "Methotrexate",
+  "right": "Myelosuppression, hepatotoxicity, pulmonary fibrosis",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-62",
+  "left": "Hydroxychloroquine",
+  "right": "Retinopathy (bull's eye maculopathy)",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-65",
+  "left": "Cyclosporine",
+  "right": "Nephrotoxicity, gingival hyperplasia, hirsutism",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-69",
+  "left": "Allopurinol",
+  "right": "Stevens-Johnson syndrome/TEN (HLA-B*5801)",
+  "chapter": "Autacoids, NSAIDs, Gout"
+ },
+ {
+  "id": "adr-86",
+  "left": "Propylthiouracil",
+  "right": "Fulminant hepatotoxicity, agranulocytosis",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-93",
+  "left": "Metformin",
+  "right": "Lactic acidosis, GI upset, B12 deficiency",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-105",
+  "left": "Sildenafil",
+  "right": "Severe hypotension with nitrates, blue vision",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-107",
+  "left": "Diethylstilbestrol",
+  "right": "Vaginal clear cell adenocarcinoma in daughters",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-109",
+  "left": "Tamoxifen",
+  "right": "Endometrial cancer, thromboembolism, hot flashes",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-118",
+  "left": "Magnesium sulfate",
+  "right": "Loss of DTRs, respiratory depression, hypotension",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-121",
+  "left": "Succinylcholine",
+  "right": "Malignant hyperthermia, hyperkalemia",
+  "chapter": "Peripheral/Somatic Nervous System"
+ },
+ {
+  "id": "adr-130",
+  "left": "Bupivacaine",
+  "right": "Severe cardiotoxicity (ventricular arrhythmias)",
+  "chapter": "Peripheral/Somatic Nervous System"
+ },
+ {
+  "id": "adr-134",
+  "left": "Halothane",
+  "right": "Hepatotoxicity (halothane hepatitis), malignant hyperthermia",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-138",
+  "left": "Thiopental",
+  "right": "Hypotension; contraindicated in acute porphyria",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-141",
+  "left": "Ketamine",
+  "right": "Emergence hallucinations, hypertension, ↑ICP",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-147",
+  "left": "Phenytoin",
+  "right": "Gingival hyperplasia, hirsutism, nystagmus, SJS",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-148",
+  "left": "Carbamazepine",
+  "right": "Agranulocytosis, SIADH, SJS/TEN (HLA-B*1502)",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-150",
+  "left": "Valproate",
+  "right": "Hepatotoxicity, pancreatitis, neural tube defects",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-156",
+  "left": "Vigabatrin",
+  "right": "Irreversible peripheral visual field loss",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-162",
+  "left": "Haloperidol",
+  "right": "Extrapyramidal symptoms, tardive dyskinesia, NMS",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-166",
+  "left": "Clozapine",
+  "right": "Agranulocytosis (monitor ANC), seizures, myocarditis",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-172",
+  "left": "Lithium",
+  "right": "Tremor, nephrogenic DI, hypothyroidism, Ebstein anomaly",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-181",
+  "left": "Phenelzine",
+  "right": "Hypertensive crisis with tyramine foods",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-185",
+  "left": "Trazodone",
+  "right": "Priapism, orthostatic hypotension, sedation",
+  "chapter": "Central Nervous System"
+ },
+ {
+  "id": "adr-201",
+  "left": "Hydrochlorothiazide",
+  "right": "Hypokalemia, hyperuricemia, hyperglycemia",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-202",
+  "left": "Spironolactone",
+  "right": "Hyperkalemia, gynecomastia, antiandrogen effects",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-204",
+  "left": "Captopril",
+  "right": "Dry cough, angioedema, hyperkalemia, teratogenic",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-209",
+  "left": "Hydralazine",
+  "right": "Drug-induced lupus, reflex tachycardia",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-212",
+  "left": "Sodium nitroprusside",
+  "right": "Cyanide toxicity, hypotension",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-219",
+  "left": "Ivabradine",
+  "right": "Phosphenes (visual phenomena), bradycardia",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-222",
+  "left": "Digoxin",
+  "right": "N/V, xanthopsia (yellow-green vision), arrhythmias",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-230",
+  "left": "Amiodarone",
+  "right": "Pulmonary fibrosis, thyroid dysfunction, blue-gray skin",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-234",
+  "left": "Furosemide",
+  "right": "Ototoxicity, hypokalemia, hyperuricemia",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-238",
+  "left": "Lovastatin",
+  "right": "Myopathy/rhabdomyolysis, hepatotoxicity",
+  "chapter": "Cardiovascular"
+ },
+ {
+  "id": "adr-250",
+  "left": "Heparin",
+  "right": "Bleeding, heparin-induced thrombocytopenia (HIT)",
+  "chapter": "Blood"
+ },
+ {
+  "id": "adr-254",
+  "left": "Warfarin",
+  "right": "Bleeding, skin necrosis, teratogen (embryopathy)",
+  "chapter": "Blood"
+ },
+ {
+  "id": "adr-268",
+  "left": "Metoclopramide",
+  "right": "Extrapyramidal effects, tardive dyskinesia, NMS",
+  "chapter": "Gastrointestinal"
+ },
+ {
+  "id": "adr-290",
+  "left": "Vancomycin",
+  "right": "Red man syndrome, nephrotoxicity, ototoxicity",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-291",
+  "left": "Gentamicin",
+  "right": "Nephrotoxicity, ototoxicity (irreversible)",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-295",
+  "left": "Chloramphenicol",
+  "right": "Gray baby syndrome, aplastic anemia",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-299",
+  "left": "Clindamycin",
+  "right": "Pseudomembranous colitis (C. difficile)",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-301",
+  "left": "Ciprofloxacin",
+  "right": "Tendinitis/rupture, QT prolongation, C. difficile",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-308",
+  "left": "Metronidazole",
+  "right": "Disulfiram-like reaction, metallic taste, neuropathy",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-310",
+  "left": "Isoniazid",
+  "right": "Peripheral neuropathy (give pyridoxine), hepatotoxicity",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-311",
+  "left": "Rifampin",
+  "right": "Hepatotoxicity, orange-red body fluids",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-313",
+  "left": "Pyrazinamide",
+  "right": "Hepatotoxicity, hyperuricemia",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-314",
+  "left": "Ethambutol",
+  "right": "Optic neuritis (red-green color blindness)",
+  "chapter": "Antibacterials"
+ },
+ {
+  "id": "adr-319",
+  "left": "Amphotericin B",
+  "right": "Nephrotoxicity, infusion reactions ('shake and bake')",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "adr-338",
+  "left": "Abacavir",
+  "right": "Hypersensitivity reaction (HLA-B*5701)",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "adr-348",
+  "left": "Chloroquine",
+  "right": "Retinopathy, QT prolongation, hemolysis in G6PD",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "adr-351",
+  "left": "Primaquine",
+  "right": "Hemolysis in G6PD deficiency, methemoglobinemia",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "adr-361",
+  "left": "Diethylcarbamazine",
+  "right": "Mazzotti reaction (fever, rash, lymphadenitis)",
+  "chapter": "Antifungal, Antiviral, Antiprotozoal, Anthelmintic"
+ },
+ {
+  "id": "adr-364",
+  "left": "Cyclophosphamide",
+  "right": "Hemorrhagic cystitis (prevent with mesna)",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-371",
+  "left": "Cisplatin",
+  "right": "Nephrotoxicity, ototoxicity, peripheral neuropathy",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-380",
+  "left": "Vincristine",
+  "right": "Peripheral neuropathy, paralytic ileus, SIADH",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-385",
+  "left": "Doxorubicin",
+  "right": "Dilated cardiomyopathy (cumulative dose)",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-386",
+  "left": "Bleomycin",
+  "right": "Pulmonary fibrosis (O2 exacerbates)",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-411",
+  "left": "Isotretinoin",
+  "right": "Teratogenicity (absolute contraindication)",
+  "chapter": "Miscellaneous"
+ },
+ {
+  "id": "adr-x1",
+  "left": "Alendronate",
+  "right": "Oesophagitis, osteonecrosis of jaw, atypical femoral fractures",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-x2",
+  "left": "Liraglutide",
+  "right": "Nausea, pancreatitis; avoid in MEN2 / medullary thyroid cancer",
+  "chapter": "Hormones"
+ },
+ {
+  "id": "adr-x3",
+  "left": "Trastuzumab",
+  "right": "Cardiotoxicity (↓LVEF), infusion reactions",
+  "chapter": "Anticancer Drugs"
+ },
+ {
+  "id": "adr-x4",
+  "left": "Bedaquiline",
+  "right": "QT prolongation",
+  "chapter": "Antibacterials"
+ }
+]

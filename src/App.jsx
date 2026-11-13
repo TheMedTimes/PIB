@@ -6,6 +6,7 @@ import SectionPage from './components/SectionPage';
 import Footer from './components/Footer';
 import { AuthProvider } from './context/AuthContext';
 import { TodayStatusProvider } from './context/TodayStatusContext';
+import { ModeProvider } from './context/ModeContext';
 
 // Home and the game screens (SectionPage) are the core, high-traffic path,
 // those stay in the main bundle. Everything below is visited far less
@@ -19,6 +20,7 @@ const Review = lazy(() => import('./components/Review'));
 export default function App() {
   return (
     <AuthProvider>
+      <ModeProvider>
       <TodayStatusProvider>
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <div className="scanlines app-shell">
@@ -40,6 +42,7 @@ export default function App() {
         </div>
       </BrowserRouter>
       </TodayStatusProvider>
+      </ModeProvider>
     </AuthProvider>
   );
 }

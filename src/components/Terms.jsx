@@ -6,34 +6,38 @@ export default function Terms() {
     <>
       <TopBar back title="Terms and Conditions" />
       <div className="legal-wrap">
-        <p className="legal-updated">Last updated: October 2026</p>
+        <p className="legal-updated">Last updated: November 2026</p>
 
         <section>
           <h2>1. What P.I.B. is</h2>
           <p>
-            P.I.B. (Pharmac In a Bottle) is a free study tool built by TheMedTimes to help medical
-            students practice pharmacology through daily match the following drills. It is provided
-            for educational purposes only.
+            P.I.B. (Pharmac In a Bottle) is a free, fun learning game built by TheMedTimes. It offers
+            daily match the following drills on pharmacology, in an Exam mode (a small selection of
+            commonly tested facts) and a Hard mode (a larger set). It is not a study guide, textbook,
+            course, or reference, and it is not a substitute for any of those.
           </p>
         </section>
 
         <section>
-          <h2>2. Not medical advice</h2>
+          <h2>2. Please don't depend on it</h2>
           <p>
-            Nothing on this site is medical advice and it must not be used to diagnose, treat, or
-            make clinical decisions about any patient. Content is a study aid only. Always verify
-            drug information against current, authoritative references before applying it in
-            practice.
+            P.I.B. is provided for fun and casual learning only. Nobody should rely on it to prepare
+            for an exam, to learn a subject, or to make any decision. Nothing on this site is medical
+            advice, and it must never be used to diagnose, treat, or make clinical decisions about any
+            patient. Always check drug information against current, authoritative references.
           </p>
         </section>
 
         <section>
-          <h2>3. Accuracy of content</h2>
+          <h2>3. Accuracy and missing information</h2>
           <p>
-            We take care in preparing the drug information shown on this site, but pharmacology
-            content changes and errors are possible. TheMedTimes makes no warranty that the content
-            is complete, current, or free of mistakes, and is not liable for any outcome resulting
-            from reliance on it.
+            Pharmacology changes, and a quick game cannot cover everything. Content may contain
+            mistakes, be out of date, or leave things out, and Exam mode in particular is only a
+            selection, not the whole syllabus. The site is provided "as is" with no promise that it is
+            complete, current, or error-free. TheMedTimes is not responsible for any missing or
+            incorrect information, or for any outcome that results from relying on it. If you spot a
+            mistake or something missing, we would love to hear about it: use the Report Question link
+            at the bottom of the site, or email us (see section 7).
           </p>
         </section>
 
